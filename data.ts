@@ -34,7 +34,7 @@ export const services: Service[] = [
     title: "Payment Processors",
     about:
       "Experienced in managing refunds, invoice payments, payment disputes, payment plans, subscriptions, coupons and trials. Reporting,Data Entry, Customer account management, payment details, secured payment transaction practices",
-      url: '/images/paymentslogo.jpeg',
+      url: '/images/PaymentProcessorslogo.jpg',
     tags: ['Stripe', 'PayPal', 'Authorize.net']
   },
   {
