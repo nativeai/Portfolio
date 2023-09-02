@@ -42,7 +42,7 @@ export const services: Service[] = [
     title: "Chatbot Workflows",
     about:
       "Experience in leading to map, document, test and implement chatbot workflows, replies, reports, feedback surveys and automations in systems including, Hubspot, and Drift Chat.",
-      url: '/images/chatbotlogo.jpeg',
+      url: '/images/chatbotlogo.jpg',
     tags: ['Adobe Creative Cloud', 'API', '.NET']
   },
   {
