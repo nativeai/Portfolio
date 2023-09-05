@@ -9,7 +9,7 @@ This repo
 The code in this project is licensed under MIT license.
 ## Contact
 
-Shandon Hicks - [Shandon.Hicks@gmail.com](mailto:Shandon.Hicks@gmail.com)
+Shandon Hicks - [shandonhicks@proton.me](mailto:shandonhicks@proton.me)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
