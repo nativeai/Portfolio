@@ -502,7 +502,7 @@ export const projects: IProject[] = [
 
    {
     name: "Unreal Engine 4/5",
-    image_path: "/ue5.png",
+    image_path: "/images/UELogo.png",
     deployed_url: "!#",
     github_url: "!#",
     category: ["ue5"],
@@ -512,6 +512,30 @@ export const projects: IProject[] = [
       "UE5",
       "UE4",
       ,"Blueprints",
+    ],
+  },
+  {
+    name: "Rokoko",
+    image_path: "/images/RokokoLogo.png",
+    deployed_url: "!#",
+    github_url: "!#",
+    category: ["Rokoko"],
+    description:
+      'Mocap animations, Exporting/Importing FBX files, Character Rigging',
+    key_techs: [
+      "Rokoko",
+    ],
+  },
+  {
+    name: "Ableton Live",
+    image_path: "/images/abletonlogo.png",
+    deployed_url: "!#",
+    github_url: "!#",
+    category: ["Ableton"],
+    description:
+      'Music composition, MIDI components, voice and instrument recording, mix & mastering',
+    key_techs: [
+      "Ableton",
     ],
   },
   
