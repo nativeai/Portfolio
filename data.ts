@@ -42,7 +42,7 @@ export const services: Service[] = [
     title: "Chatbot Workflows",
     about:
       "Experience in leading to map, document, test and implement chatbot workflows, replies, reports, feedback surveys and automations in systems including, Hubspot, and Drift Chat.",
-      url: '/images/chatbotlogo.jpg',
+      url: '/images/Chatbotlogo.jpg',
     tags: ['Adobe Creative Cloud', 'API', '.NET']
   },
   {
@@ -104,7 +104,7 @@ export const services: Service[] = [
     title: "UE4/UE5 Animation Pipeline ",
     about:
       "Utilizing and learning best practices for UE5 animation pipeline, cinematics, Metahuman, scene creation, production,Livelink, Rokoko and Niagra components ",
-      url: '/images/UElogo.png',
+      url: '/images/UELogo.png',
     tags: ['UE4', 'UE5', 'C++', 'Blueprints', 'Animation Pipeline','Cinematic Renders','Metahuman','Rokoko']
   },
 ];
