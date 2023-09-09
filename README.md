@@ -1,4 +1,4 @@
-![Logo of the project](https://raw.githubusercontent.com/csharpener22/next-js-dev-portfolio/public/images/portfolio.png)
+![Logo of the project](public/images/PortfolioLogo.jpg)
 
 # Developer Portfolio
 > React, Next.js, TailwindCSS.
