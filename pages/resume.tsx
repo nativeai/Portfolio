@@ -28,7 +28,7 @@ const Resume = () => {
               <p className="mt-2 text-md">
                 Responsibilities included, but not limited to:
                 <br />
-                - Generated, assessed, and delivered Key Performance Indicators (KPIs) for Customer Success directly to our Chief Operating Officer (COO). Compiled and presented comprehensive solutions aimed at propelling forthcoming initiatives. Formulated goals and established timelines for various tasks and projects. 
+                - Generated, assessed, and delivered Key Performance Indicators (KPIs) for Customer Success directly to our Chief Operating Officer (COO). Compiled and presented comprehensive solutions aimed at company initiatives, and product recommendations. Working with department managers, ensuring alignment. Formulated goals and established timelines for various tasks and projects for the customer success team. 
                 <br />
                 - Managed admin access, user permissions, invites in Hubspot, Infusionsoft, Oscommerce, Post Affiliate Pro, Zoom, and Confluence. As a key admin  in our systems, I provided many of our teams with appropriate access based on their roles and responsibilites.
                 <br />
