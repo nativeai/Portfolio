@@ -528,7 +528,7 @@ export const projects: IProject[] = [
   },
   {
     name: "Ableton Live",
-    image_path: "/images/abletonlogo.png",
+    image_path: "/images/Abletonlogo.png",
     deployed_url: "!#",
     github_url: "!#",
     category: ["Ableton"],
