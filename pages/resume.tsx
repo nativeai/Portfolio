@@ -1,6 +1,17 @@
 import Bar from "../components/Bar";
 import { languages, tools, containers } from "../data";
+import ReactPlayer from "react-player";
 
+
+  const handleChange = () => {
+    console.log("playing");
+  };
+
+  const handleProgress = ({ playedSeconds: secondsPlayed }) => {
+    if (secondsPlayed > 1) {
+      console.log(secondsPlayed);
+    }
+  };
 const Resume = () => {
   return (
     <div className="text-base font-hpr font-medium tracking-wider">
@@ -165,6 +176,17 @@ const Resume = () => {
               <p className="my-3">
                 <br />
                 <h2 className="font-semibold p-2">Video Production</h2>
+                <div className="player-wrapper">
+              <ReactPlayer
+                className="react-player"
+                url="https://www.youtube.com/watch?v=uG51UuOWEC4"
+                width="480px"
+                height="270px"
+                onReady={handleChange}
+                controls={true}
+                onProgress={handleProgress}
+              />
+            </div>
                 <ul className="list-none hover:list-disc">
                   <li>
                     - Creating 3-d landscapes and cinematic productions, setup camera and cinematics using sequencer

@@ -43,7 +43,7 @@ export const services: Service[] = [
     about:
       "Experience in leading to map, document, test and implement chatbot workflows, replies, reports, feedback surveys and automations in systems including, Hubspot, and Drift Chat.",
       url: '/images/Chatbotlogo.jpg',
-    tags: ['Adobe Creative Cloud', 'API', '.NET']
+    tags: ['Hubspot', 'DriftChat', 'Facebook Business']
   },
   {
     Icon: FaAffiliatetheme,
@@ -58,7 +58,7 @@ export const services: Service[] = [
     title: "Communication Software",
     about: "Experienced in ClickUp and Asana for reporting, management task form submissions, tasks and due date Calendar, Task assignment automations. Utilized slack for day-to-day team member communication, company notifications/updates/announcements,voice and video calls, utilized slack plugins, and automations. ",
     url: '/images/Communicationsoftware.jpg',
-    tags: ['Slack','ClickUp', 'Asana']
+    tags: ['Slack','ClickUp', 'Asana', 'Microsoft Teams', 'Zoom']
   },
   {
     Icon: SiAuth0,
@@ -66,7 +66,7 @@ export const services: Service[] = [
     about:
       "In depth knowledge around advanced authentication using B2C IEF (Identity Experience Framework) on custom login policies. These login policies can be tailored towards the business needs for collecting additional attributes within the B2C AAD directory.",
       url: '/images/vscode.png',
-    tags: ['B2C', 'IEF', 'Auth']
+    tags: ['vscode-pdf', 'Next js', 'Auth']
   },
   {
     Icon: SiHubspot,
@@ -74,14 +74,14 @@ export const services: Service[] = [
     about:
       "Setup and maintained Hubspot support inbox pipeline, workflow automations, Chatbot workflow, email templates/snippets, Customer Knowledge Base Articles, user feedback surveys, SLAs, and team dashboard activity metrics", 
       url: '/images/Hubspot.png',
-    tags: ['Hubspot Reporting Certification','Service Hub Software Certification']
+    tags: ['Hubspot Reporting Certification','Service Hub Software Certification', 'Feedback Surveys', 'Chat workflows', 'Inbox Pipeline', 'Admin']
   },
   {
     Icon: FaAtlassian,
     title: "Atlassian Tools",
     about: "Create, manage, and maintain Azure Architecture following current best practices (Hosted by Microsoft docs) like <b>Subscriptions and permissions</b>, <b>Resource Groups</b>  and <b>Service hosting</b> ",
     url: '/images/atlassian.jpg',
-    tags: ['Confluence', 'JIRA', 'Bitbucket']
+    tags: ['Confluence', 'JIRA','ServiceDesk', 'Bitbucket']
   },
   {
     Icon: FaAdobe,
