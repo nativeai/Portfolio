@@ -4,7 +4,7 @@ import { AiFillControl, AiOutlineAntDesign, AiOutlineApi, AiOutlineDisconnect, A
 import { MdDeveloperMode } from "react-icons/md";
 import { IProject, Service, Skill, Snippet, Container, CryptoWallet, SideBarIcon, SupportMe } from "./types";
 import { BsCameraVideo, BsCircleFill, BsFillCameraVideoFill } from "react-icons/bs";
-import { SiAdobe, SiAdobecreativecloud, SiAmazon, SiAngular, SiAsana, SiAtlassian, SiAuth0, SiAzuredevops, SiAzurepipelines, SiCircle, SiCplusplus, SiCsharp, SiGithub, SiHtml5, SiHubspot, SiMicrosoft, SiMicrosoftsqlserver, SiNextDotJs, SiPaypal, SiReact, SiSlack, SiStripe, SiTailwindcss, SiUnrealengine, SiZoom } from "react-icons/si";
+import { SiAdobe, SiAdobecreativecloud, SiAmazon, SiAngular, SiAsana, SiAtlassian, SiAuth0, SiAzuredevops, SiAzurepipelines, SiCircle, SiCplusplus, SiCsharp, SiGithub, SiHtml5, SiHubspot, SiMicrosoft, SiMicrosoftsqlserver, SiNextdotjs, SiPaypal, SiReact, SiSlack, SiStripe, SiTailwindcss, SiUnrealengine, SiZoom } from "react-icons/si";
 import { GiBowArrow, GiCircle, GiSatelliteCommunication, GiSawedOffShotgun, GiTreeGrowth, GiVideoCamera } from "react-icons/gi";
 
 export const repositories: string[] = [
