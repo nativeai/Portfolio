@@ -1,5 +1,5 @@
 import { RiAddCircleFill, RiComputerLine, RiContactsBookUploadLine, RiInformationLine, RiLeafFill, RiSecurePaymentLine, RiTrafficLightFill } from "react-icons/ri";
-import { FaAdobe, FaAffiliatetheme, FaAtlassian, FaCameraRetro, FaFileAudio, FaGamepad, FaServer, FaVideo } from "react-icons/fa";
+import { FaAffiliatetheme, FaAtlassian, FaCameraRetro, FaFileAudio, FaGamepad, FaServer, FaVideo } from "react-icons/fa";
 import { AiFillControl, AiOutlineAntDesign, AiOutlineApi, AiOutlineDisconnect, AiOutlineLink, AiOutlineRightCircle } from "react-icons/ai";
 import { MdDeveloperMode } from "react-icons/md";
 import { IProject, Service, Skill, Snippet, Container, CryptoWallet, SideBarIcon, SupportMe } from "./types";
@@ -84,7 +84,7 @@ export const services: Service[] = [
     tags: ['Confluence', 'JIRA','ServiceDesk', 'Bitbucket']
   },
   {
-    Icon: FaAdobe,
+    Icon: SiAdobe,
     title: "Adobe Creative Cloud Products",
     about:
       "I have extensive experience with Photoshop, After Effects, and Character Animator. Adobe Xd, Illustrator, and photoshop can be combined to create custom web experiences with their own look and feel",
