@@ -91,7 +91,7 @@ const Sidebar = () => {
         <motion.a
           whileHover={{ scale: 1.3 }}
           whileTap={{ scale: 0.9 }}
-          href="tel:+16129006357"
+          href="tel:+19103362213"
         >
           <FaMobileAlt className="w-8 h-8 m-auto cursor-pointer" />
           <span className="text-sm font-hpr">Phone</span>
