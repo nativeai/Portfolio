@@ -64,9 +64,9 @@ export const services: Service[] = [
     Icon: SiAuth0,
     title: "Visual Studio Code",
     about:
-      "In depth knowledge around advanced authentication using B2C IEF (Identity Experience Framework) on custom login policies. These login policies can be tailored towards the business needs for collecting additional attributes within the B2C AAD directory.",
+      "Novice experience in Next.js, React and beginning to learn Python (anaconda,LaTeX). Utilizing Jupyter Interactive Window ",
       url: '/images/vscode.png',
-    tags: ['vscode-pdf', 'Next js', 'Auth']
+    tags: ['vscode-pdf', 'Next js', 'Auth', 'Python']
   },
   {
     Icon: SiHubspot,
@@ -79,7 +79,7 @@ export const services: Service[] = [
   {
     Icon: FaAtlassian,
     title: "Atlassian Tools",
-    about: "Create, manage, and maintain Azure Architecture following current best practices (Hosted by Microsoft docs) like <b>Subscriptions and permissions</b>, <b>Resource Groups</b>  and <b>Service hosting</b> ",
+    about: "Utilized and Setup Service Desk systems for BrainTap, created knowledge base articles through confluence.",
     url: '/images/atlassian.jpg',
     tags: ['Confluence', 'JIRA','ServiceDesk', 'Bitbucket']
   },
@@ -87,7 +87,7 @@ export const services: Service[] = [
     Icon: SiAdobe,
     title: "Adobe Creative Cloud Products",
     about:
-      "I have extensive experience with Photoshop, After Effects, and Character Animator. Adobe Xd, Illustrator, and photoshop can be combined to create custom web experiences with their own look and feel",
+      "I have experience with Photoshop, After Effects, and Character Animator",
       url: '/images/adobe.jpg',
     tags: ['Xd', 'Ps', 'Ai', 'Ch', 'Ae', 'SVG Export']
   },
@@ -95,7 +95,7 @@ export const services: Service[] = [
     Icon: FaFileAudio,
     title: "Audio Production",
     about:
-      "Albeton Live 11 is my current DAW of choice for all stages of music production from staging, instrumentation, mixing, and mastering audio. I have experience with EDM, Rap, Trap, and Audio Books.",
+      "Albeton Live 11 is my current DAW of choice for all stages of music production from staging, instrumentation, mixing, and mastering audio. I have experience with EDM, Rap, Acoustic, and Trap",
       url: '/images/ableton-live-11.jpg',
     tags: ['ALS 10', 'ALS 11', 'Logix Pro X', 'DAWs', 'Meta Sounds UE5']
   },
