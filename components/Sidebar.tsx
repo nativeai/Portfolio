@@ -50,7 +50,7 @@ const Sidebar = () => {
         <span className="text-blue">Shandon</span> Hicks
       </h3>
       <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500 font-hpr">
-        Customer Success
+        Sr. Operations, RevOps & Hardware Manager 
       </p>
       <div className="flex justify-around w-9/12 mx-auto my-5 text-blue md:w-full">
         <motion.a

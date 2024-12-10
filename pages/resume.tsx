@@ -192,6 +192,7 @@ const Resume = () => {
                     - Creating 3-d landscapes and cinematic productions, setup camera and cinematics using sequencer
                     - rendering 
                   </li>
+              
                   
                   {/* <li>
                     - Applied skills with HTML, CSS, and Bootstrap to create a
