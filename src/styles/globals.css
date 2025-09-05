@@ -1,0 +1,64 @@
+@import url('./stylesheet.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+   font-family: sans-serif;
+   color: #354358;
+}
+
+#banner {
+   /* z-index: -1; */
+}
+
+/* Works on Firefox */
+* {
+   scrollbar-width: thin;
+   scrollbar-color: #354358 transparent;
+ }
+ 
+ /* Works on Chrome, Edge, and Safari */
+ *::-webkit-scrollbar {
+   width: 12px;
+ }
+ 
+ *::-webkit-scrollbar-track {
+   background: transparent;
+ }
+ 
+ *::-webkit-scrollbar-thumb {
+   background-color: hsl(216, 63%, 33%);
+   border-radius: 20px;
+   border: 3px solid transparent;
+ }
+
+.hljs{
+   background: transparent;
+   overflow-x: hidden;
+}
+
+.highlight{
+   
+}
+
+#tsparticles {
+   z-index: -1000;
+   opacity: 0.5;
+}
+
+#scene {
+   top: 0;
+	position: fixed;
+   z-index: -1000;
+   left: 0;
+   right: 0;
+   bottom: 0;
+	overflow: hidden;
+}
+
+
+/* //TODO put this in document */
+/* body {
+   background-color: black;
+} */

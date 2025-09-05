@@ -15,6 +15,7 @@ const nextConfig = {
         hostname: '*.netlify.app',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
   },
   transpilePackages: ['three'],
 };
