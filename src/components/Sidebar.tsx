@@ -18,20 +18,20 @@ const NavItem = ({ active, setActive, name, route }: {
   name: string
   route: string
 }) => {
-  return active !== name ? (
+  return active === name ? (
+    <span className='block w-full py-2 px-2 text-center bg-blue text-dark-500 font-bold rounded-md font-hpr shadow-md text-sm'>
+      {name}
+    </span>
+  ) : (
     <Link href={route}>
       <motion.span
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className='block w-full py-2 px-4 mx-2 my-1 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-300 rounded-md transition-colors font-hpr'
+        className='block w-full py-2 px-2 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-300 rounded-md transition-colors font-hpr text-sm'
         onClick={() => setActive(name)}>
         {name}
       </motion.span>
     </Link>
-  ) : (
-    <span className='block w-full py-2 px-4 mx-2 my-1 text-center bg-blue text-white rounded-md font-hpr'>
-      {name}
-    </span>
   )
 }
 
@@ -156,7 +156,7 @@ const Sidebar = () => {
         <span>Download Resume</span>
       </motion.a>
 
-      <div className="mt-4 mb-4">
+      <div className="mt-4 mb-4 grid grid-cols-2 gap-2">
         <NavItem
           active={active}
           setActive={setActive}
