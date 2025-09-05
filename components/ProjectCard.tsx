@@ -28,9 +28,8 @@ const ProjectCard: FunctionComponent<{
         alt={name}
         className="cursor-pointer"
         onClick={() => setShowDetail(true)}
-        layout="responsive"
-        height="150"
-        width="300"
+        height={150}
+        width={300}
       />
       {/* <img
         src={image_path}
@@ -54,9 +53,8 @@ const ProjectCard: FunctionComponent<{
             <Image
               src={image_path}
               alt={name}
-              layout="responsive"
-              height="150"
-              width="300"
+              height={150}
+              width={300}
             />
             <div className="flex justify-center my-4 space-x-3">
               <a

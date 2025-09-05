@@ -31,13 +31,15 @@ const Support = () => {
                   </span> */}
                   {/* {support.url} */}
                 </h2>
-                <Image
-                  src={support.image}
-                  alt="avatar"
-                  className="mx-auto border rounded-r-lg"
-                  layout="fill"
-                  quality="100"
-                />
+                <div className="relative w-full h-48">
+                  <Image
+                    src={support.image}
+                    alt="avatar"
+                    className="mx-auto border rounded-r-lg object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
               </a>
             </div>
           </motion.div>
@@ -72,10 +74,9 @@ const Support = () => {
                   src={wallet.image}
                   alt="avatar"
                   className="mx-auto border rounded-r-lg"
-                  height="128px"
-                  width="128px"
-                  layout="intrinsic"
-                  quality="100"
+                  height={128}
+                  width={128}
+                  quality={100}
                 />
                 <h4 className="font-light text-sm font-mono hover:text-blue transition-all duration-200 break-words">
                   Wallet Address: <br />

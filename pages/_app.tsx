@@ -4,8 +4,9 @@ import "../styles/globals.css";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { ThemeProvider } from "next-themes";
+import type { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   const mountRef = useRef(null);
   useEffect(() => {
     let cloud,
@@ -29,7 +30,7 @@ function MyApp({ Component, pageProps }) {
         material = new THREE.MeshStandardMaterial({
         color: 0xC6CCEE,
         roughness: 1,
-        shading: THREE.FlatShading,
+        flatShading: true,
       }),
       renderer = new THREE.WebGLRenderer({
         alpha: true,
@@ -169,14 +170,14 @@ function MyApp({ Component, pageProps }) {
       var geom = new THREE.TorusGeometry(1200, 300, 100, 300);
       
       // rotate the geometry on the x axis
-      geom.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
+      geom.applyMatrix4(new THREE.Matrix4().makeRotationX(-Math.PI/2));
       
       // create the material 
       var mat = new THREE.MeshPhongMaterial({
         color:colors.red,
         transparent:true,
         opacity:.3,
-        shading:THREE.FlatShading,
+        flatShading:true,
         side: THREE.DoubleSide
       });
     
@@ -266,8 +267,8 @@ function MyApp({ Component, pageProps }) {
         side: THREE.DoubleSide
       });
       const planeMesh = new THREE.Mesh(mesh, mat);
-      console.log('planemesh: ' + planeMesh.mesh)
-      // planeMesh.mesh.position.z = -400-Math.random()*400;
+      console.log('planemesh: ' + planeMesh)
+      // planeMesh.position.z = -400-Math.random()*400;
       scene.add(planeMesh)
     }
 

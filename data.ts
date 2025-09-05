@@ -4,7 +4,7 @@ import { AiFillControl, AiOutlineAntDesign, AiOutlineApi, AiOutlineDisconnect, A
 import { MdDeveloperMode } from "react-icons/md";
 import { IProject, Service, Skill, Snippet, Container, CryptoWallet, SideBarIcon, SupportMe } from "./types";
 import { BsCameraVideo, BsCircleFill, BsFillCameraVideoFill } from "react-icons/bs";
-import { SiAdobe, SiAdobecreativecloud, SiAmazon, SiAngular, SiAsana, SiAtlassian, SiAuth0, SiAzuredevops, SiAzurepipelines, SiCircle, SiCplusplus, SiCsharp, SiGithub, SiHtml5, SiHubspot, SiMicrosoft, SiMicrosoftsqlserver, SiNextdotjs, SiPaypal, SiReact, SiSlack, SiStripe, SiTailwindcss, SiUnrealengine, SiZoom } from "react-icons/si";
+import { SiGithub, SiHtml5 } from "react-icons/si";
 import { GiBowArrow, GiCircle, GiSatelliteCommunication, GiSawedOffShotgun, GiTreeGrowth, GiVideoCamera } from "react-icons/gi";
 
 export const repositories: string[] = [
@@ -61,7 +61,7 @@ export const services: Service[] = [
     tags: ['Slack','ClickUp', 'Asana', 'Microsoft Teams', 'Zoom']
   },
   {
-    Icon: SiAuth0,
+    Icon: MdDeveloperMode,
     title: "Visual Studio Code",
     about:
       "Novice experience in Next.js, React and beginning to learn Python (anaconda,LaTeX). Utilizing Jupyter Interactive Window ",
@@ -69,7 +69,7 @@ export const services: Service[] = [
     tags: ['vscode-pdf', 'Next js', 'Auth', 'Python']
   },
   {
-    Icon: SiHubspot,
+    Icon: RiComputerLine,
     title: "Hubspot",
     about:
       "Setup and maintained Hubspot support inbox pipeline, workflow automations, Chatbot workflow, email templates/snippets, Customer Knowledge Base Articles, user feedback surveys, SLAs, and team dashboard activity metrics", 
@@ -84,7 +84,7 @@ export const services: Service[] = [
     tags: ['Confluence', 'JIRA','ServiceDesk', 'Bitbucket']
   },
   {
-    Icon: SiAdobe,
+    Icon: FaCameraRetro,
     title: "Adobe Creative Cloud Products",
     about:
       "I have experience with Photoshop, After Effects, and Character Animator",
@@ -111,7 +111,7 @@ export const services: Service[] = [
 
 export const barIcons: SideBarIcon[] =[
   {
-    Icon: SiAsana,
+    Icon: RiComputerLine,
     title: 'Asana',
     url: 'https://academy.asana.com/',
     style: {
@@ -119,7 +119,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiAdobe,
+    Icon: FaCameraRetro,
     title: 'Adobe',
     url: 'https://helpx.adobe.com/support.html',
     style: {
@@ -127,7 +127,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiStripe,
+    Icon: RiSecurePaymentLine,
     title: 'Stripe',
     url: 'https://stripe.com/docs',
     style: {
@@ -135,7 +135,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiPaypal,
+    Icon: RiSecurePaymentLine,
     title: 'PayPal',
     url: 'https://developer.paypal.com/docs/online/',
     style: {
@@ -151,7 +151,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiSlack,
+    Icon: GiSatelliteCommunication,
     title: 'Slack',
     url: 'https://slack.com/resources',
     style: {
@@ -159,7 +159,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiZoom,
+    Icon: BsFillCameraVideoFill,
     title: 'Zoom',
     url: 'https://zoom.us/',
     style: {
@@ -167,7 +167,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiHubspot,
+    Icon: RiComputerLine,
     title: 'Hubspot',
     url: 'https://help.hubspot.com/?_ga=2.23678194.978470726.1592315215-1192486389.1556035228&hubs_content=www.hubspot.com/&hubs_content-cta=Customer%20Support',
     style: {
@@ -175,7 +175,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiMicrosoft,
+    Icon: SiHtml5,
     title: 'HTML',
     url: 'https://www.w3docs.com/learn-html/html5-introduction.html',
     style: {
@@ -183,7 +183,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiAdobecreativecloud,
+    Icon: FaCameraRetro,
     title: 'Creative Cloud',
     url: 'https://www.adobe.io/creative-cloud-libraries/docs/',
     style: {
@@ -191,7 +191,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiAtlassian,
+    Icon: FaAtlassian,
     title: 'Atlassian Tools',
     url: 'https://www.atlassian.com/',
     style: {
@@ -199,7 +199,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiUnrealengine,
+    Icon: FaGamepad,
     title: 'Unreal Engine',
     url: 'https://docs.unrealengine.com/4.27/en-US/',
     style: {
@@ -215,7 +215,7 @@ export const barIcons: SideBarIcon[] =[
     }
   },
   {
-    Icon: SiAmazon,
+    Icon: FaServer,
     title: 'AWS',
     url: 'https://aws.amazon.com/',
     style: {
@@ -511,7 +511,7 @@ export const projects: IProject[] = [
     key_techs: [
       "UE5",
       "UE4",
-      ,"Blueprints",
+      "Blueprints",
     ],
   },
   {

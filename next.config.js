@@ -1,18 +1,22 @@
-module.exports = {
-  webpack: {
-        configure: {
-            module: {
-                rules: [
-                    {
-                        type: 'javascript/auto',
-                        test: /\.mjs$/,
-                        include: /node_modules/,
-                    },
-                ],
-            },
-        },
-    },
-  images: {
-    domains: ["{portfolio-url}.netlify.app"],
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  webpack: (config) => {
+    config.module.rules.push({
+      type: 'javascript/auto',
+      test: /\.mjs$/,
+      include: /node_modules/,
+    });
+    return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.netlify.app',
+      },
+    ],
+  },
+  transpilePackages: ['three'],
 };
+
+module.exports = nextConfig;

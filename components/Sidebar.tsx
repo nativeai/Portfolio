@@ -18,10 +18,9 @@ const Sidebar = () => {
         src="/images/Shandon-headshot.jpg"
         alt="avatar"
         className="mx-auto rounded-lg border-2 border-blue"
-        height="128px"
-        width="128px"
-        layout="intrinsic"
-        quality="100"
+        height={128}
+        width={128}
+        quality={100}
       />
 
       <div className="px-2">
