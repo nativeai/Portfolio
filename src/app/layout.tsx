@@ -41,10 +41,10 @@ export default function RootLayout({
         <ThemeProvider attribute="class">
           <SceneProvider />
           <div className="grid grid-cols-12 gap-6 px-5 my-14 lg:mb-0 md:mb-16 sm:px-20 md:px-32 lg:px-36 xl:px-48">
-            <div className="hover:scale-100 h-full md:max-h-screen col-span-12 p-4 text-base text-center bg-white dark:bg-dark-500 lg:col-span-3 rounded-md shadow-custom-light dark:shadow-custom-dark">
+            <div className="hover:scale-100 h-full md:max-h-screen col-span-12 p-4 text-base text-center bg-white/80 dark:bg-dark-500/80 lg:col-span-3 rounded-md shadow-custom-light dark:shadow-custom-dark backdrop-blur-sm">
               <Sidebar />
             </div>
-            <div className="hover:scale-125 flex flex-col col-span-12 overflow-hidden bg-white shadow-custom-light dark:shadow-custom-dark rounded-md lg:col-span-9 dark:bg-dark-500">
+            <div className="hover:scale-125 flex flex-col col-span-12 overflow-hidden bg-white/80 shadow-custom-light dark:shadow-custom-dark rounded-md lg:col-span-9 dark:bg-dark-500/80 backdrop-blur-sm">
               <Navbar />
               {children}
             </div>

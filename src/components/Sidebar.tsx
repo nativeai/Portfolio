@@ -9,8 +9,44 @@ import Image from "next/image";
 import { FaMobileAlt, FaRegMoon, FaRegSun } from "react-icons/fa";
 import { barIcons } from "../data";
 import { motion } from "framer-motion";
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+const NavItem = ({ active, setActive, name, route }: {
+  active: string
+  setActive: Function
+  name: string
+  route: string
+}) => {
+  return active !== name ? (
+    <Link href={route}>
+      <motion.span
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className='block w-full py-2 px-4 mx-2 my-1 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-300 rounded-md transition-colors font-hpr'
+        onClick={() => setActive(name)}>
+        {name}
+      </motion.span>
+    </Link>
+  ) : (
+    <span className='block w-full py-2 px-4 mx-2 my-1 text-center bg-blue text-white rounded-md font-hpr'>
+      {name}
+    </span>
+  )
+}
+
 const Sidebar = () => {
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname()
+  const [active, setActive] = useState('')
+
+  useEffect(() => {
+    if (pathname === '/') setActive('Skills')
+    else if (pathname === '/projects') setActive('Projects')
+    else if (pathname === '/resume') setActive('Experience')
+    else if (pathname === '/support') setActive('Support')
+  }, [pathname])
+
   const changeTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
@@ -119,6 +155,34 @@ const Sidebar = () => {
         <GiTie className="w-6 h-6" />
         <span>Download Resume</span>
       </motion.a>
+
+      <div className="mt-4 mb-4">
+        <NavItem
+          active={active}
+          setActive={setActive}
+          name='Skills'
+          route='/'
+        />
+        <NavItem
+          active={active}
+          setActive={setActive}
+          name='Experience'
+          route='/resume'
+        />
+        <NavItem
+          active={active}
+          setActive={setActive}
+          name='Support'
+          route='/support'
+        />
+        <NavItem
+          active={active}
+          setActive={setActive}
+          name='Projects'
+          route='/projects'
+        />
+      </div>
+
       {barIcons.map((icon, i) => (
         <motion.div
           whileHover={{ scale: 1.1 }}
