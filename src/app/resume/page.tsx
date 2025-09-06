@@ -104,8 +104,9 @@ export default function ResumePage() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4">
-        <h5 className="my-6 text-3xl font-bold text-center">Tools & Software</h5>
+      {/* Tools & Software Section - Independent from expandable containers */}
+      <div className="max-w-6xl mx-auto px-4 mt-12 mb-8">
+        <h5 className="my-8 text-3xl font-bold text-center">Tools & Software</h5>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {[...languages, ...tools].map((skill, i) => {
             // Create varying sizes based on skill level and importance
