@@ -44,7 +44,7 @@ export default function RootLayout({
             <div className="hover:scale-100 h-full md:max-h-screen col-span-12 p-4 text-base text-center bg-white/90 dark:bg-dark-500/90 lg:col-span-3 rounded-md shadow-custom-light dark:shadow-custom-dark backdrop-blur-sm">
               <Sidebar />
             </div>
-            <div className="hover:scale-125 flex flex-col col-span-12 overflow-hidden bg-white/90 shadow-custom-light dark:shadow-custom-dark rounded-md lg:col-span-9 dark:bg-dark-500/90 backdrop-blur-sm">
+            <div className="flex flex-col col-span-12 overflow-hidden bg-white/90 shadow-custom-light dark:shadow-custom-dark rounded-md lg:col-span-9 dark:bg-dark-500/90 backdrop-blur-sm">
               <Navbar />
               {children}
             </div>
