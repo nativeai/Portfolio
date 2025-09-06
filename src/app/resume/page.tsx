@@ -100,31 +100,35 @@ export default function ResumePage() {
             <br />
           </p>
         </details>
-      </div>
 
-      {/* Tools & Software Section - Completely Independent */}
-      <div className="max-w-6xl mx-auto px-4 mt-12 mb-8">
-        <h5 className="my-8 text-3xl font-bold text-center">Tools & Software</h5>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-          {[...languages, ...tools].map((skill, i) => {
-            // Create varying sizes based on skill level and importance
-            const getSize = (level: string, index: number, name: string) => {
-              const numLevel = parseInt(level);
-              const isLongName = name.length > 20;
-              
-              if (numLevel >= 95) return "sm:col-span-2 lg:col-span-3"; // Expert level spans full width
-              if (numLevel >= 90 || isLongName) return "sm:col-span-2"; // High level or long names span 2 cols
-              if (numLevel >= 85 && index % 4 === 0) return "lg:col-span-2"; // Some high level span 2 cols
-              return ""; // Standard size
-            };
-            
-            return (
-              <div key={i} className={`${getSize(skill.level, i, skill.name)}`}>
-                <Bar value={skill} />
-              </div>
-            );
-          })}
-        </div>
+        <details
+          open
+          className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
+        >
+          <summary className="font-semibold p-2 text-2xl">Tools & Software</summary>
+          <div className="container px-4 py-4 mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              {[...languages, ...tools].map((skill, i) => {
+                // Create varying sizes based on skill level and importance
+                const getSize = (level: string, index: number, name: string) => {
+                  const numLevel = parseInt(level);
+                  const isLongName = name.length > 20;
+                  
+                  if (numLevel >= 95) return "sm:col-span-2 lg:col-span-3"; // Expert level spans full width
+                  if (numLevel >= 90 || isLongName) return "sm:col-span-2"; // High level or long names span 2 cols
+                  if (numLevel >= 85 && index % 4 === 0) return "lg:col-span-2"; // Some high level span 2 cols
+                  return ""; // Standard size
+                };
+                
+                return (
+                  <div key={i} className={`${getSize(skill.level, i, skill.name)}`}>
+                    <Bar value={skill} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </details>
       </div>
     </div>
   )
