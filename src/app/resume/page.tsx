@@ -17,7 +17,8 @@ const handleProgress = ({ playedSeconds: secondsPlayed }: { playedSeconds: numbe
 export default function ResumePage() {
   return (
     <div className="text-base font-hpr font-medium tracking-wider">
-      <div className="grid">
+      {/* Experience Sections Container */}
+      <div className="space-y-4">
         <details
           open
           className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
@@ -69,42 +70,39 @@ export default function ResumePage() {
             </div>
           </div>
         </details>
-        <div>
-          <div className="grid md:grid-cols-1">
-            <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
-              <summary className="font-semibold p-2 text-2xl">
-                Personal Projects
-              </summary>
 
-              <p className="font-semibold">Unreal Engine</p>
-              <p className="my-3">
-                <br />
-                <h2 className="font-semibold p-2">Video Production</h2>
-                <div className="player-wrapper">
-                  <ReactPlayer
-                    className="react-player"
-                    url="https://www.youtube.com/watch?v=uG51UuOWEC4"
-                    width="480px"
-                    height="270px"
-                    onReady={handleChange}
-                    controls={true}
-                    onProgress={handleProgress}
-                  />
-                </div>
-                <ul className="list-none hover:list-disc">
-                  <li>
-                    - Creating 3-d landscapes and cinematic productions, setup camera and cinematics using sequencer
-                    - rendering 
-                  </li>
-                </ul>
-                <br />
-              </p>
-            </details>
-          </div>
-        </div>
+        <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
+          <summary className="font-semibold p-2 text-2xl">
+            Personal Projects
+          </summary>
+
+          <p className="font-semibold">Unreal Engine</p>
+          <p className="my-3">
+            <br />
+            <h2 className="font-semibold p-2">Video Production</h2>
+            <div className="player-wrapper">
+              <ReactPlayer
+                className="react-player"
+                url="https://www.youtube.com/watch?v=uG51UuOWEC4"
+                width="480px"
+                height="270px"
+                onReady={handleChange}
+                controls={true}
+                onProgress={handleProgress}
+              />
+            </div>
+            <ul className="list-none hover:list-disc">
+              <li>
+                - Creating 3-d landscapes and cinematic productions, setup camera and cinematics using sequencer
+                - rendering 
+              </li>
+            </ul>
+            <br />
+          </p>
+        </details>
       </div>
 
-      {/* Tools & Software Section - Independent from expandable containers */}
+      {/* Tools & Software Section - Completely Independent */}
       <div className="max-w-6xl mx-auto px-4 mt-12 mb-8">
         <h5 className="my-8 text-3xl font-bold text-center">Tools & Software</h5>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
