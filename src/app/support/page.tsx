@@ -1,57 +1,86 @@
 'use client'
 
-import { wallets, supportSites } from "../../data"
-import QRCode from "react-qr-code"
+import { supportSites } from "../../data"
 import Image from "next/image"
 import { motion } from 'framer-motion'
 
+interface SupportItem {
+  title: string
+  url: string
+  image: string
+}
+
+interface SupportCardProps {
+  support: SupportItem
+  index: number
+}
+
+function SupportCard({ support, index }: SupportCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="group"
+    >
+      <a 
+        href={support.url} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="block h-full"
+        aria-label={`Support via ${support.title}`}
+      >
+        <div className="bg-white dark:bg-dark-200 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200 h-full flex flex-col items-center text-center group-hover:border-blue-300 dark:group-hover:border-blue-500">
+          <div className="relative w-16 h-16 mb-3 flex-shrink-0">
+            <Image
+              src={support.image}
+              alt={`${support.title} logo`}
+              className="rounded object-contain"
+              fill
+              sizes="64px"
+              priority={index === 0}
+            />
+          </div>
+          <h3 className="text-sm font-semibold font-hpr text-gray-800 dark:text-white mb-2">
+            {support.title}
+          </h3>
+          <div className="text-blue hover:text-blue-600 font-medium text-xs mt-auto flex items-center gap-1">
+            <span>Support</span>
+            <svg 
+              className="w-3 h-3 transition-transform group-hover:translate-x-0.5" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+      </a>
+    </motion.div>
+  )
+}
+
 export default function SupportPage() {
   return (
-    <div className="px-6 py-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="mb-6 text-3xl font-bold font-hpr text-center">Support My Work</h1>
-        <p className="mb-8 text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto">
-          If you find my work helpful and would like to support my projects, consider buying me a coffee!
-        </p>
+    <div className="px-4 py-6 sm:px-6 sm:py-8">
+      <div className="max-w-2xl mx-auto">
+        <header className="text-center mb-8">
+          <h1 className="mb-4 text-2xl sm:text-3xl font-bold font-hpr">
+            Support My Work
+          </h1>
+          <p className="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto">
+            If you find my work helpful, consider buying me a coffee!
+          </p>
+        </header>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {supportSites.map((support, i) => (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              key={i}
-            >
-              <a 
-                href={support.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block h-full"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-white dark:bg-dark-200 shadow-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col"
-                >
-                  <h2 className="mb-4 text-xl font-bold font-hpr text-gray-800 dark:text-white text-center">
-                    {support.title}
-                  </h2>
-                  <div className="relative w-32 h-32 mx-auto mb-4 flex-shrink-0">
-                    <Image
-                      src={support.image}
-                      alt={support.title}
-                      className="rounded-lg object-contain"
-                      fill
-                      sizes="128px"
-                    />
-                  </div>
-                  <p className="text-blue hover:text-blue-600 font-medium text-center mt-auto">
-                    Click to support →
-                  </p>
-                </motion.div>
-              </a>
-            </motion.div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-md mx-auto">
+          {supportSites.map((support: SupportItem, index: number) => (
+            <SupportCard 
+              key={support.title} 
+              support={support} 
+              index={index} 
+            />
           ))}
         </div>
       </div>
