@@ -89,57 +89,61 @@ const Sidebar = () => {
       <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500 font-hpr">
         Sr Operations, RevOps & Hardware Manager 
       </p>
-      <div className="flex justify-around w-9/12 mx-auto my-5 text-blue md:w-full">
+      <div className="flex justify-center flex-wrap gap-4 w-full mx-auto my-5 text-blue max-w-sm">
         <motion.a
-          whileHover={{ scale: 1.3 }}
+          whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
           href="/images/ShandonResume.pdf"
           download="ShandonResume.pdf"
+          className="flex flex-col items-center"
         >
-          <GiTie className="w-8 h-8 m-auto cursor-pointer" />
-          <span className="text-sm font-hpr">Resume</span>
+          <GiTie className="w-6 h-6 m-auto cursor-pointer" />
+          <span className="text-xs font-hpr mt-1">Resume</span>
         </motion.a>
         <motion.a
-          whileHover={{ scale: 1.3 }}
+          whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
           href="https://www.linkedin.com/in/shandonhicks/"
+          className="flex flex-col items-center"
         >
-          <AiFillLinkedin className="w-8 h-8 m-auto cursor-pointer" />
-          <span className="text-sm font-hpr">LinkedIn</span>
+          <AiFillLinkedin className="w-6 h-6 m-auto cursor-pointer" />
+          <span className="text-xs font-hpr mt-1">LinkedIn</span>
         </motion.a>
         <motion.a
-          whileHover={{ scale: 1.3 }}
+          whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
           href="https://github.com/nativeai"
+          className="flex flex-col items-center"
         >
-          <AiFillGithub className="w-8 h-8 m-auto cursor-pointer" />{" "}
-          <span className="text-sm font-hpr">Github</span>
+          <AiFillGithub className="w-6 h-6 m-auto cursor-pointer" />
+          <span className="text-xs font-hpr mt-1">Github</span>
         </motion.a>
-      </div>
-      <div className="flex justify-around w-9/12 mx-auto my-5 text-blue md:w-full">
         <motion.a
-          whileHover={{ scale: 1.3 }}
+          whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => window.open("mailto:shandonlee@proton.me")}
+          className="flex flex-col items-center cursor-pointer"
         >
-          <SiMinutemailer className="w-8 h-8 m-auto cursor-pointer" />{" "}
-          <span className="text-sm font-hpr">Email</span>
+          <SiMinutemailer className="w-6 h-6 m-auto cursor-pointer" />
+          <span className="text-xs font-hpr mt-1">Email</span>
         </motion.a>
         <motion.a
-          whileHover={{ scale: 1.3 }}
+          whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
           href="tel:+19103362213"
+          className="flex flex-col items-center"
         >
-          <FaMobileAlt className="w-8 h-8 m-auto cursor-pointer" />
-          <span className="text-sm font-hpr">Phone</span>
+          <FaMobileAlt className="w-6 h-6 m-auto cursor-pointer" />
+          <span className="text-xs font-hpr mt-1">Phone</span>
         </motion.a>
         <motion.a
-          whileHover={{ scale: 1.3 }}
+          whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
-          href="https://www.google.com/maps/place/Minneapolis,+MN/@44.9706114,-93.4015693,11z/data=!3m1!4b1!4m5!3m4!1s0x52b333909377bbbd:0x939fc9842f7aee07!8m2!3d44.977753!4d-93.2650108"
+          href="https://www.google.com/maps/place/Minneapolis,+MN/@44.9706114,-93.4015693,11z/data=!3m1!4b1!4b1!4m5!3m4!1s0x52b333909377bbbd:0x939fc9842f7aee07!8m2!3d44.977753!4d-93.2650108"
+          className="flex flex-col items-center"
         >
-          <GoLocation className="w-8 h-8 m-auto cursor-pointer" />
-          <span className="text-sm font-hpr">MN, USA</span>
+          <GoLocation className="w-6 h-6 m-auto cursor-pointer" />
+          <span className="text-xs font-hpr mt-1">MN, USA</span>
         </motion.a>
       </div>
       <p className="px-2 py-1 my-3 dark:bg-dark-200 dark:bg-black-500 text-sm font-hpr">
