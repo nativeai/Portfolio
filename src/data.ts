@@ -272,7 +272,9 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
             </span>
           ))}
         </div>
-        <Icon className="px-2 py-1 my-3 w-24 h-24 text-blue mx-auto" />
+        <div className="flex justify-center mx-auto">
+          <Icon className="px-2 py-1 my-3 w-24 h-24 text-blue" />
+        </div>
       </details>
     </div>
   );
@@ -362,67 +364,67 @@ export const languages: Skill[] = [
   {
     Icon: BsCircleFill,
     name: "AWS Management Console",
-    level: "50",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Hubspot, Infusionsoft",
-    level: "75",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Asana, Click Up",
-    level: "73",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Stripe, Paypal, Payment Processors",
-    level: "75",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Visual Studio Code",
-    level: "45",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Wordpress",
-    level: "45",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Git, Github, Source Control",
-    level: "45",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Gusto, ADP",
-    level: "60",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Zoom, Talk Desk",
-    level: "70",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "OSCommerce",
-    level: "80",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Microsoft Suite Products",
-    level: "75",
-  },
-  {
-    Icon: BsCircleFill,
-    name: "Drift Chat",
     level: "65",
   },
   {
     Icon: BsCircleFill,
+    name: "Hubspot, Infusionsoft",
+    level: "85",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Asana, Click Up",
+    level: "80",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Stripe, Paypal, Payment Processors",
+    level: "85",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Visual Studio Code",
+    level: "60",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Wordpress",
+    level: "60",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Git, Github, Source Control",
+    level: "60",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Gusto, ADP",
+    level: "75",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Zoom, Talk Desk",
+    level: "80",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "OSCommerce",
+    level: "90",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Microsoft Suite Products",
+    level: "85",
+  },
+  {
+    Icon: BsCircleFill,
+    name: "Drift Chat",
+    level: "75",
+  },
+  {
+    Icon: BsCircleFill,
     name: "Atlassian Tools",
-    level: "40",
+    level: "55",
   },
 ];
 
@@ -430,57 +432,57 @@ export const tools: Skill[] = [
   {
     Icon: BsCircleFill,
     name: "JIRA, Confluence, Bitbucket",
-    level: "40",
+    level: "55",
   },
   {
     Icon: BsCircleFill,
     name: "Slack, Microsoft Teams",
-    level: "75",
+    level: "85",
   },
   {
     Icon: BsCircleFill,
     name: "BrainTap Products",
-    level: "100",
+    level: "95",
   },
   {
     Icon: BsCircleFill,
     name: "Google Services, Adobe Services",
-    level: "50",
+    level: "65",
   },
   {
     Icon: BsCircleFill,
     name: "Calendly",
-    level: "75",
+    level: "85",
   },
   {
     Icon: BsCircleFill,
     name: "Lead Dyno, Post Affiliate Pro",
-    level: "50",
+    level: "65",
   },
   {
     Icon: BsCircleFill,
     name: "Tradeshow efficiency",
-    level: "80",
+    level: "90",
   },
   {
     Icon: BsCircleFill,
     name: "Google Play, Apple App Store",
-    level: "75",
+    level: "85",
   },
   {
     Icon: BsCircleFill,
     name: "Stable Diffusion AI Pipeline",
-    level: "40",
+    level: "55",
   },
   {
     Icon: BsCircleFill,
     name: "Unreal Engine Animation Pipeline",
-    level: "50",
+    level: "65",
   },
   {
     Icon: BsCircleFill,
     name: "Ableton Live 11 Suite ",
-    level: "75",
+    level: "85",
   },
 ];
 

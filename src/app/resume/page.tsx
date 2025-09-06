@@ -104,19 +104,16 @@ export default function ResumePage() {
         </div>
       </div>
 
-      <div className="grid gap-9 md:grid-cols-2">
-        <div>
-          <h5 className="my-3 text-2xl font-bold">Tools & Software</h5>
-          <div className="my-2">
+      <div className="max-w-6xl mx-auto px-4">
+        <h5 className="my-6 text-3xl font-bold text-center">Tools & Software</h5>
+        <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
+          <div className="space-y-3">
             {languages.map((language, i) => (
               <Bar value={language} key={i} />
             ))}
           </div>
-        </div>
 
-        <div className="my-10">
-          <h5 className="my-3 text-2xl font-bold"></h5>
-          <div className="my-2">
+          <div className="space-y-3">
             {tools.map((tool, i) => (
               <Bar value={tool} key={i} />
             ))}

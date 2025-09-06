@@ -21,7 +21,7 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
           details.open = !details.open;
         }} />
       <details id={title} className="cursor-pointer">
-        <summary className="font-bold text-2xl mx-auto px-auto block w-max">{title}</summary>
+        <summary className="font-bold text-2xl text-center mx-auto px-4 py-2">{title}</summary>
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -43,7 +43,9 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
             </span>
           ))}
         </div>
-        <Icon className="px-2 py-1 my-3 w-24 h-24 text-blue mx-auto" />
+        <div className="flex justify-center mx-auto">
+          <Icon className="px-2 py-1 my-3 w-24 h-24 text-blue" />
+        </div>
         </motion.div>
       </details>
     </div>

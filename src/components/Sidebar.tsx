@@ -183,22 +183,23 @@ const Sidebar = () => {
         />
       </div>
 
-      {barIcons.map((icon, i) => (
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          key={icon.title}
-          className="mx-auto"
-        >
-          <a href={icon.url}>
-            {/* {icon.title} */}
-            <icon.Icon
-              style={icon.style}
-              className="w-12 h-12 float-left text-blue hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
-            />
-          </a>
-        </motion.div>
-      ))}
+      <div className="grid grid-cols-2 gap-3 mt-6">
+        {barIcons.map((icon, i) => (
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            key={icon.title}
+            className="flex justify-center mx-auto"
+          >
+            <a href={icon.url} className="flex justify-center" title={icon.title}>
+              <icon.Icon
+                style={icon.style}
+                className="w-12 h-12 text-blue hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
+              />
+            </a>
+          </motion.div>
+        ))}
+      </div>
     </>
   );
 };

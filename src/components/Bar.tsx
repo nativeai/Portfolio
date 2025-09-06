@@ -19,9 +19,9 @@ const Bar: FunctionComponent<{ value: Skill }> = ({
     }
   }
   return (
-    <div className="my-2 text-white bg-gray-300 rounded-full dark:bg-dark-300 dark:bg-black-500">
+    <div className="text-white bg-gray-300 rounded-full dark:bg-dark-300 dark:bg-black-500 h-10">
       <motion.div
-        className="flex items-center px-4 py-1 rounded-full"
+        className="flex items-center px-4 py-2 rounded-full h-full"
         style={{
           width: bar_width,
           backgroundColor: '#163E6A'
@@ -30,7 +30,8 @@ const Bar: FunctionComponent<{ value: Skill }> = ({
         initial="initial"
         animate="animate"
       >
-        <Icon className="mr-3 text-blue" /> {name}
+        <Icon className="mr-3 text-white flex-shrink-0" /> 
+        <span className="text-sm font-medium truncate">{name}</span>
       </motion.div>
     </div>
   );
