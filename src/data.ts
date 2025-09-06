@@ -252,7 +252,7 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
   }
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg card cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200 m-auto font-hpr">
+    <div className="max-w-sm rounded overflow-hidden shadow-lg card cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200 m-auto">
       <img src={url} alt="avatar" className="w-full" />
       <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
         <summary className="font-bold text-xl mb-2">{title}</summary>

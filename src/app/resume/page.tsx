@@ -16,7 +16,7 @@ const handleProgress = ({ playedSeconds: secondsPlayed }: { playedSeconds: numbe
 
 export default function ResumePage() {
   return (
-    <div className="text-base font-hpr font-medium tracking-wider">
+    <div className="text-base font-medium tracking-wider">
       {/* Experience Sections Container */}
       <div className="space-y-4">
         <details

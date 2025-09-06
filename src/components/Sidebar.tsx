@@ -19,7 +19,7 @@ const NavItem = ({ active, setActive, name, route }: {
   route: string
 }) => {
   return active === name ? (
-    <span className='inline-block py-2 px-3 text-center bg-blue text-dark-500 font-bold rounded-md font-hpr shadow-md text-sm whitespace-nowrap'>
+    <span className='inline-block py-2 px-3 text-center bg-blue text-dark-500 font-bold rounded-md shadow-md text-sm whitespace-nowrap'>
       {name}
     </span>
   ) : (
@@ -27,7 +27,7 @@ const NavItem = ({ active, setActive, name, route }: {
       <motion.span
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className='inline-block py-2 px-3 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-300 rounded-md transition-colors font-hpr text-sm whitespace-nowrap'
+        className='inline-block py-2 px-3 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-300 rounded-md transition-colors text-sm whitespace-nowrap'
         onClick={() => setActive(name)}>
         {name}
       </motion.span>
@@ -83,10 +83,10 @@ const Sidebar = () => {
           )
         }
       </div>
-      <h3 className="my-4 text-3xl font-medium tracking-wider font-hpr font-semibold">
+      <h3 className="my-4 text-3xl font-medium tracking-wider font-semibold">
         <span className="text-blue">Shandon</span> Hicks
       </h3>
-      <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500 font-hpr">
+      <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500">
         Sr Operations, RevOps & Hardware Manager 
       </p>
       <div className="flex justify-center flex-wrap gap-4 w-full mx-auto my-5 text-blue max-w-sm">
@@ -98,7 +98,7 @@ const Sidebar = () => {
           className="flex flex-col items-center"
         >
           <GiTie className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs font-hpr mt-1">Resume</span>
+          <span className="text-xs mt-1">Resume</span>
         </motion.a>
         <motion.a
           whileHover={{ scale: 1.2 }}
@@ -107,7 +107,7 @@ const Sidebar = () => {
           className="flex flex-col items-center"
         >
           <AiFillLinkedin className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs font-hpr mt-1">LinkedIn</span>
+          <span className="text-xs mt-1">LinkedIn</span>
         </motion.a>
         <motion.a
           whileHover={{ scale: 1.2 }}
@@ -116,7 +116,7 @@ const Sidebar = () => {
           className="flex flex-col items-center"
         >
           <AiFillGithub className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs font-hpr mt-1">Github</span>
+          <span className="text-xs mt-1">Github</span>
         </motion.a>
         <motion.a
           whileHover={{ scale: 1.2 }}
@@ -125,7 +125,7 @@ const Sidebar = () => {
           className="flex flex-col items-center cursor-pointer"
         >
           <SiMinutemailer className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs font-hpr mt-1">Email</span>
+          <span className="text-xs mt-1">Email</span>
         </motion.a>
         <motion.a
           whileHover={{ scale: 1.2 }}
@@ -134,7 +134,7 @@ const Sidebar = () => {
           className="flex flex-col items-center"
         >
           <FaMobileAlt className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs font-hpr mt-1">Phone</span>
+          <span className="text-xs mt-1">Phone</span>
         </motion.a>
         <motion.a
           whileHover={{ scale: 1.2 }}
@@ -143,10 +143,10 @@ const Sidebar = () => {
           className="flex flex-col items-center"
         >
           <GoLocation className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs font-hpr mt-1">MN, USA</span>
+          <span className="text-xs mt-1">MN, USA</span>
         </motion.a>
       </div>
-      <p className="px-2 py-1 my-3 dark:bg-dark-200 dark:bg-black-500 text-sm font-hpr">
+      <p className="px-2 py-1 my-3 dark:bg-dark-200 dark:bg-black-500 text-sm">
         Fallon Pauite Shoshone Tribe
       </p>
       <motion.a
@@ -154,7 +154,7 @@ const Sidebar = () => {
           whileTap={{ scale: 0.9 }}
         href="/images/ShandonResume.pdf"
         download="ShandonResume.pdf"
-        className="flex items-center justify-center px-2 py-1 my-2 bg-gray-200 cursor-pointer dark:bg-dark-200 dark:bg-black-500 font-hpr"
+        className="flex items-center justify-center px-2 py-1 my-2 bg-gray-200 cursor-pointer dark:bg-dark-200 dark:bg-black-500"
       >
         <GiTie className="w-6 h-6" />
         <span>Download Resume</span>

@@ -31,7 +31,7 @@ function SupportCard({ support, index }: SupportCardProps) {
         aria-label={`Support via ${support.title}`}
       >
         <div className="bg-white dark:bg-dark-200 rounded-lg p-3 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200 h-full flex flex-col items-center text-center group-hover:border-blue-300 dark:group-hover:border-blue-500">
-          <h3 className="text-sm font-semibold font-hpr text-gray-800 dark:text-white mb-2">
+          <h3 className="text-sm font-semibold text-gray-800 dark:text-white mb-2">
             {support.title}
           </h3>
           <div className="text-blue hover:text-blue-600 font-medium text-xs mt-auto flex items-center gap-1">
@@ -56,7 +56,7 @@ export default function SupportPage() {
     <div className="px-4 py-6 sm:px-6 sm:py-8">
       <div className="max-w-2xl mx-auto">
         <header className="text-center mb-8">
-          <h1 className="mb-4 text-2xl sm:text-3xl font-bold font-hpr">
+          <h1 className="mb-4 text-2xl sm:text-3xl font-bold">
             Support My Work
           </h1>
           <p className="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto">

@@ -13,7 +13,7 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
   }
 
   return (
-    <div className="rounded overflow-hidden shadow-lg card cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200 m-auto font-hpr bg-gray-200 dark:bg-dark-200">
+    <div className="rounded overflow-hidden shadow-lg card cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200 m-auto bg-gray-200 dark:bg-dark-200">
       <img src={url} alt="avatar" className="w-full object-cover h-60 max-h-full" 
         onClick={() => {
           var ref = document.getElementById(title);

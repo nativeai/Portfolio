@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function SnippetsPage() {
   return (
-    <div className="px-6 py-2 font-hpr">
+    <div className="px-6 py-2">
       <div className="grid">
         {snippets.map((snippet, i) => (
           <motion.div
