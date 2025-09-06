@@ -30,14 +30,14 @@ function SupportCard({ support, index }: SupportCardProps) {
         className="block h-full"
         aria-label={`Support via ${support.title}`}
       >
-        <div className="bg-white dark:bg-dark-200 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200 h-full flex flex-col items-center text-center group-hover:border-blue-300 dark:group-hover:border-blue-500">
-          <div className="relative w-16 h-16 mb-3 flex-shrink-0">
+        <div className="bg-white dark:bg-dark-200 rounded-lg p-3 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200 h-full flex flex-col items-center text-center group-hover:border-blue-300 dark:group-hover:border-blue-500">
+          <div className="relative w-12 h-12 mb-2 flex-shrink-0">
             <Image
               src={support.image}
               alt={`${support.title} logo`}
               className="rounded object-contain"
               fill
-              sizes="64px"
+              sizes="48px"
               priority={index === 0}
             />
           </div>
@@ -74,7 +74,7 @@ export default function SupportPage() {
           </p>
         </header>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-md mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xs mx-auto">
           {supportSites.map((support: SupportItem, index: number) => (
             <SupportCard 
               key={support.title} 
