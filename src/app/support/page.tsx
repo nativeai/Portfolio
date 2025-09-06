@@ -31,16 +31,6 @@ function SupportCard({ support, index }: SupportCardProps) {
         aria-label={`Support via ${support.title}`}
       >
         <div className="bg-white dark:bg-dark-200 rounded-lg p-3 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200 h-full flex flex-col items-center text-center group-hover:border-blue-300 dark:group-hover:border-blue-500">
-          <div className="relative w-12 h-12 mb-2 flex-shrink-0">
-            <Image
-              src={support.image}
-              alt={`${support.title} logo`}
-              className="rounded object-contain"
-              fill
-              sizes="48px"
-              priority={index === 0}
-            />
-          </div>
           <h3 className="text-sm font-semibold font-hpr text-gray-800 dark:text-white mb-2">
             {support.title}
           </h3>
