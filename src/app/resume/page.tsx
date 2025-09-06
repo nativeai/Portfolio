@@ -106,18 +106,25 @@ export default function ResumePage() {
 
       <div className="max-w-6xl mx-auto px-4">
         <h5 className="my-6 text-3xl font-bold text-center">Tools & Software</h5>
-        <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
-          <div className="space-y-3">
-            {languages.map((language, i) => (
-              <Bar value={language} key={i} />
-            ))}
-          </div>
-
-          <div className="space-y-3">
-            {tools.map((tool, i) => (
-              <Bar value={tool} key={i} />
-            ))}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          {[...languages, ...tools].map((skill, i) => {
+            // Create varying sizes based on skill level and importance
+            const getSize = (level: string, index: number, name: string) => {
+              const numLevel = parseInt(level);
+              const isLongName = name.length > 20;
+              
+              if (numLevel >= 95) return "sm:col-span-2 lg:col-span-3"; // Expert level spans full width
+              if (numLevel >= 90 || isLongName) return "sm:col-span-2"; // High level or long names span 2 cols
+              if (numLevel >= 85 && index % 4 === 0) return "lg:col-span-2"; // Some high level span 2 cols
+              return ""; // Standard size
+            };
+            
+            return (
+              <div key={i} className={`${getSize(skill.level, i, skill.name)}`}>
+                <Bar value={skill} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
