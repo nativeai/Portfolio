@@ -183,18 +183,18 @@ const Sidebar = () => {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-3 mt-6">
+      <div className="flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 mt-6 mx-auto max-w-xs sm:max-w-sm px-2">
         {barIcons.map((icon, i) => (
           <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             key={icon.title}
-            className="flex justify-center mx-auto"
+            className="flex justify-center items-center"
           >
-            <a href={icon.url} className="flex justify-center" title={icon.title}>
+            <a href={icon.url} className="flex justify-center items-center p-0.5 sm:p-1" title={icon.title}>
               <icon.Icon
                 style={icon.style}
-                className="w-12 h-12 text-blue hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
+                className="w-7 h-7 sm:w-9 sm:h-9 text-blue hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
               />
             </a>
           </motion.div>
