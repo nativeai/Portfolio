@@ -19,7 +19,7 @@ const NavItem = ({ active, setActive, name, route }: {
   route: string
 }) => {
   return active === name ? (
-    <span className='block w-full py-2 px-2 text-center bg-blue text-dark-500 font-bold rounded-md font-hpr shadow-md text-sm'>
+    <span className='inline-block py-2 px-3 text-center bg-blue text-dark-500 font-bold rounded-md font-hpr shadow-md text-sm whitespace-nowrap'>
       {name}
     </span>
   ) : (
@@ -27,7 +27,7 @@ const NavItem = ({ active, setActive, name, route }: {
       <motion.span
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className='block w-full py-2 px-2 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-300 rounded-md transition-colors font-hpr text-sm'
+        className='inline-block py-2 px-3 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-300 rounded-md transition-colors font-hpr text-sm whitespace-nowrap'
         onClick={() => setActive(name)}>
         {name}
       </motion.span>
@@ -156,7 +156,7 @@ const Sidebar = () => {
         <span>Download Resume</span>
       </motion.a>
 
-      <div className="mt-4 mb-4 grid grid-cols-2 gap-2">
+      <div className="mt-4 mb-4 flex flex-wrap justify-center items-center gap-2 sm:gap-3 max-w-md mx-auto px-2">
         <NavItem
           active={active}
           setActive={setActive}
@@ -183,7 +183,7 @@ const Sidebar = () => {
         />
       </div>
 
-      <div className="flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 mt-6 mx-auto max-w-xs sm:max-w-sm px-2">
+      <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-6 mx-auto max-w-sm sm:max-w-md px-2">
         {barIcons.map((icon, i) => (
           <motion.div
             whileHover={{ scale: 1.1 }}
@@ -191,10 +191,10 @@ const Sidebar = () => {
             key={icon.title}
             className="flex justify-center items-center"
           >
-            <a href={icon.url} className="flex justify-center items-center p-0.5 sm:p-1" title={icon.title}>
+            <a href={icon.url} className="flex justify-center items-center p-1 sm:p-1.5" title={icon.title}>
               <icon.Icon
                 style={icon.style}
-                className="w-7 h-7 sm:w-9 sm:h-9 text-blue hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
+                className="w-9 h-9 sm:w-11 sm:h-11 text-blue hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
               />
             </a>
           </motion.div>
