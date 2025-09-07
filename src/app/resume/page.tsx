@@ -107,25 +107,21 @@ export default function ResumePage() {
         >
           <summary className="font-semibold p-2 text-2xl">Tools & Software</summary>
           <div className="container px-4 py-4 mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-              {[...languages, ...tools].map((skill, i) => {
-                // Create varying sizes based on skill level and importance
-                const getSize = (level: string, index: number, name: string) => {
-                  const numLevel = parseInt(level);
-                  const isLongName = name.length > 20;
-                  
-                  if (numLevel >= 95) return "sm:col-span-2 lg:col-span-3"; // Expert level spans full width
-                  if (numLevel >= 90 || isLongName) return "sm:col-span-2"; // High level or long names span 2 cols
-                  if (numLevel >= 85 && index % 4 === 0) return "lg:col-span-2"; // Some high level span 2 cols
-                  return ""; // Standard size
-                };
-                
-                return (
-                  <div key={i} className={`${getSize(skill.level, i, skill.name)}`}>
-                    <Bar value={skill} />
+            {/* Option 1: Badge Layout */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {[...languages, ...tools]
+                .sort((a, b) => parseInt(b.level) - parseInt(a.level)) // Sort by proficiency
+                .map((skill, i) => (
+                  <div key={i} className="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium border bg-blue-50 text-blue-800 border-blue-200 transition-all duration-200 hover:scale-105">
+                    <skill.Icon className="w-4 h-4 mr-2" />
+                    <span className="font-semibold">{skill.name}</span>
+                    <span className="ml-2 text-xs opacity-75">
+                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
+                        parseInt(skill.level) >= 75 ? 'Advanced' : 
+                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
+                    </span>
                   </div>
-                );
-              })}
+                ))}
             </div>
           </div>
         </details>
