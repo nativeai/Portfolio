@@ -53,11 +53,11 @@ const Sidebar = () => {
       <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500 font-hpr">
         Sr Operations, RevOps & Hardware Manager 
       </p>
-      <div className="flex justify-around w-9/12 mx-auto my-5 text-blue md:w-full overflow-hidden px-2">
+      <div className="flex justify-center sm:justify-around w-full mx-auto my-3 sm:my-5 text-blue overflow-visible sm:overflow-hidden px-1 sm:px-2 gap-2 sm:gap-1 flex-wrap sm:flex-nowrap">
         <div className="flex flex-col items-center overflow-hidden">
         <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
           href="/images/ShandonResume.pdf"
           download="ShandonResume.pdf"
           className="flex flex-col items-center"
@@ -70,8 +70,8 @@ const Sidebar = () => {
         </div>
         <div className="flex flex-col items-center overflow-hidden">
         <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
           href="https://www.linkedin.com/in/shandonhicks/"
           className="flex flex-col items-center"
         >
@@ -83,8 +83,8 @@ const Sidebar = () => {
         </div>
         <div className="flex flex-col items-center overflow-hidden">
         <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
           href="https://github.com/nativeai"
           className="flex flex-col items-center"
         >
@@ -95,11 +95,11 @@ const Sidebar = () => {
         </motion.a>
         </div>
       </div>
-      <div className="flex justify-around w-9/12 mx-auto my-5 text-blue md:w-full overflow-hidden px-2">
+      <div className="flex justify-center sm:justify-around w-full mx-auto my-3 sm:my-5 text-blue overflow-visible sm:overflow-hidden px-1 sm:px-2 gap-2 sm:gap-1 flex-wrap sm:flex-nowrap">
         <div className="flex flex-col items-center overflow-hidden">
         <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
           onClick={() => window.open("mailto:shandonlee@proton.me")}
           className="flex flex-col items-center"
         >
@@ -111,8 +111,8 @@ const Sidebar = () => {
         </div>
         <div className="flex flex-col items-center overflow-hidden">
         <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
           href="tel:+19103362213"
           className="flex flex-col items-center"
         >
@@ -124,8 +124,8 @@ const Sidebar = () => {
         </div>
         <div className="flex flex-col items-center overflow-hidden">
         <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
           href="https://www.google.com/maps/place/Minneapolis,+MN/@44.9706114,-93.4015693,11z/data=!3m1!4b1!4m5!3m4!1s0x52b333909377bbbd:0x939fc9842f7aee07!8m2!3d44.977753!4d-93.2650108"
           className="flex flex-col items-center"
         >
@@ -151,7 +151,7 @@ const Sidebar = () => {
         <span>Download Resume</span>
       </motion.a>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-6 mx-auto max-w-sm sm:max-w-md px-2 overflow-hidden">
+      <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-3 sm:mt-6 mx-auto max-w-xs sm:max-w-sm md:max-w-md px-1 sm:px-2 overflow-visible sm:overflow-hidden">
       {barIcons.map((icon, i) => (
         <div key={icon.title} className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center overflow-hidden">
         <motion.div
