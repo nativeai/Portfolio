@@ -40,13 +40,26 @@ export default function RootLayout({
       <body className="bg-fixed bg-gradient-to-r from-beige-200 to-blue dark:from-dark-500 dark:to-dark-700 dark:text-white">
         <ThemeProvider attribute="class">
           <SceneProvider />
-          <div className="grid grid-cols-12 gap-6 px-5 my-14 lg:mb-0 md:mb-16 sm:px-20 md:px-32 lg:px-36 xl:px-48">
-            <div className="hover:scale-100 h-full md:max-h-screen col-span-12 p-4 text-base text-center bg-white/90 dark:bg-dark-500/90 lg:col-span-3 rounded-md shadow-custom-light dark:shadow-custom-dark backdrop-blur-sm">
-              <Sidebar />
-            </div>
-            <div className="flex flex-col col-span-12 overflow-hidden bg-white/90 shadow-custom-light dark:shadow-custom-dark rounded-md lg:col-span-9 dark:bg-dark-500/90 backdrop-blur-sm">
-              <Navbar />
-              {children}
+          <div className="container mx-auto max-w-7xl px-3 sm:px-5 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12 lg:py-14">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 h-screen lg:h-auto">
+              {/* Sidebar - Full width on mobile, fixed width on desktop */}
+              <div className="lg:col-span-4 xl:col-span-3 2xl:col-span-3">
+                <div className="sticky top-6 h-fit max-h-[calc(100vh-3rem)] p-4 sm:p-6 text-base text-center bg-white/95 dark:bg-dark-500/95 rounded-xl shadow-lg dark:shadow-dark border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-md flex-shrink-0">
+                  <Sidebar />
+                </div>
+              </div>
+              
+              {/* Main Content - Responsive width */}
+              <div className="lg:col-span-8 xl:col-span-9 2xl:col-span-9">
+                <div className="flex flex-col h-fit min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-3rem)] overflow-hidden bg-white/95 dark:bg-dark-500/95 shadow-lg dark:shadow-dark rounded-xl border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-md">
+                  <div className="flex-shrink-0">
+                    <Navbar />
+                  </div>
+                  <div className="flex-grow overflow-auto p-4 sm:p-6 lg:p-8">
+                    {children}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </ThemeProvider>

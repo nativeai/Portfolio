@@ -19,7 +19,7 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
   };
 
   return (
-    <div className="h-full flex flex-col rounded-lg overflow-hidden shadow-lg cursor-pointer border border-gray-300 dark:border-gray-600 hover:shadow-hover dark:hover:shadow-hover-dark hover:border-primary-400 dark:hover:border-primary-500 transform hover:-translate-y-1 transition-all duration-standard ease-smooth bg-white dark:bg-dark-200">
+    <div className="h-full flex flex-col rounded-lg overflow-hidden shadow-lg cursor-pointer border border-gray-300 dark:border-gray-600 hover:shadow-hover dark:hover:shadow-hover-dark hover:border-primary-400 dark:hover:border-primary-500 transform hover:-translate-y-1 transition-all duration-standard ease-smooth bg-white dark:bg-dark-200 flex-shrink-0">
       {/* Image Section */}
       <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden flex-shrink-0">
         <img 

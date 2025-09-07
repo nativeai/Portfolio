@@ -59,7 +59,7 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        className="flex flex-col flex-grow px-4 py-2 overflow-hidden h-full"
+        className="flex flex-col flex-grow overflow-hidden h-full"
       >
         {/* Header Section */}
         <div className="mb-6">
@@ -68,7 +68,7 @@ export default function HomePage() {
         
         {/* Services Grid Container */}
         <div className="flex-grow overflow-y-auto scrollbar-hide">
-          <div className="grid gap-6 py-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 auto-rows-fr">
+          <div className="grid gap-4 sm:gap-6 md:gap-8 py-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 auto-rows-fr">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 6 }, (_, index) => (
@@ -81,7 +81,7 @@ export default function HomePage() {
                     delay: index * 0.1,
                     ease: [0.4, 0, 0.2, 1]
                   }}
-                  className="w-full h-full min-h-[400px] sm:min-h-[450px]"
+                  className="w-full h-full min-h-[350px] sm:min-h-[400px] md:min-h-[450px] lg:min-h-[480px]"
                 >
                   <SkeletonCard />
                 </motion.div>
@@ -106,7 +106,7 @@ export default function HomePage() {
                     scale: 0.98,
                     transition: { duration: 0.1 }
                   }}
-                  className="w-full h-full min-h-[400px] sm:min-h-[450px]"
+                  className="w-full h-full min-h-[350px] sm:min-h-[400px] md:min-h-[450px] lg:min-h-[480px]"
                   key={service.title}
                 >
                   <ServiceCard service={service} />

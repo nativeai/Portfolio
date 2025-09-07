@@ -16,17 +16,19 @@ const handleProgress = ({ playedSeconds: secondsPlayed }: { playedSeconds: numbe
 
 export default function ResumePage() {
   return (
-    <div className="text-base font-medium tracking-wider">
+    <div className="text-sm sm:text-base font-medium tracking-wide sm:tracking-wider">
       {/* Experience Sections Container */}
-      <div className="space-y-4">
+      <div className="space-y-4 sm:space-y-6">
         <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
         >
-          <summary className="font-semibold p-2 text-2xl">Management</summary>
-          <div className="container px-4 py-4 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap">
-            <div className="">
-              <span className="text-xl text-blue">Manager, Customer Success</span> 
-              <br />BrainTap, Inc <span/> 2017-Current
-              <p className="mt-2 text-md">
+          <summary className="font-semibold p-3 sm:p-4 text-lg sm:text-xl md:text-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-t-lg transition-colors duration-200">Management</summary>
+          <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 flex flex-col space-y-4">
+            <div className="space-y-2">
+              <h3 className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400">Manager, Customer Success</h3> 
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+                <span className="font-medium">BrainTap, Inc</span> • <span className="italic">2017-Current</span>
+              </div>
+              <div className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-200">
                 Responsibilities included, but not limited to:
                 <br />
                 - Generated, assessed, and delivered Key Performance Indicators (KPIs) for Customer Success directly to our Chief Operating Officer (COO). Compiled and presented comprehensive solutions aimed at company initiatives, and product recommendations. Working with department managers, ensuring alignment. Formulated goals and established timelines for various tasks and projects for the customer success team. 
@@ -64,44 +66,53 @@ export default function ResumePage() {
                 - Conducted regular team trainings and facilitated mock trials to enhance team performance, improve customer experience, and foster the professional development of each employee. To ensure expertise in Hubspot, I implemented a mandatory requirement for Hubspot certifications, both for existing team members and new hires.
                 <br />
                 - Setup and created efficient workflow automations for support tickets, chats and email. Optimizing customer experiences, supported SLAs and increasing customer retention and satisfaction
-              </p>
+              </div>
             </div>
           </div>
         </details>
 
         <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
-          <summary className="font-semibold p-2 text-2xl">
+          <summary className="font-semibold p-3 sm:p-4 text-lg sm:text-xl md:text-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-t-lg transition-colors duration-200">
             Personal Projects
           </summary>
 
-          <p className="font-semibold">Unreal Engine</p>
-          <p className="my-3">
-            <br />
-            <h2 className="font-semibold p-2">Video Production</h2>
-            <div className="player-wrapper">
-              <ReactPlayer
-                className="react-player"
-                url="https://www.youtube.com/watch?v=uG51UuOWEC4"
-                width="480px"
-                height="270px"
-                onReady={handleChange}
-                controls={true}
-                onProgress={handleProgress}
-              />
+          <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
+            <div className="space-y-3">
+              <h3 className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400">Unreal Engine</h3>
+              
+              <div className="space-y-4">
+                <h4 className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200">Video Production</h4>
+                <div className="relative w-full max-w-2xl mx-auto">
+                  <div className="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
+                    <ReactPlayer
+                      className="react-player"
+                      url="https://www.youtube.com/watch?v=uG51UuOWEC4"
+                      width="100%"
+                      height="100%"
+                      onReady={handleChange}
+                      controls={true}
+                      onProgress={handleProgress}
+                    />
+                  </div>
+                </div>
+                <div className="text-sm sm:text-base text-gray-700 dark:text-gray-200 space-y-2">
+                  <div className="flex items-start space-x-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Creating 3D landscapes and cinematic productions, setup camera and cinematics using sequencer</span>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>Advanced rendering techniques and post-processing workflows</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <ul className="list-none hover:list-disc">
-              <li>
-                - Creating 3-d landscapes and cinematic productions, setup camera and cinematics using sequencer
-                - rendering 
-              </li>
-            </ul>
-            <br />
-          </p>
+          </div>
         </details>
 
         <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
         >
-          <summary className="font-semibold p-2 text-xl sm:text-2xl">Tools & Software</summary>
+          <summary className="font-semibold p-3 sm:p-4 text-lg sm:text-xl md:text-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-t-lg transition-colors duration-200">Tools & Software</summary>
           <div className="px-3 py-4 sm:px-6 sm:py-6 mx-auto max-w-full space-y-6 sm:space-y-8">
             
             {/* Customer Relationship Management */}
