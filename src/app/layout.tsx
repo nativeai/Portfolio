@@ -37,7 +37,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atelier-cave-dark.min.css"/>
       </head>
-      <body className="bg-fixed bg-gradient-to-r from-blue to-white-500 dark:from-dark-500 dark:to-dark-700 dark:text-white">
+      <body className="bg-fixed bg-gradient-to-r from-beige-200 to-blue dark:from-dark-500 dark:to-dark-700 dark:text-white">
         <ThemeProvider attribute="class">
           <SceneProvider />
           <div className="grid grid-cols-12 gap-6 px-5 my-14 lg:mb-0 md:mb-16 sm:px-20 md:px-32 lg:px-36 xl:px-48">

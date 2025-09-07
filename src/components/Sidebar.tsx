@@ -89,62 +89,70 @@ const Sidebar = () => {
       <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500">
         Sr Operations, RevOps & Hardware Manager 
       </p>
-      <div className="flex justify-center flex-wrap gap-4 w-full mx-auto my-5 text-blue max-w-sm">
-        <motion.a
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          href="/images/ShandonResume.pdf"
-          download="ShandonResume.pdf"
-          className="flex flex-col items-center"
-        >
-          <GiTie className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs mt-1">Resume</span>
-        </motion.a>
-        <motion.a
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          href="https://www.linkedin.com/in/shandonhicks/"
-          className="flex flex-col items-center"
-        >
-          <AiFillLinkedin className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs mt-1">LinkedIn</span>
-        </motion.a>
-        <motion.a
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          href="https://github.com/nativeai"
-          className="flex flex-col items-center"
-        >
-          <AiFillGithub className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs mt-1">Github</span>
-        </motion.a>
-        <motion.a
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => window.open("mailto:shandonlee@proton.me")}
-          className="flex flex-col items-center cursor-pointer"
-        >
-          <SiMinutemailer className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs mt-1">Email</span>
-        </motion.a>
-        <motion.a
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          href="tel:+19103362213"
-          className="flex flex-col items-center"
-        >
-          <FaMobileAlt className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs mt-1">Phone</span>
-        </motion.a>
-        <motion.a
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          href="https://www.google.com/maps/place/Minneapolis,+MN/@44.9706114,-93.4015693,11z/data=!3m1!4b1!4b1!4m5!3m4!1s0x52b333909377bbbd:0x939fc9842f7aee07!8m2!3d44.977753!4d-93.2650108"
-          className="flex flex-col items-center"
-        >
-          <GoLocation className="w-6 h-6 m-auto cursor-pointer" />
-          <span className="text-xs mt-1">MN, USA</span>
-        </motion.a>
+      {/* Social Links Section */}
+      <div className="w-full mx-auto my-6">
+        <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-xs mx-auto">
+          <motion.a
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            href="/images/ShandonResume.pdf"
+            download="ShandonResume.pdf"
+            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-300 transition-colors"
+          >
+            <GiTie className="w-6 h-6 sm:w-7 sm:h-7 text-blue cursor-pointer mb-1" />
+            <span className="text-xs sm:text-sm font-medium text-center">Resume</span>
+          </motion.a>
+          
+          <motion.a
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            href="https://www.linkedin.com/in/shandonhicks/"
+            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-300 transition-colors"
+          >
+            <AiFillLinkedin className="w-6 h-6 sm:w-7 sm:h-7 text-blue cursor-pointer mb-1" />
+            <span className="text-xs sm:text-sm font-medium text-center">LinkedIn</span>
+          </motion.a>
+          
+          <motion.a
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            href="https://github.com/nativeai"
+            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-300 transition-colors"
+          >
+            <AiFillGithub className="w-6 h-6 sm:w-7 sm:h-7 text-blue cursor-pointer mb-1" />
+            <span className="text-xs sm:text-sm font-medium text-center">Github</span>
+          </motion.a>
+          
+          <motion.a
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.open("mailto:shandonlee@proton.me")}
+            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-300 transition-colors cursor-pointer"
+          >
+            <SiMinutemailer className="w-6 h-6 sm:w-7 sm:h-7 text-blue cursor-pointer mb-1" />
+            <span className="text-xs sm:text-sm font-medium text-center">Email</span>
+          </motion.a>
+          
+          <motion.a
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            href="tel:+19103362213"
+            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-300 transition-colors"
+          >
+            <FaMobileAlt className="w-6 h-6 sm:w-7 sm:h-7 text-blue cursor-pointer mb-1" />
+            <span className="text-xs sm:text-sm font-medium text-center">Phone</span>
+          </motion.a>
+          
+          <motion.a
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            href="https://www.google.com/maps/place/Minneapolis,+MN/@44.9706114,-93.4015693,11z/data=!3m1!4b1!4b1!4m5!3m4!1s0x52b333909377bbbd:0x939fc9842f7aee07!8m2!3d44.977753!4d-93.2650108"
+            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-300 transition-colors"
+          >
+            <GoLocation className="w-6 h-6 sm:w-7 sm:h-7 text-blue cursor-pointer mb-1" />
+            <span className="text-xs sm:text-sm font-medium text-center">Location</span>
+          </motion.a>
+        </div>
       </div>
       <p className="px-2 py-1 my-3 dark:bg-dark-200 dark:bg-black-500 text-sm">
         Fallon Pauite Shoshone Tribe

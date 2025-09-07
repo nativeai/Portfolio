@@ -105,24 +105,153 @@ export default function ResumePage() {
           open
           className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
         >
-          <summary className="font-semibold p-2 text-2xl">Tools & Software</summary>
-          <div className="px-6 py-6 mx-auto max-w-full">
-            {/* Enhanced Badge Layout with Better Visibility */}
-            <div className="flex flex-wrap justify-center gap-3 mb-6">
-              {[...languages, ...tools]
-                .sort((a, b) => parseInt(b.level) - parseInt(a.level)) // Sort by proficiency
-                .map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-4 py-3 rounded-lg text-sm font-medium border bg-blue-50/90 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 border-blue-200 dark:border-blue-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md hover:bg-blue-100/95 dark:hover:bg-blue-800/60">
-                    <skill.Icon className="w-5 h-5 mr-3 opacity-90" />
+          <summary className="font-semibold p-2 text-xl sm:text-2xl">Tools & Software</summary>
+          <div className="px-3 py-4 sm:px-6 sm:py-6 mx-auto max-w-full space-y-6 sm:space-y-8">
+            
+            {/* Customer Relationship Management */}
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
+                Customer Relationship Management
+              </h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {[
+                  { name: "Hubspot, Infusionsoft", level: "85" },
+                  { name: "OSCommerce", level: "90" },
+                  { name: "Drift Chat", level: "75" }
+                ].map((skill, i) => (
+                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-green-50/90 dark:bg-green-900/40 text-green-900 dark:text-green-100 border-green-200 dark:border-green-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
                     <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-3 text-xs opacity-85 font-medium">
+                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
                       ({parseInt(skill.level) >= 90 ? 'Expert' : 
                         parseInt(skill.level) >= 75 ? 'Advanced' : 
                         parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
                     </span>
                   </div>
                 ))}
+              </div>
             </div>
+
+            {/* Payment Processing & E-commerce */}
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
+                Payment Processing & E-commerce
+              </h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {[
+                  { name: "Stripe, Paypal, Payment Processors", level: "85" },
+                  { name: "Lead Dyno, Post Affiliate Pro", level: "65" },
+                  { name: "Google Play, Apple App Store", level: "85" }
+                ].map((skill, i) => (
+                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-purple-50/90 dark:bg-purple-900/40 text-purple-900 dark:text-purple-100 border-purple-200 dark:border-purple-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
+                    <span className="font-semibold">{skill.name}</span>
+                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
+                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
+                        parseInt(skill.level) >= 75 ? 'Advanced' : 
+                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Project Management & Communication */}
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
+                Project Management & Communication
+              </h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {[
+                  { name: "Asana, Click Up", level: "80" },
+                  { name: "Slack, Microsoft Teams", level: "85" },
+                  { name: "Zoom, Talk Desk", level: "80" },
+                  { name: "Calendly", level: "85" },
+                  { name: "JIRA, Confluence, Bitbucket", level: "55" },
+                  { name: "Atlassian Tools", level: "55" }
+                ].map((skill, i) => (
+                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-blue-50/90 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 border-blue-200 dark:border-blue-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
+                    <span className="font-semibold">{skill.name}</span>
+                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
+                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
+                        parseInt(skill.level) >= 75 ? 'Advanced' : 
+                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Development & Technical Tools */}
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
+                Development & Technical Tools
+              </h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {[
+                  { name: "Visual Studio Code", level: "60" },
+                  { name: "Git, Github, Source Control", level: "60" },
+                  { name: "Wordpress", level: "60" },
+                  { name: "AWS Management Console", level: "65" }
+                ].map((skill, i) => (
+                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-orange-50/90 dark:bg-orange-900/40 text-orange-900 dark:text-orange-100 border-orange-200 dark:border-orange-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
+                    <span className="font-semibold">{skill.name}</span>
+                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
+                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
+                        parseInt(skill.level) >= 75 ? 'Advanced' : 
+                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Creative & Media Production */}
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
+                Creative & Media Production
+              </h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {[
+                  { name: "Unreal Engine Animation Pipeline", level: "65" },
+                  { name: "Ableton Live 11 Suite", level: "85" },
+                  { name: "Google Services, Adobe Services", level: "65" },
+                  { name: "Stable Diffusion AI Pipeline", level: "55" }
+                ].map((skill, i) => (
+                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-indigo-50/90 dark:bg-indigo-900/40 text-indigo-900 dark:text-indigo-100 border-indigo-200 dark:border-indigo-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
+                    <span className="font-semibold">{skill.name}</span>
+                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
+                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
+                        parseInt(skill.level) >= 75 ? 'Advanced' : 
+                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Business & Administrative */}
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
+                Business & Administrative
+              </h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {[
+                  { name: "BrainTap Products", level: "95" },
+                  { name: "Tradeshow efficiency", level: "90" },
+                  { name: "Microsoft Suite Products", level: "85" },
+                  { name: "Gusto, ADP", level: "75" }
+                ].map((skill, i) => (
+                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-teal-50/90 dark:bg-teal-900/40 text-teal-900 dark:text-teal-100 border-teal-200 dark:border-teal-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
+                    <span className="font-semibold">{skill.name}</span>
+                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
+                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
+                        parseInt(skill.level) >= 75 ? 'Advanced' : 
+                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </details>
       </div>
