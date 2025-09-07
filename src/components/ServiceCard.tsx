@@ -12,6 +12,12 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
     };
   }
 
+  // Create a preview version of the about text (first 80 characters)
+  const getPreviewText = (text: string) => {
+    const plainText = text.replace(/<[^>]*>/g, ''); // Strip HTML tags
+    return plainText.length > 80 ? plainText.substring(0, 80) + '...' : plainText;
+  };
+
   return (
     <div className="h-full flex flex-col rounded-lg overflow-hidden shadow-lg cursor-pointer border border-gray-300 dark:border-gray-600 hover:shadow-hover dark:hover:shadow-hover-dark hover:border-primary-400 dark:hover:border-primary-500 transform hover:-translate-y-1 transition-all duration-standard ease-smooth bg-white dark:bg-dark-200">
       {/* Image Section */}
@@ -37,8 +43,13 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
           id={title.replace(/\s+/g, '-').toLowerCase()} 
           className="cursor-pointer flex-grow flex flex-col"
         >
-          <summary className="font-bold text-base sm:text-lg md:text-xl text-center px-4 py-4 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset list-none [&::-webkit-details-marker]:hidden">
-            <span className="block">{title}</span>
+          <summary className="font-bold text-base sm:text-lg md:text-xl px-4 py-3 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset list-none [&::-webkit-details-marker]:hidden">
+            <div className="text-center">
+              <span className="block mb-2">{title}</span>
+              <p className="text-xs sm:text-sm font-normal text-gray-600 dark:text-gray-400 leading-relaxed">
+                {getPreviewText(about)}
+              </p>
+            </div>
           </summary>
           
           <motion.div

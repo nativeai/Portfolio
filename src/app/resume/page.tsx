@@ -19,9 +19,7 @@ export default function ResumePage() {
     <div className="text-base font-medium tracking-wider">
       {/* Experience Sections Container */}
       <div className="space-y-4">
-        <details
-          open
-          className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
+        <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
         >
           <summary className="font-semibold p-2 text-2xl">Management</summary>
           <div className="container px-4 py-4 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap">
@@ -101,9 +99,7 @@ export default function ResumePage() {
           </p>
         </details>
 
-        <details
-          open
-          className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
+        <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
         >
           <summary className="font-semibold p-2 text-xl sm:text-2xl">Tools & Software</summary>
           <div className="px-3 py-4 sm:px-6 sm:py-6 mx-auto max-w-full space-y-6 sm:space-y-8">
