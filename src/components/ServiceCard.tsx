@@ -92,14 +92,14 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
             </div>
             
             {/* Icon */}
-            <div className="flex justify-center items-center pb-6 pt-2">
+            <div className="flex justify-center items-center pb-4 pt-2 px-4">
               <motion.div
                 whileHover={{ rotate: 5, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.15 }}
-                className="p-3 rounded-full bg-primary-50 dark:bg-primary-900/30"
+                className="p-2 sm:p-3 rounded-full bg-primary-50 dark:bg-primary-900/30 max-w-fit"
               >
-                <Icon className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-primary-500 dark:text-primary-400 flex-shrink-0" />
+                <Icon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary-500 dark:text-primary-400 flex-shrink-0" />
               </motion.div>
             </div>
           </motion.div>
