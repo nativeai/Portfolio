@@ -6,8 +6,8 @@ export const NavItem: FunctionComponent<{
   handlerFilterCategory: Function;
   active: string;
 }> = ({ value, handlerFilterCategory, active }) => {
-  let className = "capitalize cursor-pointer hover:text-blue";
-  if (active === value) className += " text-blue";
+  let className = "capitalize cursor-pointer hover:text-blue whitespace-nowrap px-3 py-2 sm:px-2 sm:py-1 rounded-lg text-sm sm:text-base font-medium transition-colors";
+  if (active === value) className += " text-blue bg-blue-50 dark:bg-blue-900/20";
 
   return (
     <li className={className} onClick={() => handlerFilterCategory(value)}>
@@ -21,7 +21,7 @@ const ProjectsNavbar: FunctionComponent<{
   active: string;
 }> = (props) => {
   return (
-    <div className="flex px-3 py-2 space-x-3 overflow-x-auto list-none">
+    <div className="flex px-2 sm:px-3 py-3 sm:py-2 gap-2 sm:gap-3 overflow-x-auto list-none scrollbar-hide">
       <NavItem value="all" {...props} />
       <NavItem value="THREE.js" {...props} />
       <NavItem value="blockchain" {...props} />

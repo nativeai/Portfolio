@@ -1,38 +1,124 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import ServiceCard from "../components/ServiceCard"
+import SkeletonCard from "../components/SkeletonCard"
+import ErrorBoundary from "../components/ErrorBoundary"
 import { services } from "../data"
 import { motion } from 'framer-motion'
 
 export default function HomePage() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-      className="flex flex-col flex-grow px-6 pt-1"
-    >
-      <div
-        className="flex-grow p-4 mt-5 dark:bg-dark-100"
-        style={{ marginLeft: "-1.5rem", marginRight: "-1.5rem" }}
-      >
-        <div className="grid gap-2 my-2 md:grid-cols-2">
-          {services.map((service) => (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="col-span-2 p-2 rounded-lg md:col-span-1"
-              key={service.title}
-            >
-              <ServiceCard service={service} />
-            </motion.div>
-          ))}
-        </div>
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Simulate loading time and potential error handling
+    const timer = setTimeout(() => {
+      try {
+        if (services && services.length > 0) {
+          setIsLoading(false)
+        } else {
+          setError("No services data available")
+        }
+      } catch (err) {
+        setError("Failed to load services")
+        setIsLoading(false)
+      }
+    }, 800) // Reduced from previous longer loading
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (error) {
+    return (
+      <div className="flex flex-col flex-grow px-4 py-8 h-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="flex items-center justify-center h-full"
+        >
+          <div className="text-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-error-100 dark:bg-error-900/20 flex items-center justify-center">
+              <svg className="w-8 h-8 text-error-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+            </div>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Failed to Load Services</h2>
+            <p className="text-gray-600 dark:text-gray-400">{error}</p>
+          </div>
+        </motion.div>
       </div>
-    </motion.div>
+    )
+  }
+
+  return (
+    <ErrorBoundary>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+        className="flex flex-col flex-grow px-4 py-2 overflow-hidden h-full"
+      >
+        {/* Header Section */}
+        <div className="mb-6">
+          <h1 className="sr-only">Services and Skills Overview</h1>
+        </div>
+        
+        {/* Services Grid Container */}
+        <div className="flex-grow overflow-y-auto scrollbar-hide">
+          <div className="grid gap-6 py-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 auto-rows-fr">
+            {isLoading ? (
+              // Loading skeletons
+              Array.from({ length: 6 }, (_, index) => (
+                <motion.div
+                  key={`skeleton-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.3,
+                    delay: index * 0.1,
+                    ease: [0.4, 0, 0.2, 1]
+                  }}
+                  className="w-full h-full min-h-[400px] sm:min-h-[450px]"
+                >
+                  <SkeletonCard />
+                </motion.div>
+              ))
+            ) : (
+              // Actual service cards
+              services.map((service, index) => (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ 
+                    duration: 0.3, 
+                    delay: index * 0.05,
+                    ease: [0.4, 0, 0.2, 1]
+                  }}
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.15 }
+                  }}
+                  whileTap={{ 
+                    scale: 0.98,
+                    transition: { duration: 0.1 }
+                  }}
+                  className="w-full h-full min-h-[400px] sm:min-h-[450px]"
+                  key={service.title}
+                >
+                  <ServiceCard service={service} />
+                </motion.div>
+              ))
+            )}
+          </div>
+          
+          {/* Bottom Padding for Mobile Scroll */}
+          <div className="h-6 flex-shrink-0"></div>
+        </div>
+      </motion.div>
+    </ErrorBoundary>
   )
 }

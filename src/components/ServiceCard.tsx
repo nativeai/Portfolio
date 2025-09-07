@@ -13,41 +13,87 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
   }
 
   return (
-    <div className="rounded overflow-hidden shadow-lg card cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200 m-auto bg-gray-200 dark:bg-dark-200">
-      <img src={url} alt="avatar" className="w-full object-cover h-60 max-h-full" 
-        onClick={() => {
-          var ref = document.getElementById(title);
-          const details = (ref as HTMLDetailsElement);
-          details.open = !details.open;
-        }} />
-      <details id={title} className="cursor-pointer">
-        <summary className="font-bold text-2xl text-center mx-auto px-4 py-2">{title}</summary>
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 2 }}>
-        <div className="px-6 py-4">
-          <p
-            className="dark:text-blue text-base"
-            dangerouslySetInnerHTML={createMarkup()}
-          />
-        </div>
-        <div className="px-6 pt-4 pb-2">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:bg-gray-200 mr-2 mb-2"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className="flex justify-center mx-auto">
-          <Icon className="px-2 py-1 my-3 w-24 h-24 text-blue" />
-        </div>
-        </motion.div>
-      </details>
+    <div className="h-full flex flex-col rounded-lg overflow-hidden shadow-lg cursor-pointer border border-gray-300 dark:border-gray-600 hover:shadow-hover dark:hover:shadow-hover-dark hover:border-primary-400 dark:hover:border-primary-500 transform hover:-translate-y-1 transition-all duration-standard ease-smooth bg-white dark:bg-dark-200">
+      {/* Image Section */}
+      <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden flex-shrink-0">
+        <img 
+          src={url} 
+          alt={`${title} service illustration`}
+          className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-standard ease-smooth" 
+          onClick={() => {
+            const ref = document.getElementById(title.replace(/\s+/g, '-').toLowerCase());
+            const details = (ref as HTMLDetailsElement);
+            if (details) {
+              details.open = !details.open;
+            }
+          }}
+          loading="lazy"
+        />
+      </div>
+      
+      {/* Content Section */}
+      <div className="flex-grow flex flex-col">
+        <details 
+          id={title.replace(/\s+/g, '-').toLowerCase()} 
+          className="cursor-pointer flex-grow flex flex-col"
+        >
+          <summary className="font-bold text-base sm:text-lg md:text-xl text-center px-4 py-4 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset list-none [&::-webkit-details-marker]:hidden">
+            <span className="block">{title}</span>
+          </summary>
+          
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ 
+              duration: 0.3,
+              ease: [0.4, 0, 0.2, 1]
+            }}
+            className="flex-grow flex flex-col overflow-hidden"
+          >
+            {/* Description */}
+            <div className="px-4 py-4 flex-grow">
+              <p
+                className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed"
+                dangerouslySetInnerHTML={createMarkup()}
+              />
+            </div>
+            
+            {/* Tags */}
+            <div className="px-4 pt-2 pb-4">
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag, index) => (
+                  <motion.span
+                    key={tag}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ 
+                      delay: index * 0.05,
+                      duration: 0.3,
+                      ease: [0.4, 0, 0.2, 1]
+                    }}
+                    className="inline-block bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full px-3 py-1 text-xs sm:text-sm font-medium border border-primary-200 dark:border-primary-700 hover:bg-primary-100 dark:hover:bg-primary-900/50 transition-colors duration-fast ease-smooth"
+                  >
+                    {tag}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+            
+            {/* Icon */}
+            <div className="flex justify-center items-center pb-6 pt-2">
+              <motion.div
+                whileHover={{ rotate: 5, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+                className="p-3 rounded-full bg-primary-50 dark:bg-primary-900/30"
+              >
+                <Icon className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-primary-500 dark:text-primary-400 flex-shrink-0" />
+              </motion.div>
+            </div>
+          </motion.div>
+        </details>
+      </div>
     </div>
   );
 };
