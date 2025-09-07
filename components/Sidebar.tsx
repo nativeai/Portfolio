@@ -151,7 +151,7 @@ const Sidebar = () => {
         <span>Download Resume</span>
       </motion.a>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-3 sm:mt-6 mx-auto max-w-xs sm:max-w-sm md:max-w-md px-1 sm:px-2 overflow-visible sm:overflow-hidden">
+      <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-3 sm:mt-4 mb-2 mx-auto max-w-xs sm:max-w-sm md:max-w-md px-1 sm:px-2 overflow-visible sm:overflow-hidden">
       {barIcons.map((icon, i) => (
         <div key={icon.title} className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center overflow-hidden">
         <motion.div
