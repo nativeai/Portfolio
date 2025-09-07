@@ -106,16 +106,16 @@ export default function ResumePage() {
           className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
         >
           <summary className="font-semibold p-2 text-2xl">Tools & Software</summary>
-          <div className="container px-4 py-4 mx-auto">
-            {/* Option 1: Badge Layout */}
-            <div className="flex flex-wrap gap-2 mb-6">
+          <div className="px-6 py-6 mx-auto max-w-full">
+            {/* Enhanced Badge Layout with Better Visibility */}
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
               {[...languages, ...tools]
                 .sort((a, b) => parseInt(b.level) - parseInt(a.level)) // Sort by proficiency
                 .map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium border bg-blue-50 text-blue-800 border-blue-200 transition-all duration-200 hover:scale-105">
-                    <skill.Icon className="w-4 h-4 mr-2" />
+                  <div key={i} className="inline-flex items-center px-4 py-3 rounded-lg text-sm font-medium border bg-blue-50/90 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 border-blue-200 dark:border-blue-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md hover:bg-blue-100/95 dark:hover:bg-blue-800/60">
+                    <skill.Icon className="w-5 h-5 mr-3 opacity-90" />
                     <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-2 text-xs opacity-75">
+                    <span className="ml-3 text-xs opacity-85 font-medium">
                       ({parseInt(skill.level) >= 90 ? 'Expert' : 
                         parseInt(skill.level) >= 75 ? 'Advanced' : 
                         parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
