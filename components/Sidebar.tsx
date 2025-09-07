@@ -29,16 +29,16 @@ const Sidebar = () => {
           //Check if message failed
           theme === "light" ? (
             <motion.a
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
              onClick={changeTheme} className="inline-block">
               <FaRegMoon className="w-8 h-8 cursor-pointer" />
               {/* <span className="text-sm font-hpr">Dark</span> */}
             </motion.a>
           ) : (
             <motion.a
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
             onClick={changeTheme} className="inline-block">
               <FaRegSun className="w-8 h-8 cursor-pointer" />
               {/* <span className="text-sm font-hpr">Light</span> */}
@@ -141,8 +141,8 @@ const Sidebar = () => {
       </p>
       <div className="overflow-hidden px-2">
       <motion.a
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
         href="/images/ShandonResume.pdf"
         download="ShandonResume.pdf"
         className="flex items-center justify-center px-2 py-1 my-2 bg-gray-200 cursor-pointer dark:bg-dark-200 dark:bg-black-500 font-hpr overflow-hidden"
@@ -155,8 +155,8 @@ const Sidebar = () => {
       {barIcons.map((icon, i) => (
         <div key={icon.title} className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center overflow-hidden">
         <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
           className="w-full h-full flex items-center justify-center"
         >
           <a href={icon.url} className="w-full h-full flex items-center justify-center">
