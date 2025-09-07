@@ -1,0 +1,25 @@
+# Browsers that we support
+
+# Global usage > 0.5%
+> 0.5%
+
+# Last 2 versions of each browser
+last 2 versions
+
+# Exclude dead browsers
+not dead
+
+# Exclude Opera Mini (limited CSS support)
+not op_mini all
+
+# Include specific modern browsers for better performance
+Chrome >= 88
+Firefox >= 85
+Safari >= 14
+Edge >= 88
+
+# Support iOS Safari
+iOS >= 14
+
+# Support Android Chrome
+Android >= 88
