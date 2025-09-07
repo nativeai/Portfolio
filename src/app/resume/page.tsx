@@ -113,6 +113,9 @@ export default function ResumePage() {
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
                 Customer Relationship Management
               </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed hidden md:block">
+                Setup and maintained Hubspot support inbox pipeline, workflow automations, Chatbot workflow, email templates/snippets, Customer Knowledge Base Articles, user feedback surveys, SLAs, and team dashboard activity metrics.
+              </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {[
                   { name: "Hubspot, Infusionsoft", level: "85" },
@@ -136,6 +139,9 @@ export default function ResumePage() {
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
                 Payment Processing & E-commerce
               </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed hidden md:block">
+                Experienced in managing refunds, invoice payments, payment disputes, payment plans, subscriptions, coupons and trials. Reporting, data entry, customer account management, payment details, and secured payment transaction practices.
+              </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {[
                   { name: "Stripe, Paypal, Payment Processors", level: "85" },
@@ -159,6 +165,9 @@ export default function ResumePage() {
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
                 Project Management & Communication
               </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed hidden md:block">
+                Experienced in ClickUp and Asana for reporting, management task form submissions, tasks and due date calendar, task assignment automations. Utilized Slack for day-to-day team member communication, company notifications/updates/announcements, voice and video calls, slack plugins, and automations.
+              </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {[
                   { name: "Asana, Click Up", level: "80" },
@@ -185,6 +194,9 @@ export default function ResumePage() {
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
                 Development & Technical Tools
               </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed hidden md:block">
+                Novice experience in Next.js, React and beginning to learn Python (anaconda, LaTeX). Utilizing Jupyter Interactive Window. Utilized and setup Service Desk systems for BrainTap, created knowledge base articles through Confluence.
+              </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {[
                   { name: "Visual Studio Code", level: "60" },
@@ -209,6 +221,9 @@ export default function ResumePage() {
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
                 Creative & Media Production
               </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed hidden md:block">
+                Experience with Photoshop, After Effects, and Character Animator. Ableton Live 11 is my current DAW of choice for all stages of music production from staging, instrumentation, mixing, and mastering audio. Utilizing and learning best practices for UE5 animation pipeline, cinematics, Metahuman, scene creation, production, Livelink, Rokoko and Niagara components.
+              </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {[
                   { name: "Unreal Engine Animation Pipeline", level: "65" },
@@ -233,6 +248,9 @@ export default function ResumePage() {
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
                 Business & Administrative
               </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed hidden md:block">
+                Managing affiliate applications, setup promotional campaigns working directly with the Leadership, marketing and sales team following company initiatives. Ensuring correct commissions for affiliate partners, updating any commission adjustments, referrals, leads, sales or refunds. Experience in leading to map, document, test and implement chatbot workflows, replies, reports, feedback surveys and automations.
+              </p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {[
                   { name: "BrainTap Products", level: "95" },
