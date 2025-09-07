@@ -19,7 +19,7 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
   };
 
   return (
-    <div className="h-full flex flex-col rounded-lg overflow-hidden shadow-lg cursor-pointer border border-gray-300 dark:border-gray-600 hover:shadow-hover dark:hover:shadow-hover-dark hover:border-primary-400 dark:hover:border-primary-500 transform hover:-translate-y-1 transition-all duration-standard ease-smooth bg-white dark:bg-dark-200 flex-shrink-0">
+    <div className="h-full flex flex-col rounded-lg overflow-hidden shadow-lg cursor-pointer border border-gray-300 dark:border-gray-600 hover:shadow-hover dark:hover:shadow-hover-dark hover:border-primary-400 dark:hover:border-primary-500 transform hover:-translate-y-1 transition-all duration-standard ease-smooth bg-white dark:bg-dark-200">
       {/* Image Section */}
       <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden flex-shrink-0">
         <img 
@@ -92,15 +92,17 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
             </div>
             
             {/* Icon */}
-            <div className="flex justify-center items-center pb-4 pt-2 px-4">
-              <motion.div
-                whileHover={{ rotate: 5, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.15 }}
-                className="p-2 sm:p-3 rounded-full bg-primary-50 dark:bg-primary-900/30 max-w-fit"
-              >
-                <Icon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary-500 dark:text-primary-400 flex-shrink-0" />
-              </motion.div>
+            <div className="flex justify-center items-center pb-4 pt-2 px-6 overflow-hidden">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center overflow-hidden rounded-full">
+                <motion.div
+                  whileHover={{ rotate: 5, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.15 }}
+                  className="w-full h-full p-2 rounded-full bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center overflow-hidden"
+                >
+                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-primary-500 dark:text-primary-400 flex-shrink-0" />
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </details>
