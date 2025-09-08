@@ -53,12 +53,12 @@ const Sidebar = () => {
       <h3 className="my-4 text-3xl font-medium tracking-wider font-semibold">
         <span className="text-primary-500">Shandon</span> Hicks
       </h3>
-      <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500">
+      <div className="my-3 text-xl text-center">
         Sr Operations, RevOps & Hardware Manager 
-      </p>
-      <p className="px-2 py-1 my-3 dark:bg-dark-200 dark:bg-black-500 text-sm">
+      </div>
+      <div className="my-3 text-sm text-center">
         Fallon Pauite Shoshone Tribe
-      </p>
+      </div>
       <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

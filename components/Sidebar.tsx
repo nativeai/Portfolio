@@ -50,9 +50,9 @@ const Sidebar = () => {
       <h3 className="my-4 text-3xl font-medium tracking-wider font-hpr font-semibold">
         <span className="text-blue">Shandon</span> Hicks
       </h3>
-      <p className="px-2 py-1 my-3 text-xl font-hpr bg-transparent">
+      <div className="my-3 text-xl font-hpr text-center">
         Sr Operations, RevOps & Hardware Manager 
-      </p>
+      </div>
       <div className="flex justify-center sm:justify-around w-full mx-auto my-3 sm:my-5 text-blue overflow-visible sm:overflow-hidden px-1 sm:px-2 gap-2 sm:gap-1 flex-wrap sm:flex-nowrap">
         <div className="flex flex-col items-center overflow-hidden">
         <motion.a
@@ -136,16 +136,16 @@ const Sidebar = () => {
         </motion.a>
         </div>
       </div>
-      <p className="px-2 py-1 my-3 text-sm font-hpr bg-transparent">
+      <div className="my-3 text-sm font-hpr text-center">
         Fallon Pauite Shoshone Tribe
-      </p>
+      </div>
       <div className="overflow-hidden px-2">
       <motion.a
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.99 }}
         href="/images/ShandonResume.pdf"
         download="ShandonResume.pdf"
-        className="flex items-center justify-center px-2 py-1 my-2 bg-gray-200 cursor-pointer dark:bg-dark-200 dark:bg-black-500 font-hpr overflow-hidden"
+        className="flex items-center justify-center px-2 py-1 my-2 bg-gray-200 cursor-pointer font-hpr overflow-hidden"
       >
         <GiTie className="w-6 h-6" />
         <span>Download Resume</span>
