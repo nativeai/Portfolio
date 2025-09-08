@@ -73,7 +73,7 @@ const Sidebar = () => {
       {/* Social Links Section */}
       <div className="w-full mx-auto my-6">
         <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-xs mx-auto">
-          <motion.a
+          {/* <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.15 }}
@@ -83,7 +83,7 @@ const Sidebar = () => {
           >
             <GiTie className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
             <span className="text-xs sm:text-sm font-medium text-center">Resume</span>
-          </motion.a>
+          </motion.a> */}
           
           <motion.a
             whileHover={{ scale: 1.05 }}
@@ -107,7 +107,7 @@ const Sidebar = () => {
             <span className="text-xs sm:text-sm font-medium text-center">Github</span>
           </motion.a>
           
-          <motion.a
+          {/* <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.15 }}
@@ -127,7 +127,7 @@ const Sidebar = () => {
           >
             <FaMobileAlt className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
             <span className="text-xs sm:text-sm font-medium text-center">Phone</span>
-          </motion.a>
+          </motion.a> */}
           
           <motion.a
             whileHover={{ scale: 1.05 }}
