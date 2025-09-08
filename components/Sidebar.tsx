@@ -50,7 +50,7 @@ const Sidebar = () => {
       <h3 className="my-4 text-3xl font-medium tracking-wider font-hpr font-semibold">
         <span className="text-blue">Shandon</span> Hicks
       </h3>
-      <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500 font-hpr">
+      <p className="px-2 py-1 my-3 text-xl font-hpr bg-transparent">
         Sr Operations, RevOps & Hardware Manager 
       </p>
       <div className="flex justify-center sm:justify-around w-full mx-auto my-3 sm:my-5 text-blue overflow-visible sm:overflow-hidden px-1 sm:px-2 gap-2 sm:gap-1 flex-wrap sm:flex-nowrap">
@@ -136,7 +136,7 @@ const Sidebar = () => {
         </motion.a>
         </div>
       </div>
-      <p className="px-2 py-1 my-3 dark:bg-dark-200 dark:bg-black-500 text-sm font-hpr">
+      <p className="px-2 py-1 my-3 text-sm font-hpr bg-transparent">
         Fallon Pauite Shoshone Tribe
       </p>
       <div className="overflow-hidden px-2">
@@ -151,13 +151,13 @@ const Sidebar = () => {
         <span>Download Resume</span>
       </motion.a>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-3 sm:mt-4 mb-2 mx-auto max-w-xs sm:max-w-sm md:max-w-md px-1 sm:px-2 overflow-visible sm:overflow-hidden">
+      <div className="flex flex-wrap justify-center items-start gap-2 sm:gap-3 mt-3 sm:mt-4 mb-2 mx-auto max-w-xs sm:max-w-sm md:max-w-md px-1 sm:px-2 overflow-visible">
       {barIcons.map((icon, i) => (
-        <div key={icon.title} className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center overflow-hidden">
+        <div key={icon.title} className="flex flex-col items-center overflow-visible">
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.99 }}
-          className="w-full h-full flex items-center justify-center"
+          className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center"
         >
           <a href={icon.url} className="w-full h-full flex items-center justify-center">
             <icon.Icon
@@ -166,6 +166,7 @@ const Sidebar = () => {
             />
           </a>
         </motion.div>
+        <span className="text-xs font-hpr mt-1 text-center text-gray-700 dark:text-gray-300">{icon.title}</span>
         </div>
       ))}
       </div>
