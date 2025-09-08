@@ -16,9 +16,7 @@ const Navbar = () => {
 
    return (
       <div className='flex items-center justify-center px-5 py-3 my-3'>
-         <span className='text-3xl font-bold border-b-4 md:text-2xl border-blue'>
-            {active}
-         </span>
+         {/* Title removed per user request */}
       </div>
    )
 }

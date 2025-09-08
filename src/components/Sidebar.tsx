@@ -9,44 +9,8 @@ import Image from "next/image";
 import { FaMobileAlt, FaRegMoon, FaRegSun } from "react-icons/fa";
 import { barIcons } from "../data";
 import { motion } from "framer-motion";
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-const NavItem = ({ active, setActive, name, route }: {
-  active: string
-  setActive: Function
-  name: string
-  route: string
-}) => {
-  return active === name ? (
-    <span className='inline-block py-2 px-3 text-center bg-primary-500 text-white font-bold rounded-md shadow-md text-sm whitespace-nowrap'>
-      {name}
-    </span>
-  ) : (
-    <Link href={route}>
-      <motion.span
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.15 }}
-        className='inline-block py-2 px-3 text-center cursor-pointer hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-md transition-colors duration-fast ease-smooth text-sm whitespace-nowrap'
-        onClick={() => setActive(name)}>
-        {name}
-      </motion.span>
-    </Link>
-  )
-}
-
 const Sidebar = () => {
   const { theme, setTheme } = useTheme();
-  const pathname = usePathname()
-  const [active, setActive] = useState('')
-
-  useEffect(() => {
-    if (pathname === '/') setActive('Skills')
-    else if (pathname === '/projects') setActive('Projects')
-    else if (pathname === '/resume') setActive('Experience')
-    else if (pathname === '/support') setActive('Support')
-  }, [pathname])
 
   const changeTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -92,6 +56,20 @@ const Sidebar = () => {
       <p className="px-2 py-1 my-3 text-xl dark:bg-dark-200 dark:bg-black-500">
         Sr Operations, RevOps & Hardware Manager 
       </p>
+      <p className="px-2 py-1 my-3 dark:bg-dark-200 dark:bg-black-500 text-sm">
+        Fallon Pauite Shoshone Tribe
+      </p>
+      <motion.a
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.15 }}
+        href="/images/ShandonResume.pdf"
+        download="ShandonResume.pdf"
+        className="flex items-center justify-center px-4 py-2 my-4 bg-primary-500 text-white cursor-pointer hover:bg-primary-600 rounded-lg transition-colors duration-fast ease-smooth font-medium"
+      >
+        <GiTie className="w-5 h-5 mr-2" />
+        <span>Download Resume</span>
+      </motion.a>
       {/* Social Links Section */}
       <div className="w-full mx-auto my-6">
         <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-xs mx-auto">
@@ -163,47 +141,7 @@ const Sidebar = () => {
           </motion.a>
         </div>
       </div>
-      <p className="px-2 py-1 my-3 dark:bg-dark-200 dark:bg-black-500 text-sm">
-        Fallon Pauite Shoshone Tribe
-      </p>
-      <motion.a
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.15 }}
-        href="/images/ShandonResume.pdf"
-        download="ShandonResume.pdf"
-        className="flex items-center justify-center px-4 py-2 my-4 bg-primary-500 text-white cursor-pointer hover:bg-primary-600 rounded-lg transition-colors duration-fast ease-smooth font-medium"
-      >
-        <GiTie className="w-5 h-5 mr-2" />
-        <span>Download Resume</span>
-      </motion.a>
 
-      <div className="mt-4 mb-4 flex flex-wrap justify-center items-center gap-2 sm:gap-3 max-w-md mx-auto px-2">
-        <NavItem
-          active={active}
-          setActive={setActive}
-          name='Skills'
-          route='/'
-        />
-        <NavItem
-          active={active}
-          setActive={setActive}
-          name='Experience'
-          route='/resume'
-        />
-        <NavItem
-          active={active}
-          setActive={setActive}
-          name='Support'
-          route='/support'
-        />
-        <NavItem
-          active={active}
-          setActive={setActive}
-          name='Projects'
-          route='/projects'
-        />
-      </div>
 
       <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-6 mx-auto max-w-sm sm:max-w-md px-2">
         {barIcons.map((icon, i) => (

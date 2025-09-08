@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import ServiceCard from "../components/ServiceCard"
 import SkeletonCard from "../components/SkeletonCard"
 import ErrorBoundary from "../components/ErrorBoundary"
+import ResumeCard from "../components/ResumeCard"
 import { services } from "../data"
 import { motion } from 'framer-motion'
 
@@ -59,8 +60,11 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        className="flex flex-col flex-grow overflow-hidden h-full"
+        className="flex flex-col flex-grow px-4 py-2 overflow-hidden h-full"
       >
+        {/* Resume Card with Navigation */}
+        <ResumeCard />
+        
         {/* Header Section */}
         <div className="mb-6">
           <h1 className="sr-only">Services and Skills Overview</h1>
@@ -68,7 +72,7 @@ export default function HomePage() {
         
         {/* Services Grid Container */}
         <div className="flex-grow overflow-y-auto scrollbar-hide">
-          <div className="grid gap-4 sm:gap-6 md:gap-8 py-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 auto-rows-fr">
+          <div className="grid gap-4 sm:gap-6 md:gap-8 py-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 auto-rows-auto">
             {isLoading ? (
               // Loading skeletons
               Array.from({ length: 6 }, (_, index) => (
