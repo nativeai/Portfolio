@@ -1,26 +1,53 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useCallback } from "react";
 import { Service } from "../types";
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import DOMPurify from 'dompurify';
 
 const ServiceCard: FunctionComponent<{ service: Service }> = ({
   service: { Icon, title, about, url, tags },
 }) => {
-  //XSS attack :( on our portfolio btw, as an alternate use npm i dom purify
+  const isValidImageUrl = (url: string): boolean => {
+    try {
+      const urlObj = new URL(url);
+      return ['http:', 'https:', 'data:'].includes(urlObj.protocol);
+    } catch {
+      return false;
+    }
+  };
+
   function createMarkup() {
     return {
-      __html: about,
+      __html: DOMPurify.sanitize(about, {
+        ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'a', 'ul', 'ol', 'li'],
+        ALLOWED_ATTR: ['href', 'target'],
+        ALLOW_DATA_ATTR: false,
+      }),
     };
   }
 
+  const handleImageClick = useCallback(() => {
+    const safeId = title.replace(/[^a-zA-Z0-9-_]/g, '');
+    const ref = document.getElementById(safeId);
+    if (ref instanceof HTMLDetailsElement) {
+      ref.open = !ref.open;
+    }
+  }, [title]);
+
   return (
     <div className="rounded overflow-hidden shadow-lg card cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200 m-auto font-hpr bg-gray-200 dark:bg-dark-200">
-      <img src={url} alt="avatar" className="w-full object-cover h-60 max-h-full" 
-        onClick={() => {
-          var ref = document.getElementById(title);
-          const details = (ref as HTMLDetailsElement);
-          details.open = !details.open;
-        }} />
-      <details id={title} className="cursor-pointer">
+      {isValidImageUrl(url) ? (
+        <img
+          src={url}
+          alt="avatar"
+          className="w-full object-cover h-60 max-h-full"
+          onClick={handleImageClick}
+        />
+      ) : (
+        <div className="w-full h-60 bg-gray-300 flex items-center justify-center">
+          <span className="text-gray-500">Invalid image URL</span>
+        </div>
+      )}
+      <details id={title.replace(/[^a-zA-Z0-9-_]/g, '')} className="cursor-pointer">
         <summary className="font-bold text-2xl mx-auto px-auto block w-max">{title}</summary>
         <motion.div
             initial={{ opacity: 0 }}
