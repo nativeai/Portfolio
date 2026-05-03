@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { ChatWidget } from "talkivo-chat/components";
-import type { WidgetConfig } from "talkivo-chat";
+import { ChatWidget } from "@/lib/chat/components";
+import type { WidgetConfig } from "@/lib/chat/types/widget";
 
 const config: WidgetConfig = {
   id: "portfolio-bot",

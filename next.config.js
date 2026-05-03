@@ -19,10 +19,7 @@ const nextConfig = {
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: false,
   },
-  transpilePackages: ['three', 'talkivo-chat'],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  transpilePackages: ['three'],
   poweredByHeader: false,
   reactStrictMode: true,
   compress: true,
