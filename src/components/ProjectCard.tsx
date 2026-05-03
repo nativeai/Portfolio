@@ -43,7 +43,7 @@ const ProjectCard: FunctionComponent<{
           transition={{ duration: 0.5 }}
           className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-2 sm:p-4 bg-black bg-opacity-50 overflow-y-auto"
         >
-          <div className="relative w-full max-w-4xl max-h-full my-4 sm:my-0 overflow-y-auto bg-gray-100 dark:bg-dark-100 rounded-lg shadow-xl">
+          <div className="relative w-full max-w-4xl max-h-full my-4 sm:my-0 overflow-y-auto bg-gray-100 dark:bg-dark-200 rounded-md shadow-custom-dark">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-4 sm:p-6">
               <div className="order-2 md:order-1">
                 <div className="relative w-full aspect-video mb-4 overflow-hidden rounded-lg">
@@ -58,13 +58,13 @@ const ProjectCard: FunctionComponent<{
                 <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-3">
                   <a
                     href={github_url}
-                    className="flex items-center justify-center px-4 py-2 space-x-2 text-sm sm:text-lg bg-gray-200 dark:bg-dark-200 rounded-md hover:bg-gray-300 dark:hover:bg-dark-300 transition-colors"
+                    className="flex items-center justify-center px-4 py-2 space-x-2 text-sm sm:text-lg bg-gray-200 dark:bg-primary-700 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-primary-600 transition-colors"
                   >
                     <AiFillGithub className="text-lg sm:text-xl" /> <span>Github</span>
                   </a>
                   <a
                     href={deployed_url}
-                    className="flex items-center justify-center px-4 py-2 space-x-2 text-sm sm:text-lg bg-gray-200 dark:bg-dark-200 rounded-md hover:bg-gray-300 dark:hover:bg-dark-300 transition-colors"
+                    className="flex items-center justify-center px-4 py-2 space-x-2 text-sm sm:text-lg bg-cta text-white rounded-md hover:brightness-110 transition-all"
                   >
                     <AiFillProject className="text-lg sm:text-xl" /> <span>Project</span>
                   </a>

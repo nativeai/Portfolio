@@ -34,7 +34,7 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
         stiffness: 300,
         damping: 30
       }}
-      className="flex flex-col rounded-lg overflow-hidden shadow-lg cursor-pointer border border-gray-300 dark:border-gray-600 hover:shadow-hover dark:hover:shadow-hover-dark hover:border-primary-400 dark:hover:border-primary-500 bg-white dark:bg-dark-200"
+      className="flex flex-col rounded-md overflow-hidden shadow-custom-light dark:shadow-custom-dark cursor-pointer border border-primary-100 dark:border-primary-600/40 hover:shadow-hover dark:hover:shadow-hover-dark hover:border-gold/40 dark:hover:border-gold/40 bg-white dark:bg-dark-200"
     >
       {/* Image Section */}
       <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden flex-shrink-0">
@@ -138,7 +138,7 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
                       duration: 0.3,
                       ease: [0.4, 0, 0.2, 1]
                     }}
-                    className="inline-block bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full px-3 py-1 text-xs sm:text-sm font-medium border border-primary-200 dark:border-primary-700 hover:bg-primary-100 dark:hover:bg-primary-900/50 transition-colors duration-fast ease-smooth cursor-pointer"
+                    className="inline-block bg-primary-50 dark:bg-primary-700/20 text-primary-700 dark:text-primary-100 rounded-full px-3 py-1 text-xs sm:text-sm font-medium border border-primary-200 dark:border-gold/30 hover:bg-gold/10 dark:hover:bg-gold/10 transition-colors duration-fast ease-smooth cursor-pointer"
                   >
                     {tag}
                   </motion.span>

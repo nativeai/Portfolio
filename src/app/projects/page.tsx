@@ -3,7 +3,6 @@
 import { useState } from "react"
 import ProjectCard from "../../components/ProjectCard"
 import ProjectsNavbar from "../../components/ProjectsNavbar"
-import ResumeCard from "../../components/ResumeCard"
 import { projects as projectsData } from "../../data"
 import { Category } from "../../types"
 import { motion } from 'framer-motion'
@@ -27,12 +26,8 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="flex flex-col flex-grow px-4 py-2 overflow-hidden h-full">
-      {/* Resume Card with Navigation */}
-      <ResumeCard />
-      
-      <div className="flex-grow overflow-y-auto scrollbar-hide">
-        <div className="px-3 py-2 sm:px-5 sm:py-2">
+    <div className="pt-24 pb-16 px-6 sm:px-12 lg:px-24 xl:px-32 max-w-7xl mx-auto">
+      <div className="px-3 py-2 sm:px-5 sm:py-2">
       <ProjectsNavbar
         handlerFilterCategory={handlerFilterCategory}
         active={active}
@@ -52,10 +47,6 @@ export default function ProjectsPage() {
           </motion.div>
         ))}
       </div>
-        </div>
-        
-        {/* Bottom Padding for Mobile Scroll */}
-        <div className="h-6 flex-shrink-0"></div>
       </div>
     </div>
   )

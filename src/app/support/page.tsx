@@ -3,7 +3,6 @@
 import { supportSites } from "../../data"
 import Image from "next/image"
 import { motion } from 'framer-motion'
-import ResumeCard from "../../components/ResumeCard"
 
 interface SupportItem {
   title: string
@@ -48,12 +47,8 @@ function SupportCard({ support, index }: SupportCardProps) {
 
 export default function SupportPage() {
   return (
-    <div className="flex flex-col flex-grow px-4 py-2 overflow-hidden h-full">
-      {/* Resume Card with Navigation */}
-      <ResumeCard />
-      
-      <div className="flex-grow overflow-y-auto scrollbar-hide">
-        <div className="px-4 py-6 sm:px-6 sm:py-8">
+    <div className="pt-24 pb-16 px-6 sm:px-12 lg:px-24 xl:px-32 max-w-7xl mx-auto">
+      <div className="px-4 py-6 sm:px-6 sm:py-8">
       <div className="max-w-2xl mx-auto">
         <header className="text-center mb-8">
           <h1 className="mb-4 text-2xl sm:text-3xl font-bold">
@@ -76,10 +71,6 @@ export default function SupportPage() {
           </div>
         </div>
       </div>
-        </div>
-        
-        {/* Bottom Padding for Mobile Scroll */}
-        <div className="h-6 flex-shrink-0"></div>
       </div>
     </div>
   )

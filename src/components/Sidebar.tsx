@@ -50,8 +50,8 @@ const Sidebar = () => {
           )
         }
       </div>
-      <h3 className="my-4 text-3xl font-medium tracking-wider font-semibold">
-        <span className="text-primary-500">Shandon</span> Hicks
+      <h3 className="my-4 text-3xl font-semibold tracking-wide font-display">
+        <span className="text-gold">Shandon</span> Hicks
       </h3>
       <div className="my-3 text-xl text-center">
         Sr Operations, RevOps & Hardware Manager 
@@ -65,7 +65,7 @@ const Sidebar = () => {
           transition={{ duration: 0.15 }}
         href="/images/ShandonResume.pdf"
         download="ShandonResume.pdf"
-        className="flex items-center justify-center px-4 py-2 my-4 bg-primary-500 text-white cursor-pointer hover:bg-primary-600 rounded-lg transition-colors duration-fast ease-smooth font-medium"
+        className="flex items-center justify-center px-4 py-2 my-4 bg-cta text-white cursor-pointer rounded-lg font-medium hover:brightness-110 transition-all duration-fast ease-smooth"
       >
         <GiTie className="w-5 h-5 mr-2" />
         <span>Download Resume</span>
