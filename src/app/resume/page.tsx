@@ -1,596 +1,423 @@
 'use client'
 
-import Bar from "../../components/Bar"
-import ResumeCard from "../../components/ResumeCard"
-import { languages, tools, containers } from "../../data"
-import ReactPlayer from "react-player"
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
-const handleChange = () => {
-  console.log("playing")
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const managementRoles = [
+  {
+    title: 'Sr. Operations, RevOps & Hardware Manager',
+    company: 'BrainTap, Inc',
+    period: 'Oct 2023 – Oct 2025 · Hybrid',
+    groups: [
+      {
+        heading: 'Operations & Project Management',
+        items: [
+          'Lead cross-functional projects covering hardware, software, and RevOps initiatives',
+          'Develop and refine SOPs to improve efficiency across multi-system company operations',
+          'Manage KPIs, system reviews, and process improvements to align with executive initiatives',
+          'Oversee international operations, project planning, and system maintenance',
+        ],
+      },
+      {
+        heading: 'Product & Compliance Management',
+        items: [
+          'Key Product Owner for BrainTap and NeuralChek products — shaped product direction, managed requirements, and ensured successful delivery through collaboration with engineering, QA, and design teams',
+          'Coordinate with manufacturers to secure safety documentation and product certifications',
+          'Ensure compliance with CE and European Union conformity requirements',
+          'Manage digital strategy, content planning, and audio session deployment',
+        ],
+      },
+      {
+        heading: 'RevOps & Systems Administration',
+        items: [
+          'Administer AWS, Microsoft, Stripe, and Apple Developer platforms',
+          'Design and optimize automation workflows to streamline business operations',
+          'Create detailed business requirement documents and user story mapping for system improvements',
+          'Support cross-platform integrations and digital infrastructure growth',
+        ],
+      },
+      {
+        heading: 'Leadership & Collaboration',
+        items: [
+          'Partner directly with executives and stakeholders to execute business growth strategies',
+          'Provide training, support, and implementation guidance across systems and teams',
+          'Oversee Customer Success Manager and team, driving customer satisfaction initiatives',
+          'Deliver strong communication across technical and non-technical teams',
+        ],
+      },
+    ],
+    achievements: [
+      'Led product ownership initiatives for BrainTap and NeuralChek, driving enhanced user experience and quality through strategic collaboration with engineering, QA, and design',
+      'Spearheaded compliance initiatives to secure international market access, ensuring adherence to CE and EU conformity requirements',
+      'Executed Sr. Operations initiatives that optimized cross-functional workflows, improving efficiency across hardware development, software deployment, and RevOps',
+    ],
+  },
+  {
+    title: 'Customer Success Manager',
+    company: 'BrainTap, Inc',
+    period: 'Mar 2021 – Oct 2023 · 2 yrs 8 mos · Remote',
+    groups: [
+      {
+        heading: 'Strategic Leadership & Operations',
+        items: [
+          'Lead Customer Success operations, delivering KPIs and strategic recommendations directly to executive leadership',
+          'Drive initiatives to improve customer experience, retention, and referrals across all touchpoints',
+          'Collaborate with leadership to design job descriptions and scale the Customer Success function',
+        ],
+      },
+      {
+        heading: 'Systems & Infrastructure',
+        items: [
+          'Built and optimized customer support infrastructure in HubSpot — pipelines, workflows, chatbots, SLAs, dashboards, knowledge base, and feedback surveys (CSAT, NPS)',
+          'Administered system access in HubSpot, Infusionsoft, Oscommerce, Post Affiliate Pro, Zoom, and Confluence',
+          'Developed and enforced SOPs to streamline workflows, reduce resolution times, and enhance service quality',
+        ],
+      },
+      {
+        heading: 'Team Management & Training',
+        items: [
+          'Trained, coached, and upskilled customer success teams including international call center operations',
+          'Implemented HubSpot certifications and ongoing development programs for team excellence',
+          'Created training videos and documentation for internal teams and external customers',
+        ],
+      },
+      {
+        heading: 'Client Relations & Business Development',
+        items: [
+          'Partnered with healthcare professionals and affiliates to deliver onboarding, training, and ROI-driven implementation',
+          'Managed affiliate program operations — commissions, campaign execution, and marketing collaboration',
+          'Oversaw customer invoicing, refunds, and payments across Authorize.net, PayPal, and Stripe',
+        ],
+      },
+    ],
+    achievements: [
+      'Streamlined workflows and automations, resulting in improved SLA adherence, faster issue resolution, and stronger customer retention',
+      'Established scalable support systems and feedback loops that elevated CSAT scores and strengthened product improvement cycles',
+      'Successfully managed global communications and partnerships, ensuring consistent, high-quality service across diverse markets',
+    ],
+  },
+]
+
+const businessGrowthRoles = [
+  {
+    title: 'Business Growth Specialist',
+    company: 'BrainTap, Inc',
+    period: 'Feb 2020 – Mar 2021 · 1 yr 2 mos · On-Site',
+    groups: [
+      {
+        heading: 'Sales & Revenue Growth',
+        items: [
+          'Drove new business opportunities through direct sales, partner collaborations, and trade show events',
+          'Executed sales strategies that increased visibility and strengthened affiliate-driven revenue',
+          'Supported the full sales process — from lead generation and qualification to closing new partnerships',
+        ],
+      },
+      {
+        heading: 'Partner & Affiliate Program Development',
+        items: [
+          'Built and maintained strong relationships with partners and affiliates to expand market reach',
+          'Produced training videos and resources to streamline affiliate onboarding and improve adoption',
+          'Assisted in program implementation to ensure partners had the tools and knowledge to succeed',
+        ],
+      },
+      {
+        heading: 'Trade Show & Event Sales',
+        items: [
+          'Represented the company at trade shows, driving awareness and capturing new leads',
+          'Conducted live product demonstrations and presentations to attract prospects and strengthen relationships',
+          'Collaborated with the marketing team to maximize impact through cohesive branding and outreach',
+        ],
+      },
+    ],
+    achievements: [
+      'Drove new business growth through a multi-channel approach combining direct sales, strategic partnerships, and high-impact trade show presence',
+      'Streamlined affiliate onboarding through comprehensive training resources, improving partner adoption and program effectiveness',
+      'Enhanced partner integration and success through direct implementation support, ensuring smooth transitions and sustained performance',
+    ],
+  },
+]
+
+const customerSupportRoles = [
+  {
+    title: 'Customer Support',
+    company: 'BrainTap, Inc',
+    period: 'Feb 2017 – Mar 2021 · 4 yrs 2 mos · On-Site',
+    groups: [
+      {
+        heading: 'Customer Support Operations',
+        items: [
+          'Provided comprehensive technical support via phone, email, and live chat for BrainTap\'s meditation and brainwave technology products',
+          'Troubleshot hardware and software issues across iOS, Android, and desktop applications',
+          'Maintained detailed customer interaction records in CRM systems, ensuring continuity and quality of service',
+        ],
+      },
+      {
+        heading: 'Technical Problem Resolution',
+        items: [
+          'Diagnosed and resolved complex technical issues with BrainTap headsets, mobile apps, and subscription services',
+          'Collaborated with development teams to identify software bugs and provide detailed user feedback for product improvements',
+          'Created and maintained troubleshooting guides and FAQ documentation for common customer issues',
+        ],
+      },
+      {
+        heading: 'Customer Experience',
+        items: [
+          'Achieved and maintained high customer satisfaction scores through empathetic communication and efficient problem resolution',
+          'Processed returns, exchanges, and warranty claims while ensuring positive customer outcomes',
+          'Educated customers on product features and optimal usage to maximise their wellness experience',
+        ],
+      },
+    ],
+    achievements: [
+      'Consistently exceeded response time and resolution metrics, contributing to improved overall customer satisfaction',
+      'Developed expertise in wellness technology products, becoming a trusted resource for both customers and internal teams',
+      'Built a strong foundation in customer service best practices that informed later management approaches',
+    ],
+  },
+]
+
+const toolCategories = [
+  {
+    label: 'AI Tools & Technologies',
+    items: [
+      'Claude Code',
+      'OpenAI',
+      'Google Labs',
+      'ElevenLabs',
+      'Sora',
+      'Suno',
+      'Agentic AI',
+      'Generative AI',
+      'Conversational AI',
+      'Multimodal AI',
+      'Voice AI',
+    ],
+  },
+  {
+    label: 'CRM & Support Platforms',
+    items: ['HubSpot', 'Infusionsoft', 'OSCommerce', 'Drift Chat'],
+  },
+  {
+    label: 'Payment & E-commerce',
+    items: ['Stripe', 'PayPal', 'Authorize.net', 'Lead Dyno', 'Post Affiliate Pro', 'Google Play', 'Apple App Store'],
+  },
+  {
+    label: 'Project Management',
+    items: ['Asana', 'ClickUp', 'JIRA', 'Confluence', 'Bitbucket', 'Slack', 'Microsoft Teams', 'Zoom', 'Calendly'],
+  },
+  {
+    label: 'Platform Administration',
+    items: ['AWS Management Console', 'Microsoft Platform Admin', 'Apple Developer Platform', 'Stripe Administration'],
+  },
+  {
+    label: 'RevOps & Automation',
+    items: ['Revenue Operations', 'Workflow Automation', 'Business Process Automation', 'System Integration', 'KPI Management'],
+  },
+  {
+    label: 'Compliance & Regulatory',
+    items: ['CE Certification', 'EU Conformity', 'International Market Compliance', 'Safety Documentation', 'Manufacturer Relations'],
+  },
+  {
+    label: 'Creative & Media',
+    items: ['Unreal Engine', 'Ableton Live 11', 'Adobe Suite', 'Google Services', 'Stable Diffusion AI'],
+  },
+  {
+    label: 'Business & Admin',
+    items: ['Microsoft Office Suite', 'Gusto', 'ADP', 'Tradeshow Operations'],
+  },
+]
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function RoleCard({ role }: { role: typeof managementRoles[0] }) {
+  return (
+    <div className="border border-primary-600/30 rounded-md p-6 bg-primary-800/40">
+      <p className="font-display text-lg font-bold text-white">{role.title}</p>
+      <p className="text-primary-300 text-sm mt-0.5">{role.company} · <span className="italic">{role.period}</span></p>
+
+      <div className="mt-5 space-y-5">
+        {role.groups.map((group) => (
+          <div key={group.heading}>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">{group.heading}</p>
+            <ul className="space-y-1.5">
+              {group.items.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="text-gold text-xs mt-1 shrink-0">●</span>
+                  <span className="text-primary-200 text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 pt-5 border-t border-primary-600/30">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Key Achievements</p>
+        <ul className="space-y-1.5">
+          {role.achievements.map((a) => (
+            <li key={a} className="flex items-start gap-2">
+              <span className="text-gold text-xs mt-1 shrink-0">✦</span>
+              <span className="text-primary-100 text-sm leading-relaxed">{a}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
 }
 
-const handleProgress = ({ playedSeconds: secondsPlayed }: { playedSeconds: number }) => {
-  if (secondsPlayed > 1) {
-    console.log(secondsPlayed)
-  }
+function AccordionSection({
+  title,
+  index,
+  children,
+}: {
+  title: string
+  index: number
+  children: React.ReactNode
+}) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="border-l-4 border-gold bg-primary-700/50 backdrop-blur-sm rounded-md shadow-custom-dark overflow-hidden"
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-6 py-5 text-left group"
+      >
+        <span className="font-display text-xl font-bold text-white group-hover:text-gold transition-colors duration-200">
+          {title}
+        </span>
+        <svg
+          className={`w-5 h-5 text-gold transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: 'easeInOut' }}
+          >
+            <div className="px-6 pb-6 border-t border-primary-600/30 pt-5 space-y-4">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
 }
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ResumePage() {
   return (
-    <div className="flex flex-col flex-grow px-4 py-2 overflow-hidden h-full">
-      {/* Resume Card with Navigation */}
-      <ResumeCard />
-      
-      <div className="flex-grow overflow-y-auto scrollbar-hide">
-        <div className="text-sm sm:text-base font-medium tracking-wide sm:tracking-wider py-4">
-      {/* Experience Sections Container */}
-      <div className="space-y-4 sm:space-y-6">
-        <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
-        >
-          <summary className="font-semibold p-3 sm:p-4 text-lg sm:text-xl md:text-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-t-lg transition-colors duration-200">Management</summary>
-          <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 flex flex-col space-y-4">
-            
-            {/* Sr. Operations, RevOps & Hardware Manager Nested Dropdown */}
-            <details className="cursor-pointer border border-gray-300 rounded-lg hover:shadow-sm hover:border-opacity-0 transform hover:-translate-y-0.5 transition-all duration-200">
-              <summary className="font-semibold p-3 sm:p-4 text-base sm:text-lg md:text-xl hover:bg-gray-50 dark:hover:bg-gray-800/30 rounded-t-lg transition-colors duration-200">Sr. Operations, RevOps & Hardware Manager</summary>
-              <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 flex flex-col space-y-4">
-                <div className="space-y-2">
-                  <h3 className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400">Sr. Operations, RevOps & Hardware Manager</h3> 
-                  <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                    <span className="font-medium">BrainTap, Inc</span> • <span className="italic">Oct 2023 - Current | Hybrid</span>
-                  </div>
-                  <div className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-200 space-y-4">
-                    
-                    <div className="space-y-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Operations & Project Management</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Lead cross-functional projects covering hardware, software, and RevOps initiatives</li>
-                        <li>Develop and refine SOPs to improve efficiency across multi-system company operations</li>
-                        <li>Manage KPIs, system reviews, and process improvements to align with executive initiatives</li>
-                        <li>Oversee international operations, project planning, and system maintenance</li>
-                      </ul>
-                    </div>
+    <div className="pt-24 pb-24 px-6 sm:px-12 lg:px-24 xl:px-32 max-w-7xl mx-auto">
 
-                    <div className="space-y-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Product & Compliance Management</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Key Product Owner for BrainTap and NeuralChek products, responsible for shaping product direction, managing requirements, and ensuring successful delivery through collaboration with engineering, QA, and design teams. Focused on enhancing user experience, integrating feedback, and maintaining product quality across hardware and software platforms</li>
-                        <li>Coordinate with manufacturers to secure safety documentation and product certifications</li>
-                        <li>Ensure compliance with CE and European Union conformity requirements</li>
-                        <li>Manage digital strategy, content planning, and audio session deployment</li>
-                      </ul>
-                    </div>
-
-                    <div className="space-y-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">RevOps & Systems Administration</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Administer AWS, Microsoft, Stripe, and Apple Developer platforms</li>
-                        <li>Design and optimize automation workflows to streamline business operations</li>
-                        <li>Create detailed business requirement documents and user story mapping for system improvements</li>
-                        <li>Support cross-platform integrations and digital infrastructure growth</li>
-                      </ul>
-                    </div>
-
-                    <div className="space-y-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Leadership & Collaboration</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Partner directly with executives and stakeholders to execute business growth strategies</li>
-                        <li>Provide training, support, and implementation guidance across systems and teams</li>
-                        <li>Oversee Customer Success Manager and team, driving customer satisfaction initiatives</li>
-                        <li>Deliver strong communication across technical and non-technical teams</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="mt-5 pt-4 border-t border-gray-300 dark:border-gray-600">
-                      <h4 className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide mb-3">Key Achievements</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Led product ownership initiatives for BrainTap and NeuralChek products, driving enhanced user experience and product quality through strategic collaboration with engineering, QA, and design teams</li>
-                        <li>Spearheaded comprehensive compliance initiatives to secure international market access for BrainTap products, ensuring adherence to CE and European Union conformity requirements</li>
-                        <li>Executed strategic Sr. Operations initiatives that optimized cross-functional workflows, resulting in improved efficiency across hardware development, software deployment, and RevOps processes</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-            {/* Manager, Customer Success Nested Dropdown */}
-            <details className="cursor-pointer border border-gray-300 rounded-lg hover:shadow-sm hover:border-opacity-0 transform hover:-translate-y-0.5 transition-all duration-200">
-              <summary className="font-semibold p-3 sm:p-4 text-base sm:text-lg md:text-xl hover:bg-gray-50 dark:hover:bg-gray-800/30 rounded-t-lg transition-colors duration-200">Customer Success Manager</summary>
-              <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 flex flex-col space-y-4">
-                <div className="space-y-2">
-                  <h3 className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400">Customer Success Manager</h3> 
-                  <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                    <span className="font-medium">BrainTap, Inc</span> • <span className="italic">Mar 2021 - Oct 2023 • 2 yrs 8 mos | Remote</span>
-                  </div>
-                  <div className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-200 space-y-4">
-                    
-                    <div className="space-y-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Strategic Leadership & Operations</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Lead Customer Success operations, delivering KPIs and strategic recommendations directly to executive leadership</li>
-                        <li>Drive initiatives to improve customer experience, retention, and referrals across all touchpoints</li>
-                        <li>Collaborate with leadership to design job descriptions and scale Customer Success function in alignment with company goals</li>
-                      </ul>
-                    </div>
-
-                    <div className="space-y-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Systems & Infrastructure</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Built and optimized customer support infrastructure in <strong>HubSpot</strong>, including pipelines, workflows, chatbots, SLAs, dashboards, knowledge base, and feedback surveys (CSAT, NPS)</li>
-                        <li>Administered system access and permissions in <strong>HubSpot, Infusionsoft, Oscommerce, Post Affiliate Pro, Zoom, and Confluence</strong>, ensuring cross-team alignment</li>
-                        <li>Developed and enforced SOPs to streamline workflows, reduce resolution times, and enhance service quality across call, email, and chat channels</li>
-                      </ul>
-                    </div>
-
-                    <div className="space-y-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Team Management & Training</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Trained, coached, and upskilled customer success teams, including international call center operations</li>
-                        <li>Implemented <strong>HubSpot certifications</strong> and ongoing development programs for team excellence</li>
-                        <li>Created training videos and documentation for internal teams and external customers to drive adoption and troubleshooting success</li>
-                      </ul>
-                    </div>
-
-                    <div className="space-y-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Client Relations & Business Development</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Partnered with healthcare professionals and affiliates to deliver onboarding, training, and ROI-driven implementation of BrainTap technologies</li>
-                        <li>Managed affiliate program operations, ensuring accurate commissions, campaign execution, and close collaboration with marketing</li>
-                        <li>Oversaw customer invoicing, refunds, and payments across <strong>Authorize.net, PayPal, and Stripe</strong>, maintaining accuracy and satisfaction</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="mt-5 pt-4 border-t border-gray-300 dark:border-gray-600">
-                      <h4 className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide mb-3">Key Achievements</h4>
-                      <ul className="list-disc list-outside ml-5 space-y-2">
-                        <li>Streamlined workflows and automations, resulting in improved SLA adherence, faster issue resolution, and stronger customer retention</li>
-                        <li>Established scalable support systems and feedback loops that elevated customer satisfaction scores and strengthened product improvement cycles</li>
-                        <li>Successfully managed global communications and partnerships, ensuring consistent, high-quality service across diverse markets</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-          </div>
-        </details>
-
-        <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
-          <summary className="font-semibold p-3 sm:p-4 text-lg sm:text-xl md:text-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-t-lg transition-colors duration-200">Business Growth</summary>
-          <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 flex flex-col space-y-4">
-            <div className="space-y-2">
-              <h3 className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400">Business Growth Specialist</h3> 
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                <span className="font-medium">BrainTap, Inc</span> • <span className="italic">Feb 2020 – Mar 2021 • 1 yr 2 mos | On-Site</span>
-              </div>
-              <div className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-200 space-y-4">
-                
-                <div className="space-y-3">
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Sales & Revenue Growth</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Drove new business opportunities through direct sales, partner collaborations, and trade show events</li>
-                    <li>Executed sales strategies that increased visibility and strengthened affiliate-driven revenue</li>
-                    <li>Supported the full sales process, from lead generation and qualification to closing new partnerships</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Partner & Affiliate Program Development</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Built and maintained strong relationships with partners and affiliates to expand market reach</li>
-                    <li>Produced training videos and resources to streamline affiliate onboarding and improve adoption</li>
-                    <li>Assisted in program implementation to ensure partners had the tools and knowledge to succeed</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Training & Implementation Support</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Delivered training sessions for partners and affiliates to strengthen product knowledge and sales effectiveness</li>
-                    <li>Developed resources and documentation to support consistent messaging and program use</li>
-                    <li>Provided direct support during onboarding and implementation, ensuring smooth partner integration</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Trade Show & Event Sales</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Represented the company at trade shows, driving awareness and capturing new leads</li>
-                    <li>Conducted live product demonstrations and presentations to attract prospects and strengthen relationships</li>
-                    <li>Collaborated with the marketing team to maximize impact at events through cohesive branding and outreach</li>
-                  </ul>
-                </div>
-                
-                <div className="mt-5 pt-4 border-t border-gray-300 dark:border-gray-600">
-                  <h4 className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide mb-3">Key Achievements</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Successfully drove new business growth through multi-channel approach combining direct sales, strategic partnerships, and high-impact trade show presence</li>
-                    <li>Streamlined affiliate onboarding process through comprehensive training resources, resulting in improved partner adoption and program effectiveness</li>
-                    <li>Enhanced partner integration and success through direct implementation support, ensuring smooth transitions and sustained performance across all partnerships</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
-          <summary className="font-semibold p-3 sm:p-4 text-lg sm:text-xl md:text-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-t-lg transition-colors duration-200">Customer Support</summary>
-          <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 flex flex-col space-y-4">
-            <div className="space-y-2">
-              <h3 className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400">Customer Support</h3> 
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                <span className="font-medium">BrainTap, Inc</span> • <span className="italic">Feb 2017 - Mar 2021 • 4 yrs 2 mos | On-Site</span>
-              </div>
-              <div className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-200 space-y-4">
-                
-                <div className="space-y-3">
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Customer Support Operations</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Provided comprehensive technical support via phone, email, and live chat for BrainTap's meditation and brainwave technology products</li>
-                    <li>Troubleshot hardware and software issues across multiple platforms including iOS, Android, and desktop applications</li>
-                    <li>Maintained detailed customer interaction records in CRM systems, ensuring continuity and quality of service</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Technical Problem Resolution</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Diagnosed and resolved complex technical issues with BrainTap headsets, mobile apps, and subscription services</li>
-                    <li>Collaborated with development teams to identify software bugs and provide detailed user feedback for product improvements</li>
-                    <li>Created and maintained troubleshooting guides and FAQ documentation for common customer issues</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-300 uppercase tracking-wide">Customer Experience Enhancement</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Achieved and maintained high customer satisfaction scores through empathetic communication and efficient problem resolution</li>
-                    <li>Processed returns, exchanges, and warranty claims while ensuring positive customer outcomes</li>
-                    <li>Educated customers on product features and optimal usage to maximize their wellness experience</li>
-                  </ul>
-                </div>
-                
-                <div className="mt-5 pt-4 border-t border-gray-300 dark:border-gray-600">
-                  <h4 className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide mb-3">Key Achievements</h4>
-                  <ul className="list-disc list-outside ml-5 space-y-2">
-                    <li>Consistently exceeded response time and resolution metrics, contributing to improved overall customer satisfaction</li>
-                    <li>Developed expertise in wellness technology products, becoming a trusted resource for both customers and internal teams</li>
-                    <li>Built strong foundation in customer service best practices that informed later management approaches</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
-          <summary className="font-semibold p-3 sm:p-4 text-lg sm:text-xl md:text-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-t-lg transition-colors duration-200">
-            Personal Projects
-          </summary>
-
-          <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
-            <div className="space-y-3">
-              <h3 className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400">Unreal Engine</h3>
-              
-              <div className="space-y-4">
-                <h4 className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200">Video Production</h4>
-                <div className="relative w-full max-w-2xl mx-auto">
-                  <div className="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
-                    <ReactPlayer
-                      className="react-player"
-                      url="https://www.youtube.com/watch?v=uG51UuOWEC4"
-                      width="100%"
-                      height="100%"
-                      onReady={handleChange}
-                      controls={true}
-                      onProgress={handleProgress}
-                    />
-                  </div>
-                </div>
-                <div className="text-sm sm:text-base text-gray-700 dark:text-gray-200 space-y-2">
-                  <div className="flex items-start space-x-2">
-                    <span className="text-blue-500 mt-1">•</span>
-                    <span>Creating 3D landscapes and cinematic productions, setup camera and cinematics using sequencer</span>
-                  </div>
-                  <div className="flex items-start space-x-2">
-                    <span className="text-blue-500 mt-1">•</span>
-                    <span>Advanced rendering techniques and post-processing workflows</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details className="cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
-        >
-          <summary className="font-semibold p-3 sm:p-4 text-lg sm:text-xl md:text-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-t-lg transition-colors duration-200">Tools & Software</summary>
-          <div className="px-3 py-4 sm:px-6 sm:py-6 mx-auto max-w-full space-y-6 sm:space-y-8">
-            
-            {/* Customer Relationship Management */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Customer Relationship Management
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "Hubspot, Infusionsoft", level: "85" },
-                  { name: "OSCommerce", level: "90" },
-                  { name: "Drift Chat", level: "75" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-green-50/90 dark:bg-green-900/40 text-green-900 dark:text-green-100 border-green-200 dark:border-green-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Payment Processing & E-commerce */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Payment Processing & E-commerce
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "Stripe, Paypal, Payment Processors", level: "85" },
-                  { name: "Lead Dyno, Post Affiliate Pro", level: "65" },
-                  { name: "Google Play, Apple App Store", level: "85" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-purple-50/90 dark:bg-purple-900/40 text-purple-900 dark:text-purple-100 border-purple-200 dark:border-purple-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Project Management & Communication */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Project Management & Communication
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "Asana, Click Up", level: "80" },
-                  { name: "Slack, Microsoft Teams", level: "85" },
-                  { name: "Zoom, Talk Desk", level: "80" },
-                  { name: "Calendly", level: "85" },
-                  { name: "JIRA, Confluence, Bitbucket", level: "55" },
-                  { name: "Atlassian Tools", level: "55" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-blue-50/90 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 border-blue-200 dark:border-blue-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Development & Technical Tools */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Development & Technical Tools
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "Visual Studio Code", level: "60" },
-                  { name: "Git, Github, Source Control", level: "60" },
-                  { name: "Wordpress", level: "60" },
-                  { name: "AWS Management Console", level: "65" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-orange-50/90 dark:bg-orange-900/40 text-orange-900 dark:text-orange-100 border-orange-200 dark:border-orange-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Creative & Media Production */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Creative & Media Production
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "Unreal Engine Animation Pipeline", level: "65" },
-                  { name: "Ableton Live 11 Suite", level: "85" },
-                  { name: "Google Services, Adobe Services", level: "65" },
-                  { name: "Stable Diffusion AI Pipeline", level: "55" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-indigo-50/90 dark:bg-indigo-900/40 text-indigo-900 dark:text-indigo-100 border-indigo-200 dark:border-indigo-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Business & Administrative */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Business & Administrative
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "BrainTap Products", level: "95" },
-                  { name: "Tradeshow efficiency", level: "90" },
-                  { name: "Microsoft Suite Products", level: "85" },
-                  { name: "Gusto, ADP", level: "75" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-teal-50/90 dark:bg-teal-900/40 text-teal-900 dark:text-teal-100 border-teal-200 dark:border-teal-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Product Management & Strategy */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Product Management & Strategy
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "Product Ownership", level: "85" },
-                  { name: "Requirements Management", level: "80" },
-                  { name: "User Story Mapping", level: "75" },
-                  { name: "Product Lifecycle Management", level: "80" },
-                  { name: "Business Requirement Documents", level: "85" },
-                  { name: "Digital Strategy", level: "75" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-emerald-50/90 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-100 border-emerald-200 dark:border-emerald-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* RevOps & Automation */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                RevOps & Automation
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "Revenue Operations", level: "80" },
-                  { name: "Workflow Automation", level: "85" },
-                  { name: "Business Process Automation", level: "80" },
-                  { name: "System Integration", level: "75" },
-                  { name: "Cross-platform Integrations", level: "70" },
-                  { name: "KPI Management", level: "85" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-violet-50/90 dark:bg-violet-900/40 text-violet-900 dark:text-violet-100 border-violet-200 dark:border-violet-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Compliance & Regulatory */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Compliance & Regulatory
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "CE Certification", level: "80" },
-                  { name: "European Union Conformity", level: "75" },
-                  { name: "International Market Compliance", level: "80" },
-                  { name: "Safety Documentation", level: "75" },
-                  { name: "Product Certifications", level: "80" },
-                  { name: "Manufacturer Relations", level: "85" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-amber-50/90 dark:bg-amber-900/40 text-amber-900 dark:text-amber-100 border-amber-200 dark:border-amber-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Platform Administration */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Platform Administration
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "AWS Administration", level: "70" },
-                  { name: "Microsoft Platform Admin", level: "75" },
-                  { name: "Apple Developer Platform", level: "80" },
-                  { name: "Stripe Administration", level: "75" },
-                  { name: "System Reviews", level: "80" },
-                  { name: "Digital Infrastructure", level: "75" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-cyan-50/90 dark:bg-cyan-900/40 text-cyan-900 dark:text-cyan-100 border-cyan-200 dark:border-cyan-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Leadership & Team Management */}
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-600 pb-2">
-                Leadership & Team Management
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  { name: "Cross-functional Team Leadership", level: "85" },
-                  { name: "International Team Coordination", level: "80" },
-                  { name: "Training Development", level: "85" },
-                  { name: "Stakeholder Management", level: "85" },
-                  { name: "Executive Partnership", level: "80" },
-                  { name: "Customer Success Operations", level: "90" }
-                ].map((skill, i) => (
-                  <div key={i} className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border bg-rose-50/90 dark:bg-rose-900/40 text-rose-900 dark:text-rose-100 border-rose-200 dark:border-rose-700 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
-                    <span className="font-semibold">{skill.name}</span>
-                    <span className="ml-1.5 sm:ml-2 text-xs opacity-75 font-medium hidden sm:inline">
-                      ({parseInt(skill.level) >= 90 ? 'Expert' : 
-                        parseInt(skill.level) >= 75 ? 'Advanced' : 
-                        parseInt(skill.level) >= 60 ? 'Intermediate' : 'Beginner'})
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </details>
-      </div>
+      {/* Page header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mb-12 flex items-end justify-between flex-wrap gap-4"
+      >
+        <div>
+          <h1 className="font-display text-3xl font-bold text-white">Resume</h1>
+          <div className="w-12 h-1 bg-gold-accent rounded-full mt-3" />
         </div>
-        
-        {/* Bottom Padding for Mobile Scroll */}
-        <div className="h-6 flex-shrink-0"></div>
+        <a
+          href="/images/ShandonResume.pdf"
+          download
+          className="border border-primary-400 text-primary-100 px-5 py-2 rounded-md text-sm hover:border-gold hover:text-gold transition-all duration-200"
+        >
+          Download PDF
+        </a>
+      </motion.div>
+
+      {/* Accordion sections */}
+      <div className="space-y-4">
+
+        <AccordionSection title="Management" index={0}>
+          <div className="space-y-4">
+            {managementRoles.map((role) => <RoleCard key={role.title} role={role} />)}
+          </div>
+        </AccordionSection>
+
+        <AccordionSection title="Business Growth" index={1}>
+          <div className="space-y-4">
+            {businessGrowthRoles.map((role) => <RoleCard key={role.title} role={role} />)}
+          </div>
+        </AccordionSection>
+
+        <AccordionSection title="Customer Support" index={2}>
+          <div className="space-y-4">
+            {customerSupportRoles.map((role) => <RoleCard key={role.title} role={role} />)}
+          </div>
+        </AccordionSection>
+
+        <AccordionSection title="Personal Projects" index={3}>
+          <div>
+            <p className="text-gold font-display text-lg font-bold mb-1">Unreal Engine</p>
+            <p className="text-primary-300 text-sm mb-4">3D Landscape & Cinematic Production</p>
+            <div className="aspect-video rounded-md overflow-hidden mb-4">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/uG51UuOWEC4"
+                title="Unreal Engine Production"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <ul className="space-y-1.5">
+              {[
+                'Create 3D landscapes and cinematic productions — camera setup and cinematics using Sequencer',
+                'Advanced rendering techniques and post-processing workflows',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="text-gold text-xs mt-1 shrink-0">●</span>
+                  <span className="text-primary-200 text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </AccordionSection>
+
+        <AccordionSection title="Tools & Software" index={4}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {toolCategories.map((cat) => (
+              <div
+                key={cat.label}
+                className="border-l-4 border-gold bg-primary-800/50 rounded-md p-4 flex flex-col gap-3"
+              >
+                <p className="text-xs font-semibold uppercase tracking-widest text-gold">{cat.label}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.items.map((item) => (
+                    <span
+                      key={item}
+                      className="bg-primary-700/60 border border-gold/15 text-primary-200 rounded px-2.5 py-1 text-xs leading-snug"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </AccordionSection>
+
       </div>
     </div>
   )

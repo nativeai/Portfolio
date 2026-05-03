@@ -1,23 +1,23 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from "next-themes"
 import Navbar from "../components/Navbar"
-import Sidebar from "../components/Sidebar"
+import FloatingChat from "../components/FloatingChat"
 import "../styles/globals.css"
 import { SceneProvider } from '../components/SceneProvider'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Portfolio',
-    template: '%s | Portfolio',
+    default: 'Shandon Hicks — Director of Operations',
+    template: '%s | Shandon Hicks',
   },
-  description: 'My awesome Next.js portfolio application',
-  keywords: ['Next.js', 'React', 'TypeScript', 'Portfolio'],
-  authors: [{ name: 'Shandon' }],
-  creator: 'Shandon',
+  description: 'Director of Operations specializing in RevOps, customer support, logistics, and operational systems for scaling companies.',
+  keywords: ['Operations', 'RevOps', 'Director of Operations', 'Customer Experience', 'Logistics', 'Portfolio'],
+  authors: [{ name: 'Shandon Hicks' }],
+  creator: 'Shandon Hicks',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'Portfolio',
+    siteName: 'Shandon Hicks',
   },
   robots: {
     index: true,
@@ -31,24 +31,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atelier-cave-dark.min.css"/>
       </head>
-      <body className="bg-fixed bg-gradient-to-r from-beige-200 to-blue dark:from-dark-500 dark:to-dark-700 dark:text-white">
-        <ThemeProvider attribute="class">
+      <body className="bg-hero text-primary-100 font-sans min-h-screen">
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <SceneProvider />
-          <div className="grid grid-cols-12 gap-6 px-5 my-14 lg:mb-0 md:mb-16 sm:px-20 md:px-32 lg:px-36 xl:px-48">
-            <div className="h-fit w-fit max-w-full mx-auto col-span-12 p-4 sm:p-5 md:p-6 text-base text-center bg-white/90 dark:bg-dark-500/90 lg:col-span-3 rounded-md shadow-custom-light dark:shadow-custom-dark backdrop-blur-sm overflow-visible sm:overflow-hidden">
-              <Sidebar />
-            </div>
-            <div className="flex flex-col col-span-12 overflow-hidden bg-white/90 shadow-custom-light dark:shadow-custom-dark rounded-md lg:col-span-9 dark:bg-dark-500/90 backdrop-blur-sm">
-              <Navbar />
-              {children}
-            </div>
-          </div>
+          <Navbar />
+          <main>{children}</main>
+          <FloatingChat />
         </ThemeProvider>
       </body>
     </html>

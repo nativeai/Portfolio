@@ -19,7 +19,7 @@ const nextConfig = {
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: false,
   },
-  transpilePackages: ['three'],
+  transpilePackages: ['three', 'talkivo-chat'],
   poweredByHeader: false,
   reactStrictMode: true,
   compress: true,
@@ -37,6 +37,7 @@ const nextConfig = {
               "img-src 'self' data: https:",
               "font-src 'self' data:",
               "connect-src 'self'",
+              "media-src 'self' blob:",
               "frame-src 'none'",
               "object-src 'none'",
               "base-uri 'self'",
@@ -62,7 +63,7 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+            value: 'camera=(), microphone=(self), geolocation=(), interest-cohort=()'
           },
           {
             key: 'Strict-Transport-Security',

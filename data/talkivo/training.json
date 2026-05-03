@@ -1,0 +1,260 @@
+{
+  "company": {
+    "agentName": "Nova",
+    "greeting": "Hello, thanks for calling! This is Nova, Shandon Hicks' AI assistant. Ask me any questions about Shandon's work and I'll do my best to answer them.",
+    "name": "Shandon Hicks",
+    "description": "Director of Operations specializing in Revenue Operations (RevOps), customer support optimization, logistics, operational systems, and global compliance for scaling companies. Currently Director of Operations at BrainTap, Inc.",
+    "services": "Revenue Operations, Operational Execution, Customer Experience Optimization, Logistics & Global Compliance",
+    "targetAudience": "Scaling companies, growth-stage startups, and businesses experiencing operational friction, revenue system problems, or customer support challenges.",
+    "uniqueValue": "Shandon builds, fixes, and scales the operational and revenue systems that let companies grow faster — bringing structure, visibility, and accountability to teams that have outgrown their current processes.",
+    "website": "https://shandonhicks.dev"
+  },
+  "faqs": [
+    {
+      "id": "who-is-shandon",
+      "question": "Who is Shandon Hicks?",
+      "answer": "Shandon Hicks is a Director of Operations specializing in Revenue Operations (RevOps), customer support, logistics, and operational systems for scaling companies. He currently serves as Director of Operations at BrainTap, Inc., where he oversees the company's full operational infrastructure across sales & partnerships, customer experience, and logistics."
+    },
+    {
+      "id": "what-does-he-do",
+      "question": "What does Shandon do?",
+      "answer": "Shandon builds, fixes, and scales the operational and revenue systems that let companies grow.\n\nHis work spans four core areas:\n\n  1. Revenue Operations (RevOps)\n  2. Operational Execution\n  3. Customer Experience\n  4. Logistics & Compliance\n\nWhich area would you like to know more about?"
+    },
+    {
+      "id": "current-role",
+      "question": "Where does Shandon work? What is his current role?",
+      "answer": "Shandon is currently Director of Operations at BrainTap, Inc. (October 2025 – Present). He oversees the company's operational infrastructure across sales & partnerships, customer experience, and logistics. He manages an outsourced support team and has built the documentation and training infrastructure that allows the function to scale efficiently."
+    },
+    {
+      "id": "what-is-braintap",
+      "question": "What is BrainTap?",
+      "answer": "BrainTap, Inc. is the company where Shandon currently serves as Director of Operations. At BrainTap, he oversees operational infrastructure across sales & partnerships, customer experience, and logistics, and has implemented CRM frameworks, pipeline structures, and reporting dashboards that improved sales consistency and forecasting accuracy."
+    },
+    {
+      "id": "case-studies-overview",
+      "question": "What are Shandon's case studies? Tell me about his case studies. What projects has he worked on?",
+      "answer": "Shandon has three published case studies:\n\n  1. RevOps System Overhaul\n     Built CRM framework, pipeline stages, and reporting dashboards to fix broken revenue visibility.\n\n  2. Customer Support Optimization\n     Redesigned support workflows end-to-end to reduce response times and improve CSAT.\n\n  3. Operational Process Buildout\n     Restructured internal processes and cross-functional alignment to improve execution speed.\n\nWhich would you like to hear about in detail?"
+    },
+    {
+      "id": "revops-case-study",
+      "question": "Tell me about his RevOps work or case study",
+      "answer": "RevOps System Overhaul\n\nProblem: No structured CRM or pipeline framework — causing inconsistent sales, poor deal visibility, and unreliable revenue forecasting.\n\nWhat was done:\n  • Implemented a structured CRM framework\n  • Defined clear pipeline stages\n  • Established lead qualification criteria\n  • Built reporting dashboards for real-time performance data\n\nResults:\n  • Full-funnel pipeline visibility for leadership and sales teams\n  • Increased sales process consistency across the organization\n  • Accurate revenue forecasting enabled for the first time"
+    },
+    {
+      "id": "customer-support-case-study",
+      "question": "What is his customer support experience or case study?",
+      "answer": "Customer Support Optimization\n\nProblem: Elevated response times and inconsistent support were reducing customer satisfaction and increasing churn risk.\n\nWhat was done:\n  • Redesigned support workflows from triage through resolution\n  • Reduced SLA targets\n  • Built documentation and training systems for consistency at scale\n\nResults:\n  • Materially reduced first-response and resolution times\n  • Improved CSAT scores across inbound support channels\n  • Scalable support operation that grows without proportional headcount increases"
+    },
+    {
+      "id": "operations-case-study",
+      "question": "What is his operational process work or case study?",
+      "answer": "Operational Process Buildout\n\nProblem: Disorganized internal processes and lack of cross-functional alignment were slowing execution and limiting the team's ability to scale.\n\nWhat was done:\n  • Built structured documentation systems\n  • Redesigned core workflows\n  • Established cross-functional alignment with clear roles and handoffs\n\nResults:\n  • Increased efficiency across multiple departments\n  • Reduced internal friction and eliminated redundant processes\n  • Improved team execution speed and accountability"
+    },
+    {
+      "id": "logistics-compliance",
+      "question": "What is his experience with logistics and compliance?",
+      "answer": "Shandon's operational scope extends to logistics and international compliance. He manages vendor relationships, oversees fulfillment operations, and has led EU regulatory and certification efforts that positioned businesses to expand into new markets with confidence. He specializes in resolving regulatory complexity including EU compliance and certifications that block international growth."
+    },
+    {
+      "id": "engagement-build",
+      "question": "What is the Build engagement mode?",
+      "answer": "The Build engagement is for companies that need to design and implement operational and RevOps systems from the ground up — CRM structure, pipeline frameworks, reporting dashboards, and cross-functional workflows. Best for early-stage companies establishing their first operational infrastructure."
+    },
+    {
+      "id": "engagement-fix",
+      "question": "What is the Fix engagement mode?",
+      "answer": "The Fix engagement is for diagnosing and repairing broken processes across sales, customer support, logistics, or operations — identifying root causes and implementing durable solutions. Best for companies experiencing growing pains or declining performance metrics."
+    },
+    {
+      "id": "engagement-scale",
+      "question": "What is the Scale engagement mode?",
+      "answer": "The Scale engagement optimizes existing systems to improve efficiency, visibility, and growth capacity — removing bottlenecks and building for the next stage of the business. Best for companies preparing for a funding round, expansion, or significant team growth."
+    },
+    {
+      "id": "how-to-work-with",
+      "question": "How can I work with Shandon? How do I hire him?",
+      "answer": "Shandon offers three engagement modes:\n\n  1. Build\n     Design and implement systems from the ground up.\n     Best for early-stage companies.\n\n  2. Fix\n     Diagnose and repair broken processes.\n     Best for companies hitting growing pains.\n\n  3. Scale\n     Optimize existing systems for the next stage of growth.\n     Best for companies preparing for expansion.\n\nWant details on a specific mode, or ready to reach out? Use the 'Work With Me' form on the site."
+    },
+    {
+      "id": "contact",
+      "question": "How do I contact Shandon?",
+      "answer": "You can contact Shandon through the 'Send a Message' form on this website (scroll to the 'Work With Me' section and click the button). You can also connect with him on LinkedIn at linkedin.com/in/shandonhicks/."
+    },
+    {
+      "id": "linkedin",
+      "question": "What is Shandon's LinkedIn?",
+      "answer": "Shandon's LinkedIn profile is at linkedin.com/in/shandonhicks/"
+    },
+    {
+      "id": "resume",
+      "question": "Can I download Shandon's resume?",
+      "answer": "Yes. You can download Shandon's resume directly here: https://shandonhicks.dev/images/ShandonResume.pdf — or from the 'Download Resume' link on the homepage."
+    },
+    {
+      "id": "what-is-revops",
+      "question": "What is Revenue Operations or RevOps?",
+      "answer": "Revenue Operations (RevOps) is the alignment of sales, marketing, and customer success operations under one framework to drive predictable revenue growth. Shandon's RevOps work includes CRM framework design, pipeline structure, lead qualification criteria, reporting dashboards, and sales process standardization — creating full-funnel visibility and consistent, measurable revenue outcomes."
+    },
+    {
+      "id": "key-impact",
+      "question": "What are Shandon's key accomplishments or results?",
+      "answer": "Shandon's five key impacts:\n\n  1. RevOps Infrastructure\n     Increased pipeline visibility, sales consistency, and forecasting accuracy.\n\n  2. Support Workflow Redesign\n     Reduced response times and improved CSAT scores.\n\n  3. Scalable Documentation & Training\n     Enabled operational growth without proportional headcount costs.\n\n  4. EU Compliance & Certification\n     Unlocked international market expansion.\n\n  5. Cross-Functional Alignment\n     Accelerated execution speed and strengthened accountability.\n\nWould you like more detail on any of these?"
+    },
+    {
+      "id": "available-for-work",
+      "question": "Is Shandon available for freelance or consulting work?",
+      "answer": "Shandon is open to select engagements.\n\nHe works in three modes:\n  • Build — creating operational systems from scratch\n  • Fix — diagnosing and repairing broken processes\n  • Scale — optimizing existing systems for growth\n\nReach out through the contact form on the site or connect on LinkedIn at linkedin.com/in/shandonhicks/"
+    },
+    {
+      "id": "what-problems-he-solves",
+      "question": "What problems does Shandon solve?",
+      "answer": "Shandon solves four categories of operational problems:\n\n  1. Revenue Systems Breaking During Scale\n     Disorganized CRM, inconsistent sales process, poor forecasting.\n\n  2. Operational Friction\n     Bottlenecks, lack of documentation, inefficient processes.\n\n  3. Customer Support Inconsistency\n     Long response times, missed SLAs, low CSAT scores.\n\n  4. Logistics & Compliance\n     Blocking international growth, unresolved EU regulatory complexity.\n\nWould you like more detail on any of these?"
+    },
+    {
+      "id": "why-hire-shandon",
+      "question": "Why should I hire Shandon? Why hire Shandon? Tell me why I should hire Shandon.",
+      "answer": "Shandon brings something most don't — the ability to work across the full stack of a business's operational needs, not just one corner of it.\n\nHere's what sets him apart:\n\nHe delivers measurable outcomes. Not process for the sake of process. His RevOps overhaul gave leadership pipeline visibility and accurate revenue forecasting for the first time. His support optimization materially reduced response times and improved CSAT while building a team that could scale without adding proportional headcount.\n\nHe builds systems that last. Whether it's a CRM framework, a support workflow, or cross-functional documentation — Shandon designs infrastructure that keeps working after he's done, not quick fixes that create new problems.\n\nHe solves the problems that slow growth. Disorganized revenue systems, broken support operations, logistics friction, EU compliance blocking international expansion — these are the kinds of high-stakes operational challenges he's tackled and resolved at the Director level.\n\nHe knows all three stages. He can build from zero, fix what's broken, or optimize what already exists — making him valuable whether you're a startup setting up your first processes or a scaling company hitting a growth ceiling.\n\nIf your operational systems are slowing your growth, Shandon is the person who fixes that."
+    },
+    {
+      "id": "specialization",
+      "question": "What industries or company stages does Shandon specialize in?",
+      "answer": "Shandon specializes in scaling companies and growth-stage businesses that have outgrown their initial processes. He works across industries but focuses on companies that need operational infrastructure built, broken systems fixed, or existing systems scaled — particularly those preparing for growth, a funding round, or international expansion."
+    },
+    {
+      "id": "tools-and-software",
+      "question": "What tools does Shandon use? What tools does Shandon have experience with? What software does Shandon use? What software does Shandon have experience with?",
+      "answer": "Shandon has hands-on experience across nine categories of tools and platforms:\n\n  1. AI Tools & Technologies\n  2. CRM & Support Platforms\n  3. Payment & E-commerce\n  4. Project Management\n  5. Platform Administration\n  6. RevOps & Automation\n  7. Compliance & Regulatory\n  8. Creative & Media\n  9. Business & Admin\n\nWhich category would you like to know more about?"
+    },
+    {
+      "id": "tools-ai",
+      "question": "AI tools",
+      "answer": "AI Tools & Technologies:\n\n  • Claude Code — AI coding assistant used for building software and automations\n  • OpenAI — GPT-based AI models and API integrations\n  • Google Labs — Google's experimental AI tools and APIs\n  • ElevenLabs — AI voice synthesis and text-to-speech\n  • Sora — AI video generation (OpenAI)\n  • Suno — AI music generation\n  • Agentic AI — autonomous AI agent systems and workflows\n  • Generative AI — content and asset generation using AI models\n  • Conversational AI — chat and dialogue AI systems\n  • Multimodal AI — AI working across text, image, and audio\n  • Voice AI — voice-based AI interfaces and assistants\n\nWant to explore another category?"
+    },
+    {
+      "id": "tools-crm",
+      "question": "CRM platforms",
+      "answer": "CRM & Support Platforms:\n\n  • HubSpot — CRM, pipeline management, support workflows, CSAT and NPS surveys\n  • Infusionsoft — marketing automation and CRM\n  • OSCommerce — e-commerce platform management\n  • Drift Chat — conversational marketing and live chat\n\nWant to explore another category?"
+    },
+    {
+      "id": "tools-payments",
+      "question": "payment ecommerce",
+      "answer": "Payment & E-commerce:\n\n  • Stripe — payment processing and subscription management\n  • PayPal — payment processing and invoicing\n  • Authorize.net — payment gateway management\n  • Lead Dyno — affiliate and referral program tracking\n  • Post Affiliate Pro — affiliate program management and commissions\n  • Google Play — Android app distribution and billing\n  • Apple App Store — iOS app distribution and in-app purchases\n\nWant to explore another category?"
+    },
+    {
+      "id": "tools-project",
+      "question": "project management",
+      "answer": "Project Management:\n\n  • Asana — project and task management\n  • ClickUp — project management and productivity workflows\n  • JIRA — software development tracking and issue management\n  • Confluence — documentation and internal knowledge base\n  • Bitbucket — code repository and version control\n  • Slack — team communication and collaboration\n  • Microsoft Teams — video conferencing and team collaboration\n  • Zoom — video meetings and webinars\n  • Calendly — meeting scheduling and calendar management\n\nWant to explore another category?"
+    },
+    {
+      "id": "tools-platform-admin",
+      "question": "platform administration",
+      "answer": "Platform Administration:\n\n  • AWS Management Console — cloud infrastructure and services management\n  • Microsoft Platform Admin — Microsoft 365 and Azure administration\n  • Apple Developer Platform — iOS and macOS app management and distribution\n  • Stripe Administration — payment platform configuration and account management\n\nWant to explore another category?"
+    },
+    {
+      "id": "tools-revops-automation",
+      "question": "RevOps automation",
+      "answer": "RevOps & Automation:\n\n  • Revenue Operations — aligning sales, marketing, and customer success systems\n  • Workflow Automation — automating repetitive business processes end-to-end\n  • Business Process Automation — streamlining operations through system-driven workflows\n  • System Integration — connecting platforms and syncing data across tools\n  • KPI Management — defining, tracking, and optimizing performance metrics\n\nWant to explore another category?"
+    },
+    {
+      "id": "tools-compliance",
+      "question": "compliance regulatory",
+      "answer": "Compliance & Regulatory:\n\n  • CE Certification — European conformity marking for product market access\n  • EU Conformity — meeting EU regulatory and safety requirements\n  • International Market Compliance — multi-market regulatory adherence and strategy\n  • Safety Documentation — product safety records, certifications, and compliance files\n  • Manufacturer Relations — coordinating with manufacturers on compliance and certification\n\nWant to explore another category?"
+    },
+    {
+      "id": "tools-creative",
+      "question": "creative media",
+      "answer": "Creative & Media:\n\n  • Unreal Engine — 3D landscape and cinematic production with Sequencer\n  • Ableton Live 11 — music production and audio creation\n  • Adobe Suite — design, video editing, and creative production tools\n  • Google Services — Google Workspace and cloud-based productivity tools\n  • Stable Diffusion AI — AI image generation and visual content creation\n\nWant to explore another category?"
+    },
+    {
+      "id": "tools-business-admin",
+      "question": "business admin",
+      "answer": "Business & Admin:\n\n  • Microsoft Office Suite — Word, Excel, PowerPoint, and Outlook\n  • Gusto — payroll processing and HR management\n  • ADP — workforce management and payroll administration\n  • Tradeshow Operations — trade show planning, execution, and on-site sales\n\nWant to explore another category?"
+    }
+  ],
+  "files": [
+    {
+      "id": "full-bio",
+      "name": "Shandon Hicks — Full Bio & Experience",
+      "content": "Shandon Hicks — Director of Operations\n\nCurrent Role: Director of Operations at BrainTap, Inc. (October 2025 – Present)\n\nShandon Hicks is a Director of Operations specializing in RevOps, customer support, logistics, operational systems, and global compliance for scaling companies.\n\nAs Director of Operations at BrainTap, Inc., he oversees the company's operational infrastructure across sales & partnerships, customer experience, and logistics. His focus is on building and scaling systems that support a growing commercial footprint while maintaining the discipline required to sustain high-performance teams.\n\nIn revenue operations, Shandon has designed and implemented CRM frameworks, pipeline structures, and reporting dashboards that have improved sales consistency and forecasting accuracy. He has also established lead qualification criteria and process standards that reduce variability and strengthen rep-level accountability across the organization.\n\nOn the customer experience side, he redesigned support workflows end-to-end — from triage through resolution — reducing SLA response times and improving CSAT scores. He manages an outsourced support team and has built the documentation and training infrastructure that allows the function to scale efficiently without proportional headcount growth.\n\nHis operational scope extends to logistics and international compliance, where he manages vendor relationships, oversees fulfillment operations, and has led EU regulatory and certification efforts that positioned the business to expand into new markets with confidence.\n\nKey Impacts:\n- Designed and deployed RevOps infrastructure that increased pipeline visibility, sales consistency, and forecasting accuracy\n- Restructured customer support workflows, driving measurable reductions in response times and improvements in customer satisfaction\n- Built scalable documentation and training systems that enable operational growth without linear cost increases\n- Led EU compliance and certification initiatives that unlocked international market expansion\n- Developed cross-functional alignment processes that accelerated execution speed and strengthened organizational accountability",
+      "uploadedAt": "2026-05-02T00:00:00.000Z"
+    },
+    {
+      "id": "services",
+      "name": "Services & What Shandon Does",
+      "content": "What Shandon Does — Services Overview\n\n1. Revenue Operations\nProblem: Scaling is breaking your revenue systems.\nSymptoms: CRM is disorganized with no clear pipeline structure. Sales process is inconsistent across reps and channels. Reporting lacks the clarity needed to forecast accurately.\nSolution: Shandon designs and implements structured RevOps systems that create full pipeline visibility and drive consistent, measurable revenue growth.\n\n2. Operational Execution\nProblem: Operational friction is slowing your team down.\nSymptoms: Bottlenecks forming across departments with no clear ownership. Lack of documentation and training leads to repeated errors. Internal processes are inefficient and difficult to scale.\nSolution: Shandon builds scalable operational frameworks that improve execution speed, cross-functional clarity, and team accountability.\n\n3. Customer Experience\nProblem: Customer support is inconsistent and reactive.\nSymptoms: Response times are too long and SLAs are frequently missed. CSAT scores reflect a fragmented or poor support experience. Support workflows are undocumented and difficult to train.\nSolution: Shandon optimizes customer support systems to reduce response times, improve satisfaction scores, and build a scalable support operation.\n\n4. Logistics & Compliance\nProblem: Logistics and compliance are blocking international growth.\nSymptoms: Vendor relationships are inefficient and poorly managed. Inventory or fulfillment challenges are creating delays. Regulatory complexity — including EU compliance and certifications — is unresolved.\nSolution: Shandon streamlines logistics operations and leads global compliance initiatives to ensure your business can expand with confidence.",
+      "uploadedAt": "2026-05-02T00:00:00.000Z"
+    },
+    {
+      "id": "case-studies",
+      "name": "Case Studies",
+      "content": "Case Studies\n\nCase Study 01 — RevOps System Overhaul\nProblem: The absence of a structured CRM and pipeline framework created inconsistent sales performance, poor visibility into deal flow, and an inability to forecast revenue with any reliability.\nAction: Implemented a structured CRM framework, defined clear pipeline stages, established lead qualification criteria, and built reporting dashboards to surface performance data in real time.\nResults:\n- Improved full-funnel pipeline visibility for leadership and sales teams\n- Increased consistency across the sales process, reducing dependency on individual rep behavior\n- Enabled accurate revenue forecasting for the first time\n\nCase Study 02 — Customer Support Optimization\nProblem: Elevated response times and an inconsistent support experience were reducing customer satisfaction, increasing churn risk, and creating operational debt across the team.\nAction: Redesigned core support workflows from triage through resolution, reduced SLA targets, and implemented a documentation and training system to ensure consistency at scale.\nResults:\n- Materially reduced first-response and resolution times\n- Improved CSAT scores across inbound support channels\n- Created a scalable support operation capable of handling growth without proportional headcount increases\n\nCase Study 03 — Operational Process Buildout\nProblem: Disorganized internal processes and a lack of cross-functional alignment were slowing execution, creating confusion over ownership, and limiting the team's ability to operate at scale.\nAction: Built structured documentation systems, redesigned core workflows, and established cross-functional alignment processes that created clarity around roles, responsibilities, and handoffs.\nResults:\n- Increased organizational efficiency across multiple departments\n- Reduced internal friction and eliminated redundant or unclear processes\n- Improved team execution speed and accountability",
+      "uploadedAt": "2026-05-02T00:00:00.000Z"
+    },
+    {
+      "id": "work-with-me",
+      "name": "How to Work With Shandon — Engagement Modes",
+      "content": "How to Work With Shandon\n\nThree Engagement Modes:\n\nBuild — Design and implement operational and RevOps systems from the ground up: CRM structure, pipeline frameworks, reporting dashboards, and cross-functional workflows. Best for early-stage companies establishing their first operational infrastructure.\n\nFix — Diagnose and repair broken processes across sales, customer support, logistics, or operations — identifying root causes and implementing durable solutions. Best for companies experiencing growing pains or declining performance metrics.\n\nScale — Optimize existing systems to improve efficiency, visibility, and growth capacity — removing bottlenecks and building for the next stage of the business. Best for companies preparing for a funding round, expansion, or significant team growth.\n\nContact: Use the 'Send a Message' form on the website or connect on LinkedIn at linkedin.com/in/shandonhicks/\n\nTagline: If your systems are slowing growth — Shandon can help fix that.",
+      "uploadedAt": "2026-05-02T00:00:00.000Z"
+    }
+  ],
+  "pronunciations": [],
+  "blocklist": [
+    "fuck", "fucking", "fucked", "fucker", "fucks",
+    "shit", "shitting", "shitty", "bullshit",
+    "ass", "asshole", "asses",
+    "bitch", "bitches",
+    "damn", "dammit",
+    "crap",
+    "bastard",
+    "dick", "dicks",
+    "cock", "cocks",
+    "pussy", "pussies",
+    "cunt", "cunts",
+    "whore", "whores",
+    "slut", "sluts",
+    "nigger", "nigga", "niggas",
+    "faggot", "fag", "fags",
+    "retard", "retarded",
+    "spic", "chink", "kike", "wetback", "cracker", "beaner", "gook",
+    "sex", "sexy", "sexual", "porn", "pornography", "nude", "naked", "nudes",
+    "boobs", "tits", "tit", "breasts", "nipple", "nipples",
+    "penis", "vagina", "anal", "anus", "genitals",
+    "masturbate", "masturbation", "orgasm", "ejaculate",
+    "rape", "rapist", "molest", "molestation",
+    "kill", "killing", "murder", "murderer",
+    "suicide", "self-harm", "cutting",
+    "bomb", "terrorist", "terrorism",
+    "hack", "hacking", "exploit",
+    "drug", "drugs", "cocaine", "heroin", "meth", "weed", "marijuana",
+    "stupid", "stupidly", "stupidity",
+    "dumb", "dumbass",
+    "idiot", "idiotic",
+    "moron", "moronic",
+    "loser", "losers",
+    "pathetic",
+    "worthless",
+    "incompetent",
+    "useless",
+    "ugly",
+    "lame",
+    "trash",
+    "garbage",
+    "fraud",
+    "scam",
+    "fake",
+    "clown",
+    "clanker"
+  ],
+  "links": [
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/shandonhicks/"
+    },
+    {
+      "id": "resume",
+      "label": "Resume (PDF)",
+      "url": "https://shandonhicks.dev/images/ShandonResume.pdf"
+    }
+  ]
+}

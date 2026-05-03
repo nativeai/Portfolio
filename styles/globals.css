@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-   font-family: sans-serif;
+   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
    color: #354358;
 }
 
@@ -15,7 +15,7 @@ body {
 /* Works on Firefox */
 * {
    scrollbar-width: thin;
-   scrollbar-color: #354358 transparent;
+   scrollbar-color: #C9A84C transparent;
  }
  
  /* Works on Chrome, Edge, and Safari */
@@ -28,7 +28,7 @@ body {
  }
  
  *::-webkit-scrollbar-thumb {
-   background-color: hsl(216, 63%, 33%);
+   background-color: #C9A84C;
    border-radius: 20px;
    border: 3px solid transparent;
  }
