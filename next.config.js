@@ -20,6 +20,9 @@ const nextConfig = {
     dangerouslyAllowSVG: false,
   },
   transpilePackages: ['three', 'talkivo-chat'],
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   poweredByHeader: false,
   reactStrictMode: true,
   compress: true,

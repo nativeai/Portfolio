@@ -44,7 +44,7 @@ export default function RootLayout({
           <SceneProvider />
           <Navbar />
           <main>{children}</main>
-          <FloatingChat />
+          {/* <FloatingChat /> */}
         </ThemeProvider>
       </body>
     </html>

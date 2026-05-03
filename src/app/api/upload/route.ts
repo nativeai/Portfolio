@@ -1,2 +1,5 @@
 export const runtime = "nodejs";
-export { POST } from "talkivo-chat/nextjs/upload";
+
+export async function POST() {
+  return new Response("Chat is currently disabled", { status: 503 });
+}
