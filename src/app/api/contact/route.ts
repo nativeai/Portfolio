@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const bodySchema = z.object({
   name:           z.string().min(1).max(100),
   email:          z.string().email().max(254),
@@ -36,6 +34,8 @@ async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
 }
 
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
+
   // ── 1. Parse + validate input ───────────────────────────────────────────────
   let body: z.infer<typeof bodySchema>
   try {
