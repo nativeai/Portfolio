@@ -46,6 +46,13 @@ const WorkWithMeSection = () => {
   const [submitting, setSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
+  // Unblock the form if Turnstile never fires (missing key, ad blocker, etc.)
+  useEffect(() => {
+    if (!showForm) return
+    const timeout = setTimeout(() => setTurnstileReady(true), 6000)
+    return () => clearTimeout(timeout)
+  }, [showForm])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
@@ -197,7 +204,7 @@ const WorkWithMeSection = () => {
             />
             <button
               type="submit"
-              disabled={submitting || !turnstileReady || !turnstileToken}
+              disabled={submitting || !turnstileReady}
               className="w-full bg-gold text-primary-800 font-semibold py-3 rounded-md hover:brightness-110 transition-all duration-200 text-sm disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {submitting ? 'Sending…' : !turnstileReady ? 'Verifying…' : 'Send Message'}
