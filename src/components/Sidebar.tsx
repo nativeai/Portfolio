@@ -2,11 +2,10 @@
 
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { GiTie } from "react-icons/gi";
-import { SiMinutemailer } from "react-icons/si";
 import { GoLocation } from "react-icons/go";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { FaMobileAlt, FaRegMoon, FaRegSun } from "react-icons/fa";
+import { FaRegMoon, FaRegSun } from "react-icons/fa";
 import { barIcons } from "../data";
 import { motion } from "framer-motion";
 const Sidebar = () => {
@@ -107,27 +106,6 @@ const Sidebar = () => {
             <span className="text-xs sm:text-sm font-medium text-center">Github</span>
           </motion.a>
           
-          {/* <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            onClick={() => window.open("mailto:shandonlee@proton.me")}
-            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth cursor-pointer"
-          >
-            <SiMinutemailer className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
-            <span className="text-xs sm:text-sm font-medium text-center">Email</span>
-          </motion.a>
-          
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            href="tel:+19103362213"
-            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth"
-          >
-            <FaMobileAlt className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
-            <span className="text-xs sm:text-sm font-medium text-center">Phone</span>
-          </motion.a> */}
           
           <motion.a
             whileHover={{ scale: 1.05 }}
