@@ -197,13 +197,15 @@ const WorkWithMeSection = () => {
                 placeholder="Tell me about what you're working on..."
               />
             </div>
-            <Turnstile
-              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-              onSuccess={(token) => { setTurnstileToken(token); setTurnstileReady(true) }}
-              onError={() => { setTurnstileToken(null); setTurnstileReady(true) }}
-              onExpire={() => setTurnstileToken(null)}
-              options={{ theme: 'dark', size: 'invisible' }}
-            />
+            {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? (
+              <Turnstile
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                onSuccess={(token) => { setTurnstileToken(token); setTurnstileReady(true) }}
+                onError={() => { setTurnstileToken(null); setTurnstileReady(true) }}
+                onExpire={() => setTurnstileToken(null)}
+                options={{ theme: 'dark', size: 'invisible' }}
+              />
+            ) : null}
             <button
               type="submit"
               disabled={submitting || !turnstileReady}
