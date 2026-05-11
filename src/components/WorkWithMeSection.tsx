@@ -45,6 +45,7 @@ const WorkWithMeSection = () => {
 
   const [submitting, setSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorDetail, setErrorDetail] = useState<string | null>(null)
 
   // Unblock the form if Turnstile never fires (missing key, ad blocker, etc.)
   useEffect(() => {
@@ -73,11 +74,13 @@ const WorkWithMeSection = () => {
           setSubmitStatus('idle')
         }, 2500)
       } else {
-        const data = await res.json().catch(() => ({}))
+        const data = await res.json().catch(() => ({})) as { error?: string }
         console.error('Contact form error:', res.status, data)
+        setErrorDetail(data.error ?? null)
         setSubmitStatus('error')
       }
     } catch {
+      setErrorDetail(null)
       setSubmitStatus('error')
     } finally {
       setSubmitting(false)
@@ -217,7 +220,9 @@ const WorkWithMeSection = () => {
               <p className="text-center text-sm text-green-400">Message sent! Shandon will be in touch soon.</p>
             )}
             {submitStatus === 'error' && (
-              <p className="text-center text-sm text-red-400">Something went wrong. Please try again.</p>
+              <p className="text-center text-sm text-red-400">
+                {errorDetail ?? 'Something went wrong. Please try again.'}
+              </p>
             )}
           </motion.form>
         )}

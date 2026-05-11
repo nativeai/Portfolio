@@ -18,24 +18,21 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#x27;')
 }
 
-async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
+async function verifyTurnstile(token: string, ip: string): Promise<void> {
   const secret = process.env.TURNSTILE_SECRET_KEY
-  if (!secret) return true // skip check if not configured
+  if (!secret) return // skip check if not configured
 
   const params = new URLSearchParams({ secret, response: token, remoteip: ip })
-  try {
-    const res  = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body:    params.toString(),
-    })
-    const data = await res.json() as { success: boolean; 'error-codes'?: string[] }
-    if (!data.success) {
-      console.error('Turnstile verification failed. Error codes:', data['error-codes'])
-    }
-    return data.success === true
-  } catch {
-    return true // network error — don't block the user
+  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body:    params.toString(),
+  })
+  const data = await res.json() as { success: boolean; 'error-codes'?: string[] }
+  if (!data.success) {
+    const codes = data['error-codes']?.join(', ') ?? 'unknown'
+    console.error('Turnstile verification failed:', codes)
+    throw new Error(codes)
   }
 }
 
@@ -53,9 +50,11 @@ export async function POST(req: NextRequest) {
   // ── 2. Verify CAPTCHA (skip if no token or key not configured) ──────────────
   if (turnstileToken) {
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? ''
-    const captchaOk = await verifyTurnstile(turnstileToken, ip)
-    if (!captchaOk) {
-      return NextResponse.json({ error: 'CAPTCHA verification failed' }, { status: 400 })
+    try {
+      await verifyTurnstile(turnstileToken, ip)
+    } catch (err) {
+      const code = err instanceof Error ? err.message : 'unknown'
+      return NextResponse.json({ error: `CAPTCHA failed: ${code}` }, { status: 400 })
     }
   }
 
