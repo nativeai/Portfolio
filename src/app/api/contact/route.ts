@@ -6,7 +6,7 @@ const bodySchema = z.object({
   name:           z.string().min(1).max(100),
   email:          z.string().email().max(254),
   message:        z.string().min(1).max(5000),
-  turnstileToken: z.string().min(1),
+  turnstileToken: z.string().optional(),
 })
 
 function escapeHtml(str: string): string {
@@ -19,23 +19,24 @@ function escapeHtml(str: string): string {
 }
 
 async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
-  const params = new URLSearchParams({
-    secret:   process.env.TURNSTILE_SECRET_KEY!,
-    response: token,
-    remoteip: ip,
-  })
-  const res  = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body:    params.toString(),
-  })
-  const data = await res.json()
-  return data.success === true
+  const secret = process.env.TURNSTILE_SECRET_KEY
+  if (!secret) return true // skip check if not configured
+
+  const params = new URLSearchParams({ secret, response: token, remoteip: ip })
+  try {
+    const res  = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body:    params.toString(),
+    })
+    const data = await res.json()
+    return data.success === true
+  } catch {
+    return true // network error — don't block the user
+  }
 }
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY)
-
   // ── 1. Parse + validate input ───────────────────────────────────────────────
   let body: z.infer<typeof bodySchema>
   try {
@@ -46,21 +47,35 @@ export async function POST(req: NextRequest) {
 
   const { name, email, message, turnstileToken } = body
 
-  // ── 2. Verify CAPTCHA ───────────────────────────────────────────────────────
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? ''
-  const captchaOk = await verifyTurnstile(turnstileToken, ip)
-  if (!captchaOk) {
-    return NextResponse.json({ error: 'CAPTCHA verification failed' }, { status: 400 })
+  // ── 2. Verify CAPTCHA (skip if no token or key not configured) ──────────────
+  if (turnstileToken) {
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? ''
+    const captchaOk = await verifyTurnstile(turnstileToken, ip)
+    if (!captchaOk) {
+      return NextResponse.json({ error: 'CAPTCHA verification failed' }, { status: 400 })
+    }
   }
 
-  // ── 3. Send email ───────────────────────────────────────────────────────────
+  // ── 3. Check Resend is configured ───────────────────────────────────────────
+  const resendKey = process.env.RESEND_API_KEY
+  const fromAddr  = process.env.RESEND_FROM
+  const toAddr    = process.env.RESEND_TO
+
+  if (!resendKey || !fromAddr || !toAddr) {
+    console.error('Missing Resend env vars: RESEND_API_KEY, RESEND_FROM, RESEND_TO')
+    return NextResponse.json({ error: 'Email service not configured' }, { status: 503 })
+  }
+
+  // ── 4. Send email ───────────────────────────────────────────────────────────
+  const resend = new Resend(resendKey)
+
   const safeName    = escapeHtml(name)
   const safeEmail   = escapeHtml(email)
   const safeMessage = escapeHtml(message)
 
   const { error } = await resend.emails.send({
-    from:    process.env.RESEND_FROM!,
-    to:      process.env.RESEND_TO!,
+    from:    fromAddr,
+    to:      toAddr,
     replyTo: email,
     subject: `Portfolio message from ${name}`,
     text:    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,

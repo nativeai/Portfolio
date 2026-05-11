@@ -73,6 +73,8 @@ const WorkWithMeSection = () => {
           setSubmitStatus('idle')
         }, 2500)
       } else {
+        const data = await res.json().catch(() => ({}))
+        console.error('Contact form error:', res.status, data)
         setSubmitStatus('error')
       }
     } catch {
