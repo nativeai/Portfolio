@@ -29,7 +29,10 @@ async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body:    params.toString(),
     })
-    const data = await res.json()
+    const data = await res.json() as { success: boolean; 'error-codes'?: string[] }
+    if (!data.success) {
+      console.error('Turnstile verification failed. Error codes:', data['error-codes'])
+    }
     return data.success === true
   } catch {
     return true // network error — don't block the user
