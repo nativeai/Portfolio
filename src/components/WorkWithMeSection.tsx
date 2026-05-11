@@ -62,7 +62,7 @@ const WorkWithMeSection = () => {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, turnstileToken }),
+        body: JSON.stringify({ ...formData, ...(turnstileToken ? { turnstileToken } : {}) }),
       })
       if (res.ok) {
         setSubmitStatus('success')
