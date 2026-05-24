@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar"
 import FloatingChat from "../components/FloatingChat"
 import "../styles/globals.css"
 import { SceneProvider } from '../components/SceneProvider'
+import { AuroraBackground } from '../components/AuroraBackground'
+import FooterSection from '../components/FooterSection'
 
 export const metadata: Metadata = {
   title: {
@@ -47,8 +49,10 @@ export default function RootLayout({
       <body className="bg-hero text-primary-100 font-sans min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="dark">
           <SceneProvider />
+          <AuroraBackground />
           <Navbar />
           <main>{children}</main>
+          <FooterSection />
           {/* <FloatingChat /> */}
         </ThemeProvider>
       </body>

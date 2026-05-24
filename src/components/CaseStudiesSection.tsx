@@ -65,13 +65,12 @@ const CaseStudiesSection = () => {
       {/* Cards */}
       <div className="max-w-4xl mx-auto space-y-8">
         {caseStudies.map((study, index) => (
-          <motion.div
-            key={study.number}
+          <motion.div key={study.number}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.55, delay: index * 0.1 }}
-            className="bg-primary-700/40 rounded-md p-8 shadow-custom-dark border border-primary-600/30"
+            className="bg-primary-700/35 frosted rounded-md p-8 shadow-custom-dark border border-primary-600/25"
           >
             {/* Number + title */}
             <div className="mb-6">

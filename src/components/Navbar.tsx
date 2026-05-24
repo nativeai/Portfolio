@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { Magnetic } from './Magnetic'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -32,7 +33,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'backdrop-blur-md bg-primary-800/80 shadow-custom-dark'
+          ? 'frosted bg-primary-800/70 shadow-custom-dark border-b border-primary-600/20'
           : 'bg-transparent'
       }`}
     >
@@ -49,28 +50,31 @@ const Navbar = () => {
           {/* Center: Nav links (desktop) */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.anchor}
-                href={'href' in link ? link.href : linkHref(link.anchor)}
-                onClick={link.openForm ? () => window.dispatchEvent(new CustomEvent('open-contact-form')) : undefined}
-                className="text-primary-100 hover:text-gold text-sm tracking-wide transition-colors duration-200"
-              >
-                {link.label}
-              </a>
+              <Magnetic key={link.anchor} strength={0.3}>
+                <a
+                  href={'href' in link ? link.href : linkHref(link.anchor)}
+                  onClick={link.openForm ? () => window.dispatchEvent(new CustomEvent('open-contact-form')) : undefined}
+                  className="text-primary-100 hover:text-gold text-sm tracking-wide transition-colors duration-200 block py-1 px-1"
+                >
+                  {link.label}
+                </a>
+              </Magnetic>
             ))}
           </div>
 
           {/* Right: CTA + Hamburger */}
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => {
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                window.dispatchEvent(new CustomEvent('open-contact-form'))
-              }}
-              className="bg-gold-accent text-primary-800 font-semibold px-4 py-2 rounded-md text-sm hover:brightness-110 transition-all duration-200"
-            >
-              Work With Me
-            </button>
+            <Magnetic strength={0.25}>
+              <button
+                onClick={() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                  window.dispatchEvent(new CustomEvent('open-contact-form'))
+                }}
+                className="bg-gold-accent text-primary-800 font-semibold px-4 py-2 rounded-md text-sm hover:brightness-110 transition-all duration-200"
+              >
+                Work With Me
+              </button>
+            </Magnetic>
             <button
               className="md:hidden text-primary-100 hover:text-gold transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}

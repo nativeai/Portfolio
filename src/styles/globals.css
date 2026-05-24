@@ -58,6 +58,106 @@ body {
 }
 
 
+/* Frosted glass */
+.frosted {
+   backdrop-filter: blur(14px);
+   -webkit-backdrop-filter: blur(14px);
+}
+
+/* What I Do — subgrid card alignment */
+@media (min-width: 768px) {
+  .what-i-do-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+  }
+}
+
+
+/* Aurora background */
+.aurora-container {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: -999;
+   overflow: hidden;
+   pointer-events: none;
+}
+
+.aurora-blob {
+   position: absolute;
+   border-radius: 50%;
+}
+
+.aurora-blob-1 {
+   width: 65vw;
+   height: 65vw;
+   top: -20%;
+   left: -10%;
+   background: radial-gradient(ellipse, rgba(42, 82, 152, 0.28) 0%, rgba(106, 163, 224, 0.14) 45%, transparent 70%);
+   filter: blur(72px);
+   animation: aurora-drift-1 40s ease-in-out infinite;
+}
+
+.aurora-blob-2 {
+   width: 55vw;
+   height: 55vw;
+   top: 15%;
+   right: -18%;
+   background: radial-gradient(ellipse, rgba(74, 123, 196, 0.22) 0%, rgba(201, 168, 76, 0.09) 50%, transparent 70%);
+   filter: blur(80px);
+   animation: aurora-drift-2 50s ease-in-out infinite;
+}
+
+.aurora-blob-3 {
+   width: 50vw;
+   height: 50vw;
+   bottom: -18%;
+   left: 15%;
+   background: radial-gradient(ellipse, rgba(111, 163, 224, 0.20) 0%, rgba(26, 58, 107, 0.12) 50%, transparent 70%);
+   filter: blur(68px);
+   animation: aurora-drift-3 36s ease-in-out infinite;
+}
+
+.aurora-blob-4 {
+   width: 38vw;
+   height: 38vw;
+   top: 42%;
+   left: 38%;
+   background: radial-gradient(ellipse, rgba(201, 168, 76, 0.11) 0%, rgba(232, 201, 122, 0.06) 50%, transparent 70%);
+   filter: blur(60px);
+   animation: aurora-drift-4 58s ease-in-out infinite;
+}
+
+@keyframes aurora-drift-1 {
+   0%, 100% { transform: translate(0, 0) scale(1); }
+   25%       { transform: translate(5vw, 8vh) scale(1.08); }
+   50%       { transform: translate(3vw, -5vh) scale(0.94); }
+   75%       { transform: translate(-4vw, 6vh) scale(1.05); }
+}
+
+@keyframes aurora-drift-2 {
+   0%, 100% { transform: translate(0, 0) scale(1); }
+   30%       { transform: translate(-6vw, -7vh) scale(1.12); }
+   60%       { transform: translate(4vw, 5vh) scale(0.91); }
+   80%       { transform: translate(-2vw, -3vh) scale(1.04); }
+}
+
+@keyframes aurora-drift-3 {
+   0%, 100% { transform: translate(0, 0) scale(1); }
+   40%       { transform: translate(7vw, -6vh) scale(1.10); }
+   70%       { transform: translate(-5vw, 4vh) scale(0.97); }
+}
+
+@keyframes aurora-drift-4 {
+   0%, 100% { transform: translate(0, 0) scale(1);    opacity: 0.8; }
+   35%       { transform: translate(-3vw, -8vh) scale(1.15); opacity: 1; }
+   65%       { transform: translate(6vw, 5vh) scale(0.90);  opacity: 0.6; }
+}
+
+
 /* //TODO put this in document */
 /* body {
    background-color: black;

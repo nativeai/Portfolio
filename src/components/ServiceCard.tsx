@@ -19,16 +19,16 @@ const ServiceCard: FunctionComponent<{ service: Service }> = ({
   };
 
   return (
-    <motion.div 
-      whileHover={{ 
-        y: -4, 
+    <motion.div
+      whileHover={{
+        y: -4,
         scale: 1.01,
         rotateX: 2,
         rotateY: 1,
       }}
       whileTap={{ scale: 0.98 }}
-      transition={{ 
-        duration: 0.2, 
+      transition={{
+        duration: 0.2,
         ease: [0.4, 0, 0.2, 1],
         type: "spring",
         stiffness: 300,

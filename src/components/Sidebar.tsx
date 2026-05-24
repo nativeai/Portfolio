@@ -8,6 +8,7 @@ import Image from "next/image";
 import { FaRegMoon, FaRegSun } from "react-icons/fa";
 import { barIcons } from "../data";
 import { motion } from "framer-motion";
+import { Magnetic } from "./Magnetic";
 const Sidebar = () => {
   const { theme, setTheme } = useTheme();
 
@@ -58,17 +59,19 @@ const Sidebar = () => {
       <div className="my-3 text-sm text-center">
         Fallon Pauite Shoshone Tribe
       </div>
-      <motion.a
+      <Magnetic strength={0.2}>
+        <motion.a
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.15 }}
-        href="/images/ShandonResume.pdf"
-        download="ShandonResume.pdf"
-        className="flex items-center justify-center px-4 py-2 my-4 bg-cta text-white cursor-pointer rounded-lg font-medium hover:brightness-110 transition-all duration-fast ease-smooth"
-      >
-        <GiTie className="w-5 h-5 mr-2" />
-        <span>Download Resume</span>
-      </motion.a>
+          href="/images/ShandonResume.pdf"
+          download="ShandonResume.pdf"
+          className="flex items-center justify-center px-4 py-2 my-4 bg-cta text-white cursor-pointer rounded-lg font-medium hover:brightness-110 transition-all duration-fast ease-smooth"
+        >
+          <GiTie className="w-5 h-5 mr-2" />
+          <span>Download Resume</span>
+        </motion.a>
+      </Magnetic>
       {/* Social Links Section */}
       <div className="w-full mx-auto my-6">
         <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-xs mx-auto">
@@ -84,39 +87,44 @@ const Sidebar = () => {
             <span className="text-xs sm:text-sm font-medium text-center">Resume</span>
           </motion.a> */}
           
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            href="https://www.linkedin.com/in/shandonhicks/"
-            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth"
-          >
-            <AiFillLinkedin className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
-            <span className="text-xs sm:text-sm font-medium text-center">LinkedIn</span>
-          </motion.a>
-          
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            href="https://github.com/nativeai"
-            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth"
-          >
-            <AiFillGithub className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
-            <span className="text-xs sm:text-sm font-medium text-center">Github</span>
-          </motion.a>
-          
-          
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            href="https://www.google.com/maps/place/Minneapolis,+MN/@44.9706114,-93.4015693,11z/data=!3m1!4b1!4b1!4m5!3m4!1s0x52b333909377bbbd:0x939fc9842f7aee07!8m2!3d44.977753!4d-93.2650108"
-            className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth"
-          >
-            <GoLocation className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
-            <span className="text-xs sm:text-sm font-medium text-center">Location</span>
-          </motion.a>
+          <Magnetic strength={0.3}>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              href="https://www.linkedin.com/in/shandonhicks/"
+              className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth"
+            >
+              <AiFillLinkedin className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
+              <span className="text-xs sm:text-sm font-medium text-center">LinkedIn</span>
+            </motion.a>
+          </Magnetic>
+
+          <Magnetic strength={0.3}>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              href="https://github.com/nativeai"
+              className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth"
+            >
+              <AiFillGithub className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
+              <span className="text-xs sm:text-sm font-medium text-center">Github</span>
+            </motion.a>
+          </Magnetic>
+
+          <Magnetic strength={0.3}>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              href="https://www.google.com/maps/place/Minneapolis,+MN/@44.9706114,-93.4015693,11z/data=!3m1!4b1!4b1!4m5!3m4!1s0x52b333909377bbbd:0x939fc9842f7aee07!8m2!3d44.977753!4d-93.2650108"
+              className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-fast ease-smooth"
+            >
+              <GoLocation className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500 cursor-pointer mb-1" />
+              <span className="text-xs sm:text-sm font-medium text-center">Location</span>
+            </motion.a>
+          </Magnetic>
         </div>
       </div>
 

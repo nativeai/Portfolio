@@ -138,28 +138,40 @@ export function SceneProvider() {
     function updateParticles() {
       if (!individualParticles) return
 
+      // Compute true view-frustum bounds at z=0 so they match what's visible
+      const distToOrigin = camera.position.distanceTo(new THREE.Vector3(0, 0, 0))
+      const vFOV = camera.fov * Math.PI / 180
+      const viewHeight = 2 * Math.tan(vFOV / 2) * distToOrigin
+      const viewWidth = viewHeight * camera.aspect
+      const bounds = {
+        x: viewWidth / 2 * 0.9,
+        y: viewHeight / 2 * 0.9,
+        z: 13
+      }
+
       individualParticles.forEach(particle => {
         const position = particle.mesh.position
 
+        // Scale mouse influence to actual visible bounds
         const mouseInfluence = new THREE.Vector3(
-          mousePos.x * 8,
-          mousePos.y * 6,
+          mousePos.x * bounds.x,
+          mousePos.y * bounds.y,
           position.z
         )
 
         const mouseDistance = position.distanceTo(mouseInfluence)
-        const maxInfluenceDistance = 5
+        const maxInfluenceDistance = bounds.x * 0.55
 
         if (mouseDistance < maxInfluenceDistance) {
           const repulsionForce = new THREE.Vector3()
             .subVectors(position, mouseInfluence)
             .normalize()
-            .multiplyScalar((1 - mouseDistance / maxInfluenceDistance) * 0.001)
+            .multiplyScalar((1 - mouseDistance / maxInfluenceDistance) * 0.003)
 
           particle.velocity.add(repulsionForce)
         }
 
-        particle.velocity.multiplyScalar(0.995)
+        particle.velocity.multiplyScalar(0.993)
 
         const minMovement = 0.0005
         if (particle.velocity.length() < minMovement) {
@@ -172,26 +184,11 @@ export function SceneProvider() {
 
         position.add(particle.velocity)
 
-        const distance = position.distanceTo(camera.position)
-        const vFOV = camera.fov * Math.PI / 180
-        const viewHeight = 2 * Math.tan(vFOV / 2) * distance
-        const viewWidth = viewHeight * camera.aspect
-
-        const cameraYOffset = camera.position.y
-        const bounds = {
-          x: Math.min(viewWidth / 2 * 0.95, 8),
-          y: Math.min((viewHeight / 2 * 0.95) + (cameraYOffset * 0.3), 6),
-          z: 12
-        }
-
-        if (Math.abs(position.x) > bounds.x) {
-          position.x = Math.sign(position.x) * bounds.x
-          particle.velocity.x *= -0.8
-        }
-        if (Math.abs(position.y) > bounds.y) {
-          position.y = Math.sign(position.y) * bounds.y
-          particle.velocity.y *= -0.8
-        }
+        // Soft wrap-around: particles that leave one edge reappear on the other
+        if (position.x > bounds.x) position.x = -bounds.x + 0.01
+        if (position.x < -bounds.x) position.x = bounds.x - 0.01
+        if (position.y > bounds.y) position.y = -bounds.y + 0.01
+        if (position.y < -bounds.y) position.y = bounds.y - 0.01
         if (Math.abs(position.z) > bounds.z) {
           position.z = Math.sign(position.z) * bounds.z
           particle.velocity.z *= -0.8

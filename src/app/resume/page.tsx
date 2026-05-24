@@ -233,7 +233,7 @@ const toolCategories = [
 
 function RoleCard({ role }: { role: typeof managementRoles[0] }) {
   return (
-    <div className="border border-primary-600/30 rounded-md p-6 bg-primary-800/40">
+    <div className="border border-primary-600/25 rounded-md p-6 bg-primary-800/35 frosted">
       <p className="font-display text-lg font-bold text-white">{role.title}</p>
       <p className="text-primary-300 text-sm mt-0.5">{role.company} · <span className="italic">{role.period}</span></p>
 
@@ -271,24 +271,26 @@ function RoleCard({ role }: { role: typeof managementRoles[0] }) {
 function AccordionSection({
   title,
   index,
+  open,
+  onToggle,
   children,
 }: {
   title: string
   index: number
+  open: boolean
+  onToggle: () => void
   children: React.ReactNode
 }) {
-  const [open, setOpen] = useState(false)
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="border-l-4 border-gold bg-primary-700/50 backdrop-blur-sm rounded-md shadow-custom-dark overflow-hidden"
+      className="border-l-4 border-gold bg-primary-700/40 frosted rounded-md shadow-custom-dark overflow-hidden"
     >
       <button
-        onClick={() => setOpen(!open)}
+        onClick={onToggle}
         className="w-full flex items-center justify-between px-6 py-5 text-left group"
       >
         <span className="font-display text-xl font-bold text-white group-hover:text-gold transition-colors duration-200">
@@ -323,6 +325,9 @@ function AccordionSection({
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ResumePage() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const toggle = (i: number) => setOpenIndex(prev => prev === i ? null : i)
+
   return (
     <div className="pt-24 pb-24 px-6 sm:px-12 lg:px-24 xl:px-32 max-w-7xl mx-auto">
 
@@ -349,25 +354,25 @@ export default function ResumePage() {
       {/* Accordion sections */}
       <div className="space-y-4">
 
-        <AccordionSection title="Management" index={0}>
+        <AccordionSection title="Management" index={0} open={openIndex === 0} onToggle={() => toggle(0)}>
           <div className="space-y-4">
             {managementRoles.map((role) => <RoleCard key={role.title} role={role} />)}
           </div>
         </AccordionSection>
 
-        <AccordionSection title="Business Growth" index={1}>
+        <AccordionSection title="Business Growth" index={1} open={openIndex === 1} onToggle={() => toggle(1)}>
           <div className="space-y-4">
             {businessGrowthRoles.map((role) => <RoleCard key={role.title} role={role} />)}
           </div>
         </AccordionSection>
 
-        <AccordionSection title="Customer Support" index={2}>
+        <AccordionSection title="Customer Support" index={2} open={openIndex === 2} onToggle={() => toggle(2)}>
           <div className="space-y-4">
             {customerSupportRoles.map((role) => <RoleCard key={role.title} role={role} />)}
           </div>
         </AccordionSection>
 
-        <AccordionSection title="Personal Projects" index={3}>
+        <AccordionSection title="Personal Projects" index={3} open={openIndex === 3} onToggle={() => toggle(3)}>
           <div>
             <p className="text-gold font-display text-lg font-bold mb-1">Unreal Engine</p>
             <p className="text-primary-300 text-sm mb-4">3D Landscape & Cinematic Production</p>
@@ -395,12 +400,12 @@ export default function ResumePage() {
           </div>
         </AccordionSection>
 
-        <AccordionSection title="Tools & Software" index={4}>
+        <AccordionSection title="Tools & Software" index={4} open={openIndex === 4} onToggle={() => toggle(4)}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {toolCategories.map((cat) => (
               <div
                 key={cat.label}
-                className="border-l-4 border-gold bg-primary-800/50 rounded-md p-4 flex flex-col gap-3"
+                className="border-l-4 border-gold bg-primary-800/40 frosted rounded-md p-4 flex flex-col gap-3"
               >
                 <p className="text-xs font-semibold uppercase tracking-widest text-gold">{cat.label}</p>
                 <div className="flex flex-wrap gap-1.5">

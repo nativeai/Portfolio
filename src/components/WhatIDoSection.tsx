@@ -9,7 +9,7 @@ const cards = [
     symptoms: [
       'Workflows that could be automated are still being done manually',
       'No clear strategy for where AI actually creates leverage in your operations',
-      'Disconnected tools and platforms that could be integrated but aren\'t',
+      "Disconnected tools and platforms that could be integrated but aren't",
     ],
     resolution:
       'I build practical AI strategies and implement the automations, integrations, and prompt frameworks that turn AI from a buzzword into a measurable business advantage — from workflow automation and AI-powered tools to full agentic and conversational system builds.',
@@ -71,13 +71,45 @@ const cards = [
   },
 ]
 
+function WhatIDoCard({ card, index }: { card: typeof cards[0]; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="what-i-do-card border-l-4 border-gold bg-primary-700/40 frosted rounded-md p-6 shadow-custom-dark"
+    >
+      {/* Row 1 — title + problem */}
+      <div>
+        <h3 className="font-display text-xl font-semibold text-white">{card.title}</h3>
+        <p className="text-primary-200 text-sm mt-2 italic">{card.problem}</p>
+      </div>
+
+      {/* Row 2 — symptoms */}
+      <ul className="mt-4 space-y-2 self-start">
+        {card.symptoms.map((symptom) => (
+          <li key={symptom} className="flex items-start gap-2">
+            <span className="text-gold mr-2 mt-0.5 text-xs leading-5">●</span>
+            <span className="text-primary-200 text-sm">{symptom}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* Row 3 — resolution (always starts at the same line across columns) */}
+      <p className="mt-4 text-primary-100 text-sm border-t border-primary-600/40 pt-4 self-start">
+        {card.resolution}
+      </p>
+    </motion.div>
+  )
+}
+
 const WhatIDoSection = () => {
   return (
     <section
       id="about"
       className="relative py-24 px-6 sm:px-12 lg:px-24 xl:px-32 max-w-7xl mx-auto"
     >
-      {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -89,33 +121,9 @@ const WhatIDoSection = () => {
         <div className="w-12 h-1 bg-gold-accent rounded-full mt-3" />
       </motion.div>
 
-      {/* 3×2 grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {cards.map((card, index) => (
-          <motion.div
-            key={card.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5, delay: index * 0.08 }}
-            className="border-l-4 border-gold bg-primary-700/50 backdrop-blur-sm rounded-md p-6 shadow-custom-dark flex flex-col"
-          >
-            <h3 className="font-display text-xl font-semibold text-white">{card.title}</h3>
-            <p className="text-primary-200 text-sm mt-2 italic">{card.problem}</p>
-
-            <ul className="mt-4 space-y-2 flex-1">
-              {card.symptoms.map((symptom) => (
-                <li key={symptom} className="flex items-start gap-2">
-                  <span className="text-gold mr-2 mt-0.5 text-xs leading-5">●</span>
-                  <span className="text-primary-200 text-sm">{symptom}</span>
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-4 text-primary-100 text-sm border-t border-primary-600/40 pt-4">
-              {card.resolution}
-            </p>
-          </motion.div>
+          <WhatIDoCard key={card.title} card={card} index={index} />
         ))}
       </div>
     </section>

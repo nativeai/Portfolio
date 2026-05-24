@@ -107,19 +107,18 @@ const WorkWithMeSection = () => {
       {/* Engagement mode cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
         {engagementModes.map((item, index) => (
-          <motion.div
-            key={item.mode}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-primary-700/40 rounded-md p-6 border border-primary-600/30 hover:border-gold/40 transition-colors duration-200"
-          >
-            <p className="text-gold font-display text-xl font-bold">{item.mode}</p>
-            <div className="w-8 h-0.5 bg-gold-accent mt-2 mb-4" />
-            <p className="text-primary-100 text-sm leading-relaxed">{item.description}</p>
-            <p className="text-primary-300 text-xs mt-4 font-semibold uppercase tracking-wide">Best for:</p>
-            <p className="text-primary-200 text-xs mt-1">{item.bestFor}</p>
+          <motion.div key={item.mode}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-primary-700/35 frosted rounded-md p-6 border border-primary-600/25 hover:border-gold/40 transition-colors duration-200"
+            >
+              <p className="text-gold font-display text-xl font-bold">{item.mode}</p>
+              <div className="w-8 h-0.5 bg-gold-accent mt-2 mb-4" />
+              <p className="text-primary-100 text-sm leading-relaxed">{item.description}</p>
+              <p className="text-primary-300 text-xs mt-4 font-semibold uppercase tracking-wide">Best for:</p>
+              <p className="text-primary-200 text-xs mt-1">{item.bestFor}</p>
           </motion.div>
         ))}
       </div>

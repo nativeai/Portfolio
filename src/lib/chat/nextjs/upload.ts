@@ -4,6 +4,17 @@ import mammoth from "mammoth";
 
 export const runtime = "nodejs";
 
+function requireAdmin(req: NextRequest): Response | null {
+  const key = process.env.ADMIN_API_KEY;
+  if (!key) return new Response("Admin API not configured", { status: 503 });
+  const provided = req.headers.get("x-admin-token") ?? "";
+  const valid =
+    provided.length === key.length &&
+    Buffer.from(provided).equals(Buffer.from(key));
+  if (!valid) return new Response("Unauthorized", { status: 401 });
+  return null;
+}
+
 const ALLOWED_EXTENSIONS: Record<string, string> = {
   ".txt": "text",
   ".md": "text",
@@ -25,6 +36,8 @@ async function extractText(file: File, ext: string): Promise<string> {
 }
 
 export async function POST(req: NextRequest) {
+  const denied = requireAdmin(req);
+  if (denied) return denied;
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
 

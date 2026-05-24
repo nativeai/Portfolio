@@ -43,6 +43,9 @@ yarn-error.log*
 secrets/
 .secrets
 
+# Claude Code — never commit local permissions (may contain API keys)
+.claude/settings.local.json
+
 # IDE
 .vscode/settings.json
 .idea/

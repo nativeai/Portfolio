@@ -41,7 +41,7 @@ const ExperienceSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl mx-auto border-l-4 border-gold bg-primary-700/50 backdrop-blur-sm rounded-md p-8 shadow-custom-dark"
+        className="max-w-3xl mx-auto border-l-4 border-gold bg-primary-700/40 frosted rounded-md p-8 shadow-custom-dark"
       >
         {/* Role header */}
         <h3 className="font-display text-2xl font-bold text-white">Director of Operations</h3>

@@ -46,7 +46,7 @@ const FooterSection = () => {
             <span className="text-sm">LinkedIn</span>
           </a>
           <p className="text-primary-300 text-sm">
-            © 2024 Shandon Hicks. All rights reserved.
+            © 2026 Shandon Hicks. All rights reserved.
           </p>
         </div>
       </div>
