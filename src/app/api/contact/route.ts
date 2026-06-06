@@ -2,11 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
+const requireCaptcha = !!process.env.TURNSTILE_SECRET_KEY
+
 const bodySchema = z.object({
   name:           z.string().min(1).max(100),
   email:          z.string().email().max(254),
   message:        z.string().min(1).max(5000),
-  turnstileToken: z.string().optional(),
+  turnstileToken: requireCaptcha ? z.string().min(1) : z.string().optional(),
 })
 
 function escapeHtml(str: string): string {
@@ -47,14 +49,16 @@ export async function POST(req: NextRequest) {
 
   const { name, email, message, turnstileToken } = body
 
-  // ── 2. Verify CAPTCHA (skip if no token or key not configured) ──────────────
-  if (turnstileToken) {
+  // ── 2. Verify CAPTCHA ────────────────────────────────────────────────────────
+  if (requireCaptcha) {
+    if (!turnstileToken) {
+      return NextResponse.json({ error: 'CAPTCHA required' }, { status: 400 })
+    }
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? ''
     try {
       await verifyTurnstile(turnstileToken, ip)
-    } catch (err) {
-      const code = err instanceof Error ? err.message : 'unknown'
-      return NextResponse.json({ error: `CAPTCHA failed: ${code}` }, { status: 400 })
+    } catch {
+      return NextResponse.json({ error: 'CAPTCHA verification failed' }, { status: 400 })
     }
   }
 

@@ -17,6 +17,9 @@ export async function POST(req: NextRequest) {
   if (!text) {
     return new Response("Missing required field: text", { status: 400 });
   }
+  if (text.length > 1000) {
+    return new Response("Text exceeds maximum length of 1000 characters", { status: 400 });
+  }
 
   const training = getTrainingData();
   const textWithoutUrls = text.replace(/https?:\/\/[^\s]+/g, "").replace(/\s{2,}/g, " ").trim();

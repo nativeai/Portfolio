@@ -52,7 +52,13 @@ export async function POST(req: NextRequest) {
   if (!Array.isArray(rawMessages) || typeof widgetId !== "string") {
     return new Response("Missing required fields: messages, widgetId", { status: 400 });
   }
-  const messages = rawMessages as { role: "user" | "assistant"; content: string }[];
+  if (rawMessages.length > 20) {
+    return new Response("Too many messages", { status: 400 });
+  }
+  const messages = (rawMessages as { role: "user" | "assistant"; content: string }[]).map((m) => ({
+    ...m,
+    content: typeof m.content === "string" ? m.content.slice(0, 2000) : "",
+  }));
 
   const meetingLinkSlug = process.env[`WIDGET_${widgetId}_MEETING_SLUG`]
     ?? process.env.HUBSPOT_MEETING_SLUG
@@ -141,7 +147,8 @@ export async function POST(req: NextRequest) {
         stream: false,
       });
 
-      while (response.stop_reason === "tool_use") {
+      let toolLoopCount = 0;
+      while (response.stop_reason === "tool_use" && toolLoopCount++ < 3) {
         const assistantContent = response.content;
         apiMessages.push({ role: "assistant", content: assistantContent });
 
