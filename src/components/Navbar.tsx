@@ -18,6 +18,13 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Signal the hero section that the nav is ready so its typewriter can start.
+  // Set a flag first so HeroSection can detect this even if it mounts after.
+  useEffect(() => {
+    ;(window as Window & { __navbarTyped?: boolean }).__navbarTyped = true
+    window.dispatchEvent(new CustomEvent('navbar-typed'))
+  }, [])
+
   const navLinks = [
     { label: 'About',        anchor: 'about',        openForm: false },
     { label: 'Work',         anchor: 'work',         openForm: false },
@@ -27,7 +34,6 @@ const Navbar = () => {
   ]
 
   const linkHref = (anchor: string) => isHome ? `#${anchor}` : `/#${anchor}`
-  const ctaHref = isHome ? '#contact' : '/#contact'
 
   return (
     <nav
@@ -67,8 +73,12 @@ const Navbar = () => {
             <Magnetic strength={0.25}>
               <button
                 onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                  window.dispatchEvent(new CustomEvent('open-contact-form'))
+                  if (isHome) {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                    window.dispatchEvent(new CustomEvent('open-contact-form'))
+                  } else {
+                    window.location.href = '/#contact'
+                  }
                 }}
                 className="bg-gold-accent text-primary-800 font-semibold px-4 py-2 rounded-md text-sm hover:brightness-110 transition-all duration-200"
               >

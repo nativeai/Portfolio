@@ -5,11 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const managementRoles = [
+const timelineRoles = [
   {
     title: 'Sr. Operations, RevOps & Hardware Manager',
     company: 'BrainTap, Inc',
-    period: 'Oct 2023 – Oct 2025 · Hybrid',
+    period: 'Oct 2023 – Oct 2025',
+    type: 'Hybrid',
+    category: 'Management',
     groups: [
       {
         heading: 'Operations & Project Management',
@@ -57,7 +59,9 @@ const managementRoles = [
   {
     title: 'Customer Success Manager',
     company: 'BrainTap, Inc',
-    period: 'Mar 2021 – Oct 2023 · 2 yrs 8 mos · Remote',
+    period: 'Mar 2021 – Oct 2023',
+    type: 'Remote',
+    category: 'Management',
     groups: [
       {
         heading: 'Strategic Leadership & Operations',
@@ -98,13 +102,12 @@ const managementRoles = [
       'Successfully managed global communications and partnerships, ensuring consistent, high-quality service across diverse markets',
     ],
   },
-]
-
-const businessGrowthRoles = [
   {
     title: 'Business Growth Specialist',
     company: 'BrainTap, Inc',
-    period: 'Feb 2020 – Mar 2021 · 1 yr 2 mos · On-Site',
+    period: 'Feb 2020 – Mar 2021',
+    type: 'On-Site',
+    category: 'Business Growth',
     groups: [
       {
         heading: 'Sales & Revenue Growth',
@@ -137,18 +140,17 @@ const businessGrowthRoles = [
       'Enhanced partner integration and success through direct implementation support, ensuring smooth transitions and sustained performance',
     ],
   },
-]
-
-const customerSupportRoles = [
   {
     title: 'Customer Support',
     company: 'BrainTap, Inc',
-    period: 'Feb 2017 – Mar 2021 · 4 yrs 2 mos · On-Site',
+    period: 'Feb 2017 – Mar 2021',
+    type: 'On-Site',
+    category: 'Customer Support',
     groups: [
       {
         heading: 'Customer Support Operations',
         items: [
-          'Provided comprehensive technical support via phone, email, and live chat for BrainTap\'s meditation and brainwave technology products',
+          "Provided comprehensive technical support via phone, email, and live chat for BrainTap's meditation and brainwave technology products",
           'Troubleshot hardware and software issues across iOS, Android, and desktop applications',
           'Maintained detailed customer interaction records in CRM systems, ensuring continuity and quality of service',
         ],
@@ -180,20 +182,12 @@ const customerSupportRoles = [
 
 const toolCategories = [
   {
-    label: 'AI Tools & Technologies',
-    items: [
-      'Claude Code',
-      'OpenAI',
-      'Google Labs',
-      'ElevenLabs',
-      'Sora',
-      'Suno',
-      'Agentic AI',
-      'Generative AI',
-      'Conversational AI',
-      'Multimodal AI',
-      'Voice AI',
-    ],
+    label: 'AI Tools',
+    items: ['Claude Code', 'OpenAI', 'Google Labs', 'ElevenLabs', 'Sora', 'Suno', 'Stable Diffusion AI'],
+  },
+  {
+    label: 'AI Expertise',
+    items: ['Agentic AI', 'Generative AI', 'Conversational AI', 'Multimodal AI', 'Voice AI'],
   },
   {
     label: 'CRM & Support Platforms',
@@ -212,61 +206,195 @@ const toolCategories = [
     items: ['AWS Management Console', 'Microsoft Platform Admin', 'Apple Developer Platform', 'Stripe Administration'],
   },
   {
-    label: 'RevOps & Automation',
-    items: ['Revenue Operations', 'Workflow Automation', 'Business Process Automation', 'System Integration', 'KPI Management'],
+    label: 'Competencies',
+    items: ['Revenue Operations', 'Workflow Automation', 'Business Process Automation', 'System Integration', 'KPI Management', 'Tradeshow Operations'],
   },
   {
-    label: 'Compliance & Regulatory',
+    label: 'Certifications & Compliance',
     items: ['CE Certification', 'EU Conformity', 'International Market Compliance', 'Safety Documentation', 'Manufacturer Relations'],
   },
   {
     label: 'Creative & Media',
-    items: ['Unreal Engine', 'Ableton Live 11', 'Adobe Suite', 'Google Services', 'Stable Diffusion AI'],
+    items: ['Unreal Engine', 'Ableton Live 11', 'Adobe Suite', 'Google Services'],
   },
   {
     label: 'Business & Admin',
-    items: ['Microsoft Office Suite', 'Gusto', 'ADP', 'Tradeshow Operations'],
+    items: ['Microsoft Office Suite', 'Gusto', 'ADP'],
   },
 ]
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
+// ─── Timeline entry ────────────────────────────────────────────────────────────
 
-function RoleCard({ role }: { role: typeof managementRoles[0] }) {
+function TimelineEntry({
+  role,
+  index,
+  open,
+  onToggle,
+  isLast,
+}: {
+  role: typeof timelineRoles[0]
+  index: number
+  open: boolean
+  onToggle: () => void
+  isLast: boolean
+}) {
   return (
-    <div className="border border-primary-600/25 rounded-md p-6 bg-primary-800/35 frosted">
-      <p className="font-display text-lg font-bold text-white">{role.title}</p>
-      <p className="text-primary-300 text-sm mt-0.5">{role.company} · <span className="italic">{role.period}</span></p>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="relative pl-10 sm:pl-14"
+    >
+      {/* Vertical line */}
+      {!isLast && (
+        <div className="absolute left-[11px] sm:left-[15px] top-6 bottom-0 w-px bg-gradient-to-b from-gold/60 via-gold/20 to-transparent" />
+      )}
 
-      <div className="mt-5 space-y-5">
-        {role.groups.map((group) => (
-          <div key={group.heading}>
-            <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">{group.heading}</p>
-            <ul className="space-y-1.5">
-              {group.items.map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="text-gold text-xs mt-1 shrink-0">●</span>
-                  <span className="text-primary-200 text-sm leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
+      {/* Dot */}
+      <div className="absolute left-0 top-1.5 flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8">
+        <div className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${open ? 'bg-gold border-gold scale-125' : 'bg-primary-800 border-gold/60'}`} />
+      </div>
+
+      {/* Card header — always visible, clickable */}
+      <button
+        onClick={onToggle}
+        className="w-full text-left group mb-1"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="font-display text-base sm:text-lg font-bold text-white group-hover:text-gold transition-colors duration-200 leading-snug">
+              {role.title}
+            </p>
+            <p className="text-primary-300 text-sm mt-0.5">
+              {role.company}
+              <span className="text-primary-500 mx-1.5">·</span>
+              <span className="italic">{role.period}</span>
+              <span className="text-primary-500 mx-1.5">·</span>
+              <span className="text-xs uppercase tracking-wide text-primary-400">{role.type}</span>
+            </p>
           </div>
+          <div className="flex items-center gap-2 mt-1 shrink-0">
+            <span className="hidden sm:block text-[10px] uppercase tracking-widest text-gold/60 border border-gold/20 rounded px-2 py-0.5">
+              {role.category}
+            </span>
+            <svg
+              className={`w-4 h-4 text-gold/60 transition-transform duration-300 shrink-0 ${open ? 'rotate-180' : ''}`}
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </button>
+
+      {/* Expandable detail */}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="mt-4 mb-6 border border-primary-600/25 rounded-md p-5 bg-primary-800/35 frosted space-y-5">
+              {role.groups.map((group) => (
+                <div key={group.heading}>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">{group.heading}</p>
+                  <ul className="space-y-1.5">
+                    {group.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="text-gold text-xs mt-1 shrink-0">●</span>
+                        <span className="text-primary-200 text-sm leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              <div className="pt-4 border-t border-primary-600/30">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Key Achievements</p>
+                <ul className="space-y-1.5">
+                  {role.achievements.map((a) => (
+                    <li key={a} className="flex items-start gap-2">
+                      <span className="text-gold text-xs mt-1 shrink-0">✦</span>
+                      <span className="text-primary-100 text-sm leading-relaxed">{a}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
+// ─── Filterable tools section ─────────────────────────────────────────────────
+
+function ToolsSection() {
+  const [active, setActive] = useState<string>('All')
+
+  const allItems = toolCategories.flatMap((cat) =>
+    cat.items.map((item) => ({ item, category: cat.label }))
+  )
+
+  const filters = ['All', ...toolCategories.map((c) => c.label)]
+
+  const visible = active === 'All'
+    ? allItems
+    : allItems.filter((t) => t.category === active)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5 }}
+    >
+      <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-5">Expertise & Toolset</p>
+
+      {/* Filter chips */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        {filters.map((f) => (
+          <button
+            key={f}
+            onClick={() => setActive(f)}
+            className={`text-xs px-3 py-1.5 rounded-full border transition-all duration-200 ${
+              active === f
+                ? 'bg-gold text-primary-900 border-gold font-semibold'
+                : 'border-primary-600/50 text-primary-300 hover:border-gold/50 hover:text-gold'
+            }`}
+          >
+            {f}
+          </button>
         ))}
       </div>
 
-      <div className="mt-6 pt-5 border-t border-primary-600/30">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Key Achievements</p>
-        <ul className="space-y-1.5">
-          {role.achievements.map((a) => (
-            <li key={a} className="flex items-start gap-2">
-              <span className="text-gold text-xs mt-1 shrink-0">✦</span>
-              <span className="text-primary-100 text-sm leading-relaxed">{a}</span>
-            </li>
+      {/* Tag cloud */}
+      <motion.div layout className="flex flex-wrap gap-2">
+        <AnimatePresence mode="popLayout">
+          {visible.map(({ item, category }) => (
+            <motion.span
+              key={`${category}-${item}`}
+              layout
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.85 }}
+              transition={{ duration: 0.18 }}
+              className="bg-primary-700/60 border border-gold/15 text-primary-200 rounded-full px-3 py-1 text-xs leading-snug hover:border-gold/40 hover:text-white transition-colors duration-150"
+            >
+              {item}
+            </motion.span>
           ))}
-        </ul>
-      </div>
-    </div>
+        </AnimatePresence>
+      </motion.div>
+    </motion.div>
   )
 }
+
+// ─── Accordion (for non-timeline sections) ────────────────────────────────────
 
 function AccordionSection({
   title,
@@ -325,18 +453,18 @@ function AccordionSection({
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ResumePage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-  const toggle = (i: number) => setOpenIndex(prev => prev === i ? null : i)
+  const [openTimelineIndex, setOpenTimelineIndex] = useState<number | null>(null)
+  const toggleTimeline = (i: number) => setOpenTimelineIndex(prev => prev === i ? null : i)
 
   return (
-    <div className="pt-24 pb-24 px-6 sm:px-12 lg:px-24 xl:px-32 max-w-7xl mx-auto">
+    <div className="pt-24 pb-24 px-6 sm:px-12 lg:px-24 xl:px-32 max-w-5xl mx-auto">
 
       {/* Page header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mb-12 flex items-end justify-between flex-wrap gap-4"
+        className="mb-14 flex items-end justify-between flex-wrap gap-4"
       >
         <div>
           <h1 className="font-display text-3xl font-bold text-white">Resume</h1>
@@ -351,79 +479,33 @@ export default function ResumePage() {
         </a>
       </motion.div>
 
-      {/* Accordion sections */}
-      <div className="space-y-4">
+      {/* Experience heading */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-xs font-semibold uppercase tracking-widest text-gold mb-8"
+      >
+        Experience
+      </motion.p>
 
-        <AccordionSection title="Management" index={0} open={openIndex === 0} onToggle={() => toggle(0)}>
-          <div className="space-y-4">
-            {managementRoles.map((role) => <RoleCard key={role.title} role={role} />)}
-          </div>
-        </AccordionSection>
-
-        <AccordionSection title="Business Growth" index={1} open={openIndex === 1} onToggle={() => toggle(1)}>
-          <div className="space-y-4">
-            {businessGrowthRoles.map((role) => <RoleCard key={role.title} role={role} />)}
-          </div>
-        </AccordionSection>
-
-        <AccordionSection title="Customer Support" index={2} open={openIndex === 2} onToggle={() => toggle(2)}>
-          <div className="space-y-4">
-            {customerSupportRoles.map((role) => <RoleCard key={role.title} role={role} />)}
-          </div>
-        </AccordionSection>
-
-        <AccordionSection title="Personal Projects" index={3} open={openIndex === 3} onToggle={() => toggle(3)}>
-          <div>
-            <p className="text-gold font-display text-lg font-bold mb-1">Unreal Engine</p>
-            <p className="text-primary-300 text-sm mb-4">3D Landscape & Cinematic Production</p>
-            <div className="aspect-video rounded-md overflow-hidden mb-4">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/uG51UuOWEC4"
-                title="Unreal Engine Production"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-            <ul className="space-y-1.5">
-              {[
-                'Create 3D landscapes and cinematic productions — camera setup and cinematics using Sequencer',
-                'Advanced rendering techniques and post-processing workflows',
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="text-gold text-xs mt-1 shrink-0">●</span>
-                  <span className="text-primary-200 text-sm leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </AccordionSection>
-
-        <AccordionSection title="Tools & Software" index={4} open={openIndex === 4} onToggle={() => toggle(4)}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {toolCategories.map((cat) => (
-              <div
-                key={cat.label}
-                className="border-l-4 border-gold bg-primary-800/40 frosted rounded-md p-4 flex flex-col gap-3"
-              >
-                <p className="text-xs font-semibold uppercase tracking-widest text-gold">{cat.label}</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {cat.items.map((item) => (
-                    <span
-                      key={item}
-                      className="bg-primary-700/60 border border-gold/15 text-primary-200 rounded px-2.5 py-1 text-xs leading-snug"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </AccordionSection>
-
+      {/* Timeline */}
+      <div className="space-y-6 mb-16">
+        {timelineRoles.map((role, i) => (
+          <TimelineEntry
+            key={role.title}
+            role={role}
+            index={i}
+            open={openTimelineIndex === i}
+            onToggle={() => toggleTimeline(i)}
+            isLast={i === timelineRoles.length - 1}
+          />
+        ))}
       </div>
+
+      {/* Tools & Software — filterable tag cloud */}
+      <ToolsSection />
+
     </div>
   )
 }

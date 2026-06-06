@@ -57,6 +57,12 @@ export function SceneProvider() {
       }
     }
 
+    // ── Scroll-driven parallax ───────────────────────────────────────────────
+    let rawScroll = 0
+    let smoothScroll = 0
+    const onScroll = () => { rawScroll = window.scrollY }
+    window.addEventListener('scroll', onScroll, { passive: true })
+
     const mousePos = { x: 0, y: 0 }
 
     function createLights() {
@@ -205,6 +211,22 @@ export function SceneProvider() {
 
     function animate() {
       requestAnimationFrame(animate)
+
+      // Lerp scroll for smooth camera drift
+      smoothScroll += (rawScroll - smoothScroll) * 0.04
+      const maxScroll = Math.max(1, document.body.scrollHeight - window.innerHeight)
+      const t = smoothScroll / maxScroll
+
+      camera.position.y = 3 - t * 6
+      camera.position.z = 12 - t * 2.5
+      camera.lookAt(0, t * 2, 0)
+
+      // Tilt particle field for layered depth
+      if (particleSystem) {
+        particleSystem.rotation.x = t * 0.35
+        particleSystem.rotation.y = t * 0.15
+      }
+
       updateParticles()
       renderer.render(scene, camera)
     }
@@ -235,6 +257,7 @@ export function SceneProvider() {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("resize", onResize)
+      window.removeEventListener("scroll", onScroll)
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement)
       }

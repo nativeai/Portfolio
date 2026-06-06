@@ -8,25 +8,24 @@ const LINES = [
   { text: 'Unlock Growth',    color: '#C9A84C', maxPx: 68, minPx: 24, wScale: 0.072 },
 ]
 
-// Each line's entrance takes DURATION ms.
-// The next line is triggered GAP ms after the previous one starts.
-const DURATION    = 1600
-const GAP         = 600
-const START_DELAY = 400
+const TYPE_SPEED  = 55  // ms per character
+const LINE_PAUSE  = 320 // ms pause between lines
+const START_DELAY = 500
 
 interface LineLayout { y: number; fontSize: number }
 
 export default function HeroSection() {
   const [layout,          setLayout]          = useState<LineLayout[]>([])
-  const [visible,         setVisible]         = useState([false, false, false])
+  const [charCounts,      setCharCounts]      = useState([0, 0, 0])
+  const [activeLine,      setActiveLine]      = useState(-1)
   const [subtitleVisible, setSubtitleVisible] = useState(false)
   const [hintVisible,     setHintVisible]     = useState(false)
 
   useEffect(() => {
     // ── Layout ──────────────────────────────────────────────────────────────
     function buildLayout(): LineLayout[] {
-      const W       = window.innerWidth
-      const H       = window.innerHeight
+      const W        = window.innerWidth
+      const H        = window.innerHeight
       const topBound = 78
       const midY     = topBound + (H * 0.70 - topBound) * 0.46
       const maxFs    = Math.max(26, Math.min(LINES[0].maxPx, Math.round(W * LINES[0].wScale)))
@@ -42,21 +41,49 @@ export default function HeroSection() {
     const onResize = () => setLayout(buildLayout())
     window.addEventListener('resize', onResize)
 
-    // ── Lock scroll ──────────────────────────────────────────────────────────
-    document.body.style.overflow = 'hidden'
+    // Lock scroll immediately — released after hero finishes typing.
+    // Skip the lock if the URL has a hash (tab navigation to /#about etc.).
+    if (!window.location.hash) {
+      document.body.style.overflow = 'hidden'
+    }
 
-    // ── Sequential reveals ───────────────────────────────────────────────────
-    const t0 = setTimeout(() => setVisible([true, false, false]), START_DELAY)
-    const t1 = setTimeout(() => setVisible([true, true,  false]), START_DELAY + GAP)
-    const t2 = setTimeout(() => setVisible([true, true,  true ]), START_DELAY + GAP * 2)
+    // ── Typewriter sequence ──────────────────────────────────────────────────
+    const timers: ReturnType<typeof setTimeout>[] = []
 
-    // Subtitle + hint after last line has fully settled
-    const lastLineDone = START_DELAY + GAP * 2 + DURATION
-    const tSub  = setTimeout(() => { document.body.style.overflow = ''; setSubtitleVisible(true) }, lastLineDone + 100)
-    const tHint = setTimeout(() => setHintVisible(true), lastLineDone + 500)
+    function typeLine(lineIdx: number, charIdx: number) {
+      if (lineIdx >= LINES.length) {
+        const tSub  = setTimeout(() => { document.body.style.overflow = ''; setSubtitleVisible(true); setActiveLine(-1) }, 300)
+        const tHint = setTimeout(() => setHintVisible(true), 800)
+        timers.push(tSub, tHint)
+        return
+      }
+
+      if (charIdx === 0) setActiveLine(lineIdx)
+
+      setCharCounts(prev => { const n = [...prev]; n[lineIdx] = charIdx; return n })
+
+      if (charIdx < LINES[lineIdx].text.length) {
+        timers.push(setTimeout(() => typeLine(lineIdx, charIdx + 1), TYPE_SPEED))
+      } else {
+        timers.push(setTimeout(() => typeLine(lineIdx + 1, 0), LINE_PAUSE))
+      }
+    }
+
+    // Start hero typewriter after navbar signals it's ready.
+    // Check the flag in case the event already fired before this effect ran.
+    function startHero() {
+      timers.push(setTimeout(() => typeLine(0, 0), START_DELAY))
+    }
+
+    if ((window as Window & { __navbarTyped?: boolean }).__navbarTyped) {
+      startHero()
+    } else {
+      window.addEventListener('navbar-typed', startHero, { once: true })
+    }
 
     return () => {
-      [t0, t1, t2, tSub, tHint].forEach(clearTimeout)
+      window.removeEventListener('navbar-typed', startHero)
+      timers.forEach(clearTimeout)
       document.body.style.overflow = ''
       window.removeEventListener('resize', onResize)
     }
@@ -84,17 +111,24 @@ export default function HeroSection() {
               fontWeight: 700,
               fontSize,
               lineHeight: 1,
-              color:      LINES[i].color,
-              willChange: 'opacity, filter, transform',
-              transition: `opacity ${DURATION}ms cubic-bezier(0.22,1,0.36,1),
-                           filter  ${DURATION}ms cubic-bezier(0.22,1,0.36,1),
-                           transform ${DURATION}ms cubic-bezier(0.22,1,0.36,1)`,
-              opacity:   visible[i] ? 1 : 0,
-              filter:    visible[i] ? 'blur(0px)'  : 'blur(28px)',
-              transform: visible[i] ? 'translateY(0px) scale(1)' : 'translateY(10px) scale(1.05)',
+              color: LINES[i].color,
             }}
           >
-            {LINES[i].text}
+            {LINES[i].text.slice(0, charCounts[i])}
+            {activeLine === i && (
+              <span
+                aria-hidden="true"
+                style={{
+                  display:       'inline-block',
+                  width:         '2px',
+                  height:        '0.82em',
+                  background:    LINES[i].color,
+                  marginLeft:    '3px',
+                  verticalAlign: 'middle',
+                  animation:     'hero-cursor-blink 0.65s step-end infinite',
+                }}
+              />
+            )}
           </span>
         </div>
       ))}
